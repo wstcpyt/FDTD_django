@@ -3,7 +3,7 @@ from django.contrib import admin
 
 urlpatterns = [
     # Examples:
-    # url(r'^$', 'FDTD_django.views.home', name='home'),
+    url(r'^$', 'sketchstructure.views.home_page', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
