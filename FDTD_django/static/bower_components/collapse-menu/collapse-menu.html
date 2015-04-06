@@ -1,0 +1,53 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-menu-button/core-menu-button.html">
+<link rel="import" href="../core-media-query/core-media-query.html">
+
+
+<polymer-element name="collapse-menu" attributes="query" noscript>
+
+    <template>
+        <style>
+            :host {
+                display: block;
+                position: relative;
+                box-sizing: border-box;
+                padding: 0 9px;
+            }
+            polyfill-next-selector {content: ':host > *'}
+            ::content > * {
+                margin: 0 8px 0 8px;
+                text-align: start;
+            }
+            polyfill-next-selector  {content: 'paper-button'}
+            ::content paper-button {
+                font-size: 14px;
+                margin: 5px;
+                font-family: 'RobotoDraft', Helvetica, Arial, sans-serif;
+            }
+
+            core-menu-button {
+                position: fixed;
+                right: 5px;
+                top: 10px;
+            }
+
+        </style>
+        <div layout horizontal center>
+            <content select=".logo"></content>
+            <template if="{{ smallScreen }}">
+                <!--when smallScreen is true, hide the links..-->
+                <core-menu-button icon="menu"
+                                  inlineMenu halign="right" valign="bottom">
+                    <content></content>
+                </core-menu-button>
+            </template>
+            <!--...otherwise display them in the toolbar-->
+            <content></content>
+        </div>
+        <core-media-query
+                query="{{ query }}"
+                querymATCHES="{{ smallScreen }}">
+        </core-media-query>
+    </template>
+
+</polymer-element>
