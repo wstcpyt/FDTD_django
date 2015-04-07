@@ -4,9 +4,10 @@
     <title>FDTD</title>
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="static/bower_components/webcomponentsjs/webcomponents.js"></script>
+    <script src="static/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="import" href="static/bower_components/layout/layout.html">
     <link rel="import" href="static/bower_components/paper-button/paper-button.html">
     <link rel="import" href="static/bower_components/font-roboto/roboto.html">
     <link rel="import" href="static/bower_components/core-header-panel/core-header-panel.html">
@@ -14,11 +15,11 @@
     <link rel="import" href="static/bower_components/core-toolbar/core-toolbar.html">
     <link rel="import" href="static/bower_components/core-media-query/core-media-query.html">
 </head>
-<body unresolved>
-<core-header-panel mode="waterfall">
+<body>
+<core-header-panel mode="shadowMode">
     <core-toolbar>
         <collapse-menu query="max-width: 500px">
-            <div flex class="logo">
+            <div  class="logo">
                 <img src="static/images/FDTD.png">
             </div>
             <paper-button id="document">Documentation</paper-button>
