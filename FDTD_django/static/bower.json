@@ -16,6 +16,6 @@
     "core-header-panel": "Polymer/core-header-panel#~0.5.5",
     "core-toolbar": "Polymer/core-toolbar#~0.5.5",
     "paper-button": "Polymer/paper-button#~0.5.5",
-    "collapse-toolbar": "robdodson/collapse-toolbar#~0.0.1"
+    "paper-menu-button": "Polymer/paper-menu-button#~0.5.5"
   }
 }

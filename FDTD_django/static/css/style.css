@@ -2,7 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   background-color: #EEE;
-  font-family: "RobotoDraft", sans-serif; }
+  font-family: 'RobotoDraft',Helvetica,Arial, sans-serif; }
 
 core-header-panel {
   height: 100%;
@@ -10,18 +10,20 @@ core-header-panel {
   -webkit-overflow-scrolling: touch; }
   core-header-panel .content {
     height: 2000px; }
+    core-header-panel .content .container {
+      position: relative;
+      top: 50px;
+      left: 100px; }
+      core-header-panel .content .container h1 {
+        position: relative;
+        left: 80px;
+        color: #444;
+        font-size: 40px;
+        font-weight: 300;
+        letter-spacing: -0.01em; }
 
 core-toolbar {
   background: #EEE;
-  color: black; }
-  core-toolbar .navbar {
-    position: fixed;
-    right: 0;
-    top: 0; }
-    core-toolbar .navbar paper-button {
-      padding: 11px 7px;
-      font-size: 14px;
-      margin: 5px;
-      font-family: "RobotoDraft", Helvetica, Arial, sans-serif; }
+  color: #000000; }
 
 /*# sourceMappingURL=style.css.map */

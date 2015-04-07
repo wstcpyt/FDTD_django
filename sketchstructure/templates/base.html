@@ -26,9 +26,9 @@
         </collapse-menu>
     </core-toolbar>
     <div class="content">
+        {% block contents %}
+        {% endblock %}
     </div>
-    {% block contents %}
-    {% endblock %}
 </core-header-panel>
 <script>
     $(document).ready(function(){
