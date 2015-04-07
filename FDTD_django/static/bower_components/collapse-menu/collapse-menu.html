@@ -1,0 +1,19 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="collapse-menu">
+    <link rel="import" type="css" href="collapse-menu.css">
+    <template>
+        <div>
+            <content select=".logo"></content>
+            <div class="menunav">
+                <content></content>
+            </div>
+        </div>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'collapse-menu'
+    });
+</script>

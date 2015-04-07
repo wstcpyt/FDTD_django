@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+polyfill-next-selector {content: ':host > *'}
+::content > * {
+  margin: 0 8px 0 8px;
+  text-align: start;
+}
+polyfill-next-selector  {content: 'paper-button'}
+::content paper-button {
+  font-size: 14px;
+  margin: 5px;
+  font-family: 'RobotoDraft', Helvetica, Arial, sans-serif;
+}
+core-menu-button {
+  position: fixed;
+  right: 5px;
+  top: 10px;
+}
+.menunav {
+  position: fixed;
+  right: 5px;
+  top: 10px;
+}
