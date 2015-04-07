@@ -1,8 +1,5 @@
 :host {
   display: block;
-  position: relative;
-  box-sizing: border-box;
-  padding: 0 9px;
 }
 polyfill-next-selector {content: ':host > *'}
 ::content > * {
@@ -23,5 +20,4 @@ core-menu-button {
 .menunav {
   position: fixed;
   right: 5px;
-  top: 10px;
 }

@@ -2,28 +2,37 @@ html, body {
   height: 100%;
   margin: 0;
   background-color: #EEE;
-  font-family: 'RobotoDraft',Helvetica,Arial, sans-serif; }
+  font-family: 'RobotoDraft',Helvetica,Arial, sans-serif;
+  font-weight: 300; }
 
 core-header-panel {
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch; }
+  core-header-panel core-toolbar {
+    background: #EEE;
+    color: #000000;
+    height: 80px;
+    padding: 16px; }
   core-header-panel .content {
     height: 2000px; }
     core-header-panel .content .container {
-      position: relative;
-      top: 50px;
-      left: 100px; }
-      core-header-panel .content .container h1 {
-        position: relative;
-        left: 80px;
-        color: #444;
-        font-size: 40px;
-        font-weight: 300;
-        letter-spacing: -0.01em; }
-
-core-toolbar {
-  background: #EEE;
-  color: #000000; }
+      margin-left: 110px;
+      margin-right: 110px;
+      padding: 125px 16px 16px 75px; }
+      core-header-panel .content .container img {
+        margin-right: 88px; }
+      core-header-panel .content .container .summary {
+        width: 496px;
+        font-size: 16px; }
+        core-header-panel .content .container .summary h1 {
+          font-weight: 300;
+          margin: 0;
+          color: #444;
+          font-size: 40px;
+          letter-spacing: -0.01em; }
+        core-header-panel .content .container .summary p {
+          margin: 20px 0;
+          line-height: 32px; }
 
 /*# sourceMappingURL=style.css.map */
