@@ -17,6 +17,7 @@
     "core-toolbar": "Polymer/core-toolbar#0.8-preview",
     "core-media-query": "Polymer/core-media-query#0.8-preview",
     "paper-button": "Polymer/paper-button#0.8-preview",
-    "layout": "Polymer/layout#0.8-preview"
+    "layout": "Polymer/layout#0.8-preview",
+    "core-icon": "Polymer/core-icon#0.8-preview"
   }
 }

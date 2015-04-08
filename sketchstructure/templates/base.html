@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>FDTD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <script src="static/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -16,7 +17,7 @@
 </head>
 <body>
 <core-header-panel mode="waterfall">
-    <core-toolbar>
+    <core-toolbar class="layout horizontal center">
         <collapse-menu>
             <div  class="logo">
                 <img src="static/images/FDTD.png">
@@ -26,6 +27,7 @@
         </collapse-menu>
     </core-toolbar>
     <div class="maincontent">
+    <core-media-query id="testid" query="(max-width: 600px)" queryMatches="{{smallscreen}}"></core-media-query>
         {% block contents %}
         {% endblock %}
     </div>
