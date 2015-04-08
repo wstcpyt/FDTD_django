@@ -4,10 +4,10 @@
     <title>FDTD</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <script>Polymer = {dom: 'shadow'};</script>
     <script src="static/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
-    <link rel="import" href="static/bower_components/layout/layout.html">
     <link rel="import" href="static/bower_components/paper-button/paper-button.html">
     <link rel="import" href="static/bower_components/font-roboto/roboto.html">
     <link rel="import" href="static/bower_components/core-header-panel/core-header-panel.html">
@@ -18,7 +18,7 @@
 <body>
 <core-header-panel mode="waterfall">
     <core-toolbar class="layout horizontal center">
-        <collapse-menu>
+        <collapse-menu query="(max-width: 600px)">
             <div  class="logo">
                 <img src="static/images/FDTD.png">
             </div>
@@ -27,7 +27,7 @@
         </collapse-menu>
     </core-toolbar>
     <div class="maincontent">
-    <core-media-query id="testid" query="(max-width: 600px)" queryMatches="{{smallscreen}}"></core-media-query>
+    <core-media-query id="testid" query="max-width: 600px" queryMatches="{{smallscreen}}"></core-media-query>
         {% block contents %}
         {% endblock %}
     </div>

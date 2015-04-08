@@ -1,21 +1,27 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../core-media-query/core-media-query.html">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="import" href="../core-icon/core-icon.html">
 <dom-module id="collapse-menu">
     <link rel="import" type="css" href="collapse-menu.css">
     <template>
         <div>
             <content select=".logo"></content>
+            <core-icon icon="menu"></core-icon>
             <div id="menunavid" class="menunav">
                 <content></content>
             </div>
         </div>
-        <core-media-query id="coremedia" query="(max-width: 600px)"></core-media-query>
+        <core-media-query id="coremedia" query="[[query]]"></core-media-query>
     </template>
 </dom-module>
 <script>
     Polymer({
         is: 'collapse-menu',
+        properties: {
+            query: {
+                type: String
+            }
+        },
         ready: function() {
             var menunav = this.$.menunavid;
             this.$.coremedia.addEventListener('query-matches-changed', function(){

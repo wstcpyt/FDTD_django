@@ -3,7 +3,7 @@ html,body {
   margin: 0;
   background-color: #EEE;
   font-family: 'RobotoDraft',Helvetica,Arial, sans-serif;
-  font-width: 300;
+  font-weight: 300;
 }
 
 core-header-panel {
@@ -31,6 +31,7 @@ core-header-panel {
         margin: 50px auto 50px auto;
       }
       .summary {
+        color: #444;
         width: 496px;
         font-size: 16px;
         padding: 0 50px;
@@ -38,7 +39,6 @@ core-header-panel {
         h1{
           font-weight: 300;
           margin: 0;
-          color: #444;
           font-size: 40px;
           letter-spacing: -0.01em;
         }
