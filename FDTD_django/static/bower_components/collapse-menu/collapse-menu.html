@@ -1,17 +1,21 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../core-media-query/core-media-query.html">
 <link rel="import" href="../core-icon/core-icon.html">
+<link rel="import" href="../core-icons/core-icons.html">
+
 <dom-module id="collapse-menu">
     <link rel="import" type="css" href="collapse-menu.css">
     <template>
         <div>
             <content select=".logo"></content>
-            <core-icon icon="menu"></core-icon>
+            <div id="smallscreennavid">
+                <core-icon icon="menu"></core-icon>
+            </div>
             <div id="menunavid" class="menunav">
                 <content></content>
             </div>
         </div>
-        <core-media-query id="coremedia" query="[[query]]"></core-media-query>
+        <core-media-query id="coremediaid" query="[[query]]"></core-media-query>
     </template>
 </dom-module>
 <script>
@@ -19,18 +23,47 @@
         is: 'collapse-menu',
         properties: {
             query: {
-                type: String
+                type: String,
+                observer: 'queryChanged'
+            },
+            screenmatched: {
+                type: Boolean
             }
         },
-        ready: function() {
-            var menunav = this.$.menunavid;
-            this.$.coremedia.addEventListener('query-matches-changed', function(){
-                if (this.queryMatches){
-                    menunav.style.display = 'none'
-                } else {
-                    menunav.style.display = ''
+        queryChanged: function () {
+            this.screenmatched = this.$.coremediaid.queryMatches
+        },
+
+        ready: function () {
+            this.coremediaEvent();
+        },
+
+        coremediaEvent: function () {
+            var coreMediaObj = {
+                menunav: this.$.menunavid,
+                smallscreennav: this.$.smallscreennavid,
+                coremedia: this.$.coremediaid,
+
+                toggleNav: function (queryMatches) {
+                    if (queryMatches) {
+                        this.menunav.style.display = 'none';
+                        this.smallscreennav.style.display = ''
+                    } else {
+                        this.menunav.style.display = '';
+                        this.smallscreennav.style.display = 'none'
+                    }
                 }
-            });
+            };
+
+            function coreMediaEventHandler() {
+                coreMediaObj.coremedia.addEventListener('query-matches-changed', function () {
+                    coreMediaObj.toggleNav(coreMediaObj.coremedia.queryMatches);
+                });
+            }
+
+            this.coreMediaObj = coreMediaObj;
+            this.coreMediaObj.toggleNav(coreMediaObj.coremedia.queryMatches);
+            coreMediaEventHandler();
         }
     });
 </script>
