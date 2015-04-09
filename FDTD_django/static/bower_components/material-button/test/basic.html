@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>collapse-menu-basic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../material-button.html">
+</head>
+<body>
+<test-fixture id="basic">
+    <template>
+        <material-button raised="true" link="https://www.google.com/">BASIC</material-button>
+    </template>
+</test-fixture>
+
+<script>
+    suite('basic', function () {
+        var materialButton;
+        suite('Click event', function () {
+            setup(function () {
+                materialButton = fixture('basic');
+            });
+            test('on Click event', function (done) {
+                materialButton.addEventListener('click', function() {
+                    done();
+                });
+                materialButton.click()
+            });
+        });
+
+        suite('parameter', function() {
+            setup(function () {
+                materialButton = fixture('basic')
+            });
+            test('link parameter', function () {
+                assert.equal(materialButton.link, 'https://www.google.com/')
+            });
+            test('raised parameter', function() {
+                assert.equal(materialButton.$.paperbuttonid.raised,true)
+            })
+
+
+        });
+
+    });
+</script>
+</body>
+</html>

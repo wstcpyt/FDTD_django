@@ -38,9 +38,13 @@ core-header-panel {
         core-header-panel .maincontent .container .summary p {
           margin: 20px 0;
           line-height: 32px; }
-
-core-toolbar {
-  background: #EEE;
-  color: #000000; }
+        core-header-panel .maincontent .container .summary material-button {
+          width: 200px; }
+          core-header-panel .maincontent .container .summary material-button core-icon {
+            margin-right: 5px; }
+          core-header-panel .maincontent .container .summary material-button p {
+            position: relative;
+            top: 2px;
+            display: inline; }
 
 /*# sourceMappingURL=style.css.map */

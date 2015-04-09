@@ -46,13 +46,19 @@ core-header-panel {
           margin: 20px 0;
           line-height: 32px;
         }
+        material-button {
+          width: 200px;
+          core-icon {
+            margin-right: 5px;
+          }
+          p {
+            position: relative;
+            top: 2px;
+            display: inline;
+          }
+        }
       }
     }
   }
-}
-
-core-toolbar{
-  background: #EEE;
-  color: #000000;
 }
 
