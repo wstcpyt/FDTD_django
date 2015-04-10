@@ -1,4 +1,4 @@
-Polymerobject = {
+Polymer
   is: "material-button"
   properties: {
     link: {
@@ -14,7 +14,5 @@ Polymerobject = {
   }
   handleClick: ->
     window.location.href = this.link
-}
 
-Polymer(Polymerobject)
 

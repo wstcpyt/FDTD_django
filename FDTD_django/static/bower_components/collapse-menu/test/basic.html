@@ -61,12 +61,12 @@
                 collapsemenu = fixture('basic');
             });
             test('parameter true', function() {
-                collapsemenu.coreMediaObj.toggleNav(true);
+                collapsemenu.nav.toggleNav(true);
                 assert.equal(collapsemenu.$.menunavid.style.display, 'none');
                 assert.equal(collapsemenu.$.smallscreennavid.style.display, '')
             });
             test('parameter false', function(){
-                collapsemenu.coreMediaObj.toggleNav(false);
+                collapsemenu.nav.toggleNav(false);
                 assert.equal(collapsemenu.$.menunavid.style.display, '');
                 assert.equal(collapsemenu.$.smallscreennavid.style.display, 'none');
             });

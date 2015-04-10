@@ -1,12 +1,38 @@
-year = 1985
-first_name = "Marty"
-full_name = first_name + "McFly"
+polymer = {
+  is: 'collapse-menu'
+  properties: {
+    query: {
+      type: String
+      observer: 'queryChanged'
+    }
+    screenmatched: {
+      type: Boolean
+    }
+  }
+  queryChanged: ->
+    this.screenmatched = this.$.coremediaid.queryMatches
+  ready: ->
+    setresponsivenav(this)
+}
 
-initialize_time_circuits = (speed, year = 1885) ->
-  year = 1885
-  year * flux_capacitor_constant * speed
+class Nav
+  constructor: (@menunav, @smallscreennav) ->
+  toggleNav: (queryMatches) ->
+    if queryMatches
+      this.menunav.style.display = 'none'
+      this.smallscreennav.style.display = ''
+    else
+      this.menunav.style.display = ''
+      this.smallscreennav.style.display = 'none'
 
+setresponsivenav = (_this) ->
+  _this.nav = new Nav(_this.$.menunavid, _this.$.smallscreennavid)
+  _this.nav.toggleNav(_this.$.coremediaid.queryMatches)
+  add_core_media_event_handler(_this)
 
-class TimeMachine
-  constructor: (pilot) ->
-    @pilot = pilot
+add_core_media_event_handler = (_this) ->
+  _this.$.coremediaid.addEventListener('query-matches-changed',
+    ->
+      _this.nav.toggleNav(_this.$.coremediaid.queryMatches)
+  )
+Polymer(polymer)
