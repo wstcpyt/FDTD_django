@@ -1,7 +1,7 @@
 __author__ = 'yutongpang'
 from django.test import TestCase
 from django.core.urlresolvers import resolve
-from sketchstructure.views import home_page
+from landingpage.views import home_page
 
 
 class HomePageTest(TestCase):
