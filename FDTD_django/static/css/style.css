@@ -15,36 +15,25 @@ core-header-panel {
     height: 80px; }
   core-header-panel .maincontent {
     height: 2000px; }
-    core-header-panel .maincontent .containers {
-      display: flex;
-      display: -webkit-flex;
-      flex-flow: row wrap;
-      margin: 0 auto;
-      width: 100%; }
-      core-header-panel .maincontent .containers img {
-        width: 300px;
-        height: 300px;
-        margin: 50px auto 50px auto; }
-      core-header-panel .maincontent .containers .summary {
+    core-header-panel .maincontent .container {
+      padding-top: 50px; }
+      core-header-panel .maincontent .container .summary {
         color: #444;
-        width: 496px;
-        font-size: 16px;
-        padding: 0 50px;
-        margin: auto; }
-        core-header-panel .maincontent .containers .summary h1 {
+        font-size: 16px; }
+        core-header-panel .maincontent .container .summary h1 {
           font-weight: 300;
           margin: 0;
           font-size: 40px;
           letter-spacing: -0.01em; }
-        core-header-panel .maincontent .containers .summary p {
+        core-header-panel .maincontent .container .summary p {
           margin: 20px 0;
           line-height: 32px; }
-        core-header-panel .maincontent .containers .summary material-button {
+        core-header-panel .maincontent .container .summary material-button {
           width: 200px; }
-          core-header-panel .maincontent .containers .summary material-button core-icon {
+          core-header-panel .maincontent .container .summary material-button core-icon {
             display: inline-block;
             margin-right: 5px; }
-          core-header-panel .maincontent .containers .summary material-button p {
+          core-header-panel .maincontent .container .summary material-button p {
             position: relative;
             top: 2px;
             display: inline; }

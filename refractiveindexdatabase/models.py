@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
+class Category(models.Model):
+    title = models.TextField()
+
+
+class Element(models.Model):
+    category = models.ForeignKey(Category, default=None)
+    title = models.TextField()
