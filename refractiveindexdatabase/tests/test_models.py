@@ -2,6 +2,7 @@ __author__ = 'yutongpang'
 from django.test import TestCase
 from refractiveindexdatabase.models import Category, Element
 
+
 def create_category_item():
     first_category = Category()
     first_category.title = 'main'
@@ -9,6 +10,7 @@ def create_category_item():
     saved_items = Category.objects.all()
     first_saved_item = saved_items[0]
     return first_saved_item
+
 
 class CategoryModelTest(TestCase):
     def test_saving_and_retrieving_items(self):
@@ -31,5 +33,3 @@ class ElementModelTest(TestCase):
         first_saved_element = saved_items[0]
         self.assertEqual(first_saved_element.title, 'Ag')
         self.assertEqual(first_saved_element.category, self.category_items)
-
-
