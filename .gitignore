@@ -3,4 +3,4 @@ __pycache__
 db.sqlite3
 .idea/
 .DS_Store
-secret_key.py
+FDTD_django/secret_key.py
