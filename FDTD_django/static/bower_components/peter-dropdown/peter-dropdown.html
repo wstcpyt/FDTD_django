@@ -4,10 +4,10 @@
 <dom-module id="peter-dropdown">
     <link rel="import" type="css" href="peter-dropdown.css">
     <template>
-        <paper-button id="paperbutton" on-click="handleClick" raised>
-            <content select=".title"></content>
+        <paper-button id="paperbutton" raised>
+            <div><span>{{buttontext}}</span></div>
         </paper-button>
-        <peter-selector id="peterselector" style="display: none">
+        <peter-selector selected="{{selected}}" id="peterselector" style="display: none">
             <content select=".item"></content>
         </peter-selector>
     </template>

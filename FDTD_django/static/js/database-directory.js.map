@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "database-directory.js",
+  "sourceRoot": "",
+  "sources": [
+    "database-directory.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,GAAA;;AAAA,EAAA,GAAA,GAAM,OAAO,CAAC,MAAR,CAAe,oBAAf,EAAqC,EAArC,CAAN,CAAA;;AAAA,EACA,GAAG,CAAC,UAAJ,CAAe,2BAAf,EACE,SAAC,MAAD,GAAA;WACE,MAAM,CAAC,KAAP,GAAe,EADjB;EAAA,CADF,CADA,CAAA;AAAA"
+}

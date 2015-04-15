@@ -4,16 +4,32 @@
 
   polymer = {
     is: 'peter-dropdown',
-    handleClick: function() {
-      return this.$.peterselector.style.display = 'block';
+    properties: {
+      buttontext: {
+        type: String,
+        notify: true
+      },
+      attrForSelected: {
+        type: String,
+        value: "name"
+      },
+      selected: {
+        type: String,
+        observer: 'handleselectedchange'
+      }
     },
-    ready: function() {
-      var _this;
-      _this = this;
-      return this.$.peterselector.addEventListener('selected-changed', function() {
-        _this.$.peterselector.style.display = 'none';
-        return _this.$.peterselector.selected = 'none';
-      });
+    listeners: {
+      'click': 'handleClick'
+    },
+    handleClick: function() {
+      if (this.$.peterselector.style.display === 'none') {
+        return this.$.peterselector.style.display = 'block';
+      } else {
+        return this.$.peterselector.style.display = 'none';
+      }
+    },
+    handleselectedchange: function() {
+      return this.buttontext = this.$.peterselector.$.coreselector.items[this.selected].getAttribute(this.attrForSelected);
     }
   };
 
