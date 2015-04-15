@@ -3,7 +3,7 @@ from selenium import webdriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.support.ui import WebDriverWait
 import sys
-import os
+from refractiveindexdatabase.models import Category
 
 
 class FunctionalTest(StaticLiveServerTestCase):
@@ -24,6 +24,7 @@ class FunctionalTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
+        Category.objects.create(title='main')
 
     def tearDown(self):
         self.browser.quit()

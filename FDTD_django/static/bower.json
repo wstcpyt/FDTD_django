@@ -21,6 +21,9 @@
     "core-icon": "Polymer/core-icon#0.8-preview",
     "core-icons": "Polymer/core-icons#0.8-preview",
     "web-component-tester": "Polymer/web-component-tester#~2.2.6",
-    "test-fixture": "Polymer/test-fixture#~0.2.0"
+    "test-fixture": "Polymer/test-fixture#~0.2.0",
+    "paper-shadow": "Polymer/paper-shadow#0.8-preview",
+    "core-transition": "Polymer/core-transition#0.8-preview",
+    "core-overlay": "Polymer/core-overlay#0.8-preview"
   }
 }

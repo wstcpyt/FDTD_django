@@ -1,0 +1,17 @@
+{
+  "name": "core-resizable",
+  "private": true,
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#master"
+  },
+  "homepage": "https://github.com/Polymer/core-resizable",
+  "_release": "d48550a1bc",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d48550a1bc260159a9df1a9cc6d4e5f3e95b3e5d"
+  },
+  "_source": "git://github.com/Polymer/core-resizable.git",
+  "_target": "master",
+  "_originalSource": "Polymer/core-resizable"
+}
