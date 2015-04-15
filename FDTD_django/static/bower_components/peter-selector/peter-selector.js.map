@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "peter-selector.js",
+  "sourceRoot": "",
+  "sources": [
+    "peter-selector.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,OAAA;;AAAA,EAAA,OAAA,GAAU;AAAA,IACR,EAAA,EAAI,gBADI;AAAA,IAER,UAAA,EAAY;AAAA,MACV,QAAA,EAAU;AAAA,QACR,IAAA,EAAM,MADE;AAAA,QAER,MAAA,EAAQ,IAFA;OADA;KAFJ;GAAV,CAAA;;AAAA,EAUA,OAAA,CAAQ,OAAR,CAVA,CAAA;AAAA"
+}
