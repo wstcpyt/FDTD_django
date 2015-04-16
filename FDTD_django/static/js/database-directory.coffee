@@ -8,9 +8,12 @@ app.controller('RefractiveIndexController',
         {name:'Cu'},
         {name:'Au'}
       ]
+      console.log(document.querySelector('#categorydropdown').selected)
       document.querySelector('#categorydropdown').addEventListener('buttontext-changed',
         ->
-          $scope.candisplay = true
+          if this.selected != undefined
+            console.log(this.selected)
+            $scope.candisplay = true
       )
   ]
 )

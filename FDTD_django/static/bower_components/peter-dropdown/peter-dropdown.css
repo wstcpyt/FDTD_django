@@ -3,6 +3,7 @@ paper-button {
   color: white; }
 
 core-icon {
-  margin-left: 10px; }
+  margin-left: 10px;
+  display: inline-block; }
 
 /*# sourceMappingURL=peter-dropdown.css.map */

@@ -16,7 +16,7 @@
             {% endfor %}
         </peter-dropdown>
         {% verbatim %}
-        <peter-dropdown id="categorydropdown" buttontext="Choose Element" ng-show="candisplay">
+        <peter-dropdown id="elementdropdown" buttontext="Choose Element" ng-show="candisplay" ng-cloak>
                 <div name="{{ element.name }}" class="item" ng-repeat="element in chemelement">
                     {{ element.name }}
                 </div>

@@ -16,8 +16,12 @@
           name: 'Au'
         }
       ];
+      console.log(document.querySelector('#categorydropdown').selected);
       return document.querySelector('#categorydropdown').addEventListener('buttontext-changed', function() {
-        return $scope.candisplay = true;
+        if (this.selected !== void 0) {
+          console.log(this.selected);
+          return $scope.candisplay = true;
+        }
       });
     }
   ]);
