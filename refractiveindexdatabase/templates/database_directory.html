@@ -8,7 +8,7 @@
 {% endblock %}
 {% block contents %}
     <div class="container" ng-app="refractiveIndexApp" ng-controller="RefractiveIndexController">
-        <peter-dropdown id="categorydropdown" buttontext="Choose Category" ng-click="">
+        <peter-dropdown id="categorydropdown" buttontext="Choose Category" text-changed ng-click="">
             {% for category in category %}
                 <div name="{{ category.title }}" class="item">
                     {{ category.title }}
@@ -23,5 +23,5 @@
         </peter-dropdown>
         {% endverbatim %}
     </div>
-    <script src="/static/js/database-directory.js"></script>
+    <script src="/static/js/src/database-directory.js"></script>
 {% endblock %}
