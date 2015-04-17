@@ -7,12 +7,6 @@ app.controller('RefractiveIndexController',
         {name:'Cu'},
         {name:'Au'}
       ]
-      $scope.peterdropdownClicked = ($event) ->
-        angular.element($event.target).on('buttontext-changed', ->
-           if this.selected != undefined
-            console.log(this.selected)
-            $scope.candisplay = true
-        )
 )
 
 app.directive('textChanged', ->
@@ -20,9 +14,8 @@ app.directive('textChanged', ->
     restrict: 'A'
     link: ($scope, element, attrs) ->
       element.on('buttontext-changed', ->
-        if this.selected != undefined
+        if this.selected != undefined or attrs.unitest=='1'
           $scope.candisplay = true
-
       )
 
   }

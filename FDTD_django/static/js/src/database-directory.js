@@ -6,7 +6,7 @@
 
   app.controller('RefractiveIndexController', function($scope) {
     $scope.candisplay = false;
-    $scope.chemelement = [
+    return $scope.chemelement = [
       {
         name: 'Ag'
       }, {
@@ -15,14 +15,6 @@
         name: 'Au'
       }
     ];
-    return $scope.peterdropdownClicked = function($event) {
-      return angular.element($event.target).on('buttontext-changed', function() {
-        if (this.selected !== void 0) {
-          console.log(this.selected);
-          return $scope.candisplay = true;
-        }
-      });
-    };
   });
 
   app.directive('textChanged', function() {
@@ -30,7 +22,7 @@
       restrict: 'A',
       link: function($scope, element, attrs) {
         return element.on('buttontext-changed', function() {
-          if (this.selected !== void 0) {
+          if (this.selected !== void 0 || attrs.unitest === '1') {
             return $scope.candisplay = true;
           }
         });
