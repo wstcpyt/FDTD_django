@@ -13,29 +13,27 @@ core-header-panel {
     background: #EEE;
     color: #000000;
     height: 80px; }
-  core-header-panel .maincontent {
-    height: 2000px; }
-    core-header-panel .maincontent .container {
-      padding-top: 50px; }
-      core-header-panel .maincontent .container .summary {
-        color: #444;
-        font-size: 16px; }
-        core-header-panel .maincontent .container .summary h1 {
-          font-weight: 300;
-          margin: 0;
-          font-size: 40px;
-          letter-spacing: -0.01em; }
-        core-header-panel .maincontent .container .summary p {
-          margin: 20px 0;
-          line-height: 32px; }
-        core-header-panel .maincontent .container .summary material-button {
-          width: 200px; }
-          core-header-panel .maincontent .container .summary material-button core-icon {
-            display: inline-block;
-            margin-right: 5px; }
-          core-header-panel .maincontent .container .summary material-button p {
-            position: relative;
-            top: 2px;
-            display: inline; }
+  core-header-panel .maincontent .container {
+    padding-top: 50px; }
+    core-header-panel .maincontent .container .summary {
+      color: #444;
+      font-size: 16px; }
+      core-header-panel .maincontent .container .summary h1 {
+        font-weight: 300;
+        margin: 0;
+        font-size: 40px;
+        letter-spacing: -0.01em; }
+      core-header-panel .maincontent .container .summary p {
+        margin: 20px 0;
+        line-height: 32px; }
+      core-header-panel .maincontent .container .summary material-button {
+        width: 200px; }
+        core-header-panel .maincontent .container .summary material-button core-icon {
+          display: inline-block;
+          margin-right: 5px; }
+        core-header-panel .maincontent .container .summary material-button p {
+          position: relative;
+          top: 2px;
+          display: inline; }
 
 /*# sourceMappingURL=style.css.map */

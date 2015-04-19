@@ -24,6 +24,7 @@
     "test-fixture": "Polymer/test-fixture#~0.2.0",
     "paper-shadow": "Polymer/paper-shadow#0.8-preview",
     "core-transition": "Polymer/core-transition#0.8-preview",
-    "core-overlay": "Polymer/core-overlay#0.8-preview"
+    "core-overlay": "Polymer/core-overlay#0.8-preview",
+    "paper-fab": "Polymer/paper-fab#0.8-preview"
   }
 }

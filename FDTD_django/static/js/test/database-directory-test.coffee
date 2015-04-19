@@ -6,23 +6,38 @@ describe('Unit Test RefractiveIndexController', ->
   ))
   it('candisplay initial false', ->
     $scope = {}
-    controller = this.$controller('RefractiveIndexController', { $scope: $scope })
+    controller = this.$controller('RefractiveIndexController', {$scope: $scope})
     $scope.candisplay = false
   )
 )
 
-describe('Unit Testing textChanged', ->
+describe('refractiveIndexApp', ->
   root = exports ? this
   beforeEach(module('refractiveIndexApp'))
-  beforeEach(inject((_$compile_, _$rootScope_) ->
+  beforeEach(inject((_$compile_, _$rootScope_, _$httpBackend_, _$controller_) ->
+    this.$controller = _$controller_
     this.$compile = _$compile_
     this.$rootScope = _$rootScope_
+    this.$httpBackend = _$httpBackend_
+    this.elementlistGetHandler = this.$httpBackend.when('GET', '/elementlist/undefined').respond([{"title": "Ag"},
+      {"title": "Au"}])
   ))
-  it('listen to the text-changed event', ->
-    element = this.$compile("<div unitest='1' text-changed></div>")(this.$rootScope)
-    this.$rootScope.candisplay = false
-    element.selected = '0'
-    element.triggerHandler('buttontext-changed')
-    assert(this.$rootScope.candisplay == true)
+  afterEach(->
+    this.$httpBackend.verifyNoOutstandingExpectation()
+    this.$httpBackend.verifyNoOutstandingRequest()
+  )
+  it('peter-dropdown listen to the text-changed event', ->
+    element = this.$compile("<peter-selector unitest='1' selected-changed></peter-selector>")(this.$rootScope)
+    this.$httpBackend.expectGET('/elementlist/undefined')
+    element.triggerHandler('selectedtext-changed')
+    assert(this.$rootScope.nextdisabled == false)
+    this.$httpBackend.flush()
+    assert(this.$rootScope.chemelement[0]['title'] == 'Ag')
+  )
+  it('click next button show the next step', ->
+    $scope = {}
+    controler = this.$controller('RefractiveIndexController', {$scope: $scope})
+    $scope.nextclickHandler()
+    assert($scope.candisplay == true)
   )
 )

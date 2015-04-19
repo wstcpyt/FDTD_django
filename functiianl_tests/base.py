@@ -3,7 +3,7 @@ from selenium import webdriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.support.ui import WebDriverWait
 import sys
-from refractiveindexdatabase.models import Category
+from refractiveindexdatabase.models import Category, Element
 
 
 class FunctionalTest(StaticLiveServerTestCase):

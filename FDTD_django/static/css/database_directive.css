@@ -1,0 +1,20 @@
+.cardcontainer {
+  display: block;
+  margin: 0 20px;
+  background-color: white; }
+  .cardcontainer h1 {
+    font-size: 25px;
+    background-color: #2980b9;
+    color: white; }
+  .cardcontainer peter-selector {
+    display: block;
+    width: 300px;
+    margin: 0 auto; }
+  .cardcontainer .nextbutton {
+    width: 80px;
+    height: 70px;
+    display: block;
+    margin-right: 20px;
+    margin-left: auto; }
+
+/*# sourceMappingURL=database_directive.css.map */
