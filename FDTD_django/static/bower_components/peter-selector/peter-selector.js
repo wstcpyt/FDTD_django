@@ -19,7 +19,6 @@
       }
     },
     handleselectedchange: function() {
-      console.log('changed');
       return this.selectedtext = this.$.coreselector.items[this.selected].getAttribute(this.attrForSelected);
     }
   };

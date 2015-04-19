@@ -17,13 +17,12 @@
     };
   });
 
-  app.directive('selectedChanged', function($http) {
+  app.directive('changedHandler', function($http) {
     return {
       restrict: 'A',
       link: function($scope, element, attrs) {
-        return element.on('selected-changed', function() {
+        return element.on('selectedtext-changed', function() {
           var buttonChangedEvent;
-          console.log(this.selected);
           if (this.selected !== void 0 || attrs.unitest === '1') {
             buttonChangedEvent = new ButtonChangedEvent(this, $http, $scope);
             buttonChangedEvent.updateChemelement();

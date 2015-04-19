@@ -15,7 +15,6 @@ polymer = {
     }
   }
   handleselectedchange: ->
-    console.log('changed')
     this.selectedtext = this.$.coreselector.items[this.selected].getAttribute(this.attrForSelected)
 }
 

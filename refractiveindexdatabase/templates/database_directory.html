@@ -14,7 +14,7 @@
             <div class="center">
                 <h1>STEP 1: Choose Category</h1>
             </div>
-            <peter-selector id="categorydropdown" selectedtext="nodefined" selected-changed ng-click="">
+            <peter-selector id="categorydropdown" changed-handler ng-click="">
                 {% for category in category %}
                     <div name = "{{ category.title }}">
                         {{ category.title }}

@@ -9,12 +9,11 @@ app.controller('RefractiveIndexController',
 
 )
 
-app.directive('selectedChanged', ($http) ->
+app.directive('changedHandler', ($http) ->
   return {
   restrict: 'A'
   link: ($scope, element, attrs) ->
-    element.on('selected-changed', ->
-      console.log(this.selected)
+    element.on('selectedtext-changed', ->
       if this.selected != undefined or attrs.unitest=='1'
         buttonChangedEvent = new ButtonChangedEvent(this, $http, $scope)
         buttonChangedEvent.updateChemelement()
