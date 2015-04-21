@@ -6,14 +6,21 @@
     font-size: 25px;
     background-color: #2980b9;
     color: white; }
+    @media screen and (max-width: 500px) {
+      .cardcontainer h1 {
+        font-size: 20px; } }
   .cardcontainer peter-selector {
     display: block;
-    width: 300px;
+    width: 50%;
     margin: 0 auto; }
+    @media screen and (max-width: 500px) {
+      .cardcontainer peter-selector {
+        width: 80%; } }
   .cardcontainer .nextbutton {
     width: 80px;
     height: 70px;
     display: block;
+    margin-top: 20px;
     margin-right: 20px;
     margin-left: auto; }
 

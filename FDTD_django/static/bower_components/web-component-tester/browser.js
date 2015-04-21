@@ -905,7 +905,7 @@ var Suite = require('../suite')
   , utils = require('../utils');
 
 /**
- * BDDTEST-style interface:
+ * bdd_test-style interface:
  *
  *      describe('Array', function(){
  *        describe('#indexOf()', function(){
@@ -5890,7 +5890,7 @@ process.on = function(e, fn){
 var Mocha = global.Mocha = require('mocha'),
     mocha = global.mocha = new Mocha({ reporter: 'html' });
 
-// The BDDTEST UI is registered by default, but no UI will be functional in the
+// The bdd_test UI is registered by default, but no UI will be functional in the
 // browser without an explicit call to the overridden `mocha.ui` (see below).
 // Ensure that this default UI does not expose its methods to the global scope.
 mocha.suite.removeAllListeners('pre-require');

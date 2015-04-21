@@ -1,41 +1,91 @@
 app = angular.module('refractiveIndexApp', [])
 app.controller('RefractiveIndexController',
   ($scope)->
-    $scope.candisplay = false
-    $scope.nextdisabled = true
-    $scope.chemelement = [{title: 'NO DATA'}]
-    $scope.nextclickHandler = ->
-      $scope.candisplay = true
+    $scope.categorynextdisabled = true
+    $scope.elementnextdisabled = true
+    $scope.elementlistnextdisabled = true
+    $scope.categorynextclickHandler = ->
+      $scope.categorydisplay = false
+      $scope.elementdisplay = true
+    $scope.elementnextclickHandler = ->
+      $scope.elementdisplay = false
+      $scope.elementlistdisplay = true
 
+    $scope.elementlistnextclickHandler = ->
+      $scope.elementlistdisplay = false
 )
 
-app.directive('changedHandler', ($http) ->
+app.directive('categoryChangedHandler', ($http) ->
   return {
   restrict: 'A'
   link: ($scope, element, attrs) ->
     element.on('selectedtext-changed', ->
-      if this.selected != undefined or attrs.unitest=='1'
-        buttonChangedEvent = new ButtonChangedEvent(this, $http, $scope)
-        buttonChangedEvent.updateChemelement()
-        buttonChangedEvent.makenextbuttonavailable()
+      if this.selected != undefined or attrs.unitest == '1'
+        categoryChangedEvent = new CategoryChangedEvent(this, $http, $scope)
+        categoryChangedEvent.updateChemelement()
+        $scope.$apply(categoryChangedEvent.makenextbuttonavailable())
     )
   }
 )
 
-class ButtonChangedEvent
+class CategoryChangedEvent
   constructor: (@_this, @_$http, @_$scope) ->
   makenextbuttonavailable: ->
-    this._$scope.nextdisabled = false
+    this._$scope.categorynextdisabled = false
   updateChemelement: ->
     _this_ = this
-    this._$http.get('/elementlist/'+this._this.selectedtext).
+    this._$http.get('/elementitems/' + this._this.selectedtext).
     success((data) ->
       _this_._updateHandler(data)
     ).
-    error( ->
+    error(->
       console.log('cannot retrieve element list')
     )
   _updateHandler: (data)->
-    if data.length != 0
-      this._$scope.chemelement = data
+    this._$scope.chemelement = data
 
+app.directive('elementChangedHandler', ($http) ->
+  return {
+  restrict: 'A'
+  link: ($scope, element, attrs) ->
+    element.on('selectedtext-changed', ->
+      if this.selected != undefined or attrs.unitest == '1'
+        elementChangedEvent = new ElementChangedEvent(this, $http, $scope)
+        $scope.$apply(elementChangedEvent.makenextbuttonavailable())
+        elementChangedEvent.updateChemelementlist()
+    )
+  }
+)
+
+class ElementChangedEvent
+  constructor: (@_this, @_$http, @_$scope) ->
+  makenextbuttonavailable: ->
+    this._$scope.elementnextdisabled = false
+  updateChemelementlist: ->
+    _this_ = this
+    this._$http.get('/elementlistitems/' + this._this.selectedtext).
+    success((data) ->
+      _this_._updateHandler(data)
+    ).
+    error(->
+      console.log('cannot retrieve element list')
+    )
+  _updateHandler: (data)->
+    this._$scope.chemelementlist = data
+
+app.directive('elementlistChangedHandler', ($http)->
+  return {
+  restrict: 'A'
+  link: ($scope, element, attrs) ->
+    element.on('selectedtext-changed', ->
+      if this.selected != undefined or attrs.unitest == '1'
+        elementlistChangedEvent = new ElementListChangedEvent(this, $http, $scope)
+        $scope.$apply(elementlistChangedEvent.makenextbuttonavailable())
+    )
+  }
+)
+
+class ElementListChangedEvent
+  constructor: (@_this, @_$http, @_$scope) ->
+  makenextbuttonavailable: ->
+    this._$scope.elementlistnextdisabled = false

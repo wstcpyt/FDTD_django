@@ -22,9 +22,11 @@ class FunctionalTest(StaticLiveServerTestCase):
             super().tearDownClass()
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Chrome('/Users/yutongpang/Documents/chrome/chromedriver')
         self.browser.implicitly_wait(3)
         Category.objects.create(title='main')
+        category = Category.objects.filter(title='main').first()
+        Element.objects.create(category=category, title='Ag')
 
     def tearDown(self):
         self.browser.quit()

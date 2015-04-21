@@ -40,8 +40,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'landingpage',
     'rest_framework',
-    'refractiveindexdatabase'
+    'refractiveindexdatabase',
+    'django_behave'
 )
+
+TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

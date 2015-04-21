@@ -11,7 +11,7 @@ describe('Unit Test RefractiveIndexController', ->
   )
 )
 
-describe('refractiveIndexApp', ->
+describe('refractiveIndex Selection process', ->
   root = exports ? this
   beforeEach(module('refractiveIndexApp'))
   beforeEach(inject((_$compile_, _$rootScope_, _$httpBackend_, _$controller_) ->
@@ -19,25 +19,48 @@ describe('refractiveIndexApp', ->
     this.$compile = _$compile_
     this.$rootScope = _$rootScope_
     this.$httpBackend = _$httpBackend_
-    this.elementlistGetHandler = this.$httpBackend.when('GET', '/elementlist/undefined').respond([{"title": "Ag"},
+    this.elementitemsGetHandler = this.$httpBackend.when('GET', '/elementitems/undefined').respond([{"title": "Ag"},
       {"title": "Au"}])
+    this.elementlistitemsGetHandler = this.$httpBackend.when('GET', '/elementlistitems/undefined').respond([{"title": "peter"},
+      {"title": "jack"}])
   ))
   afterEach(->
     this.$httpBackend.verifyNoOutstandingExpectation()
     this.$httpBackend.verifyNoOutstandingRequest()
   )
-  it('peter-dropdown listen to the text-changed event', ->
-    element = this.$compile("<peter-selector unitest='1' selected-changed></peter-selector>")(this.$rootScope)
-    this.$httpBackend.expectGET('/elementlist/undefined')
+  it('category selector listen to the selecttext-changed event', ->
+    element = this.$compile("<peter-selector unitest='1' category-changed-handler></peter-selector>")(this.$rootScope)
+    this.$httpBackend.expectGET('/elementitems/undefined')
     element.triggerHandler('selectedtext-changed')
-    assert(this.$rootScope.nextdisabled == false)
+    assert(this.$rootScope.categorynextdisabled == false)
     this.$httpBackend.flush()
     assert(this.$rootScope.chemelement[0]['title'] == 'Ag')
   )
-  it('click next button show the next step', ->
+  it('click category next button show the next step', ->
     $scope = {}
     controler = this.$controller('RefractiveIndexController', {$scope: $scope})
-    $scope.nextclickHandler()
-    assert($scope.candisplay == true)
+    $scope.categorynextclickHandler()
+    assert($scope.categorydisplay == false)
+    assert($scope.elementdisplay == true)
+  )
+  it('element selector listen to the selecttext-changed event', ->
+    element = this.$compile("<peter-selector unitest='1' element-changed-handler></peter-selector>")(this.$rootScope)
+    this.$httpBackend.expectGET('/elementlistitems/undefined')
+    element.triggerHandler('selectedtext-changed')
+    assert(this.$rootScope.elementnextdisabled == false)
+    this.$httpBackend.flush()
+  )
+  it('click element next button show the next step', ->
+    $scope = {}
+    controler = this.$controller('RefractiveIndexController', {$scope: $scope})
+    $scope.elementnextclickHandler()
+    assert($scope.elementdisplay == false)
+    assert($scope.elementlistdisplay == true)
+
+  )
+  it('elementlist selector listen to the selecttext-changed event', ->
+    element = this.$compile("<peter-selector unitest='1' elementlist-changed-handler></peter-selector>")(this.$rootScope)
+    element.triggerHandler('selectedtext-changed')
+    assert(this.$rootScope.elementlistnextdisabled == false)
   )
 )

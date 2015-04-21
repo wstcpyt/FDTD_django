@@ -4,5 +4,4 @@ Feature: Landing Page
 
   Scenario: Customer Not login
     Given Customer come to Landing Page without login
-    When The Page Refresh
     Then see the title is FDTD
