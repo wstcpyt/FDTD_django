@@ -37,3 +37,5 @@ Feature: Refractive Index database
      And interact with the next button on element selection panel
      And Pick a elementpage from the Elementlist
      And Interact with the done button on elementlist panel
+     Then see the result panel
+     And See the refractive index chart

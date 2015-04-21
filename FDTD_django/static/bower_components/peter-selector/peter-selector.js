@@ -9,6 +9,9 @@
         type: String,
         notify: true
       },
+      selectedattr: {
+        type: String
+      },
       selected: {
         type: String,
         observer: 'handleselectedchange'
@@ -19,7 +22,8 @@
       }
     },
     handleselectedchange: function() {
-      return this.selectedtext = this.$.coreselector.items[this.selected].getAttribute(this.attrForSelected);
+      this.selectedtext = this.$.coreselector.items[this.selected].getAttribute(this.attrForSelected);
+      return this.selectedattr = this.$.coreselector.items[this.selected].getAttribute('attr');
     }
   };
 

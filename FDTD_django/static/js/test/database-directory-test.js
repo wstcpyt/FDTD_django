@@ -26,14 +26,14 @@
       this.$compile = _$compile_;
       this.$rootScope = _$rootScope_;
       this.$httpBackend = _$httpBackend_;
-      this.elementitemsGetHandler = this.$httpBackend.when('GET', '/elementitems/undefined').respond([
+      this.elementitemsGetHandler = this.$httpBackend.when('GET', '/elementitems/undefined/').respond([
         {
           "title": "Ag"
         }, {
           "title": "Au"
         }
       ]);
-      return this.elementlistitemsGetHandler = this.$httpBackend.when('GET', '/elementlistitems/undefined').respond([
+      return this.elementlistitemsGetHandler = this.$httpBackend.when('GET', '/elementlistitems/undefined/').respond([
         {
           "title": "peter"
         }, {
@@ -48,7 +48,7 @@
     it('category selector listen to the selecttext-changed event', function() {
       var element;
       element = this.$compile("<peter-selector unitest='1' category-changed-handler></peter-selector>")(this.$rootScope);
-      this.$httpBackend.expectGET('/elementitems/undefined');
+      this.$httpBackend.expectGET('/elementitems/undefined/');
       element.triggerHandler('selectedtext-changed');
       assert(this.$rootScope.categorynextdisabled === false);
       this.$httpBackend.flush();
@@ -67,7 +67,7 @@
     it('element selector listen to the selecttext-changed event', function() {
       var element;
       element = this.$compile("<peter-selector unitest='1' element-changed-handler></peter-selector>")(this.$rootScope);
-      this.$httpBackend.expectGET('/elementlistitems/undefined');
+      this.$httpBackend.expectGET('/elementlistitems/undefined/');
       element.triggerHandler('selectedtext-changed');
       assert(this.$rootScope.elementnextdisabled === false);
       return this.$httpBackend.flush();
@@ -82,11 +82,21 @@
       assert($scope.elementdisplay === false);
       return assert($scope.elementlistdisplay === true);
     });
-    return it('elementlist selector listen to the selecttext-changed event', function() {
+    it('elementlist selector listen to the selecttext-changed event', function() {
       var element;
       element = this.$compile("<peter-selector unitest='1' elementlist-changed-handler></peter-selector>")(this.$rootScope);
       element.triggerHandler('selectedtext-changed');
       return assert(this.$rootScope.elementlistnextdisabled === false);
+    });
+    return it('Click Elementlist next button show the result', function() {
+      var $scope, controler;
+      $scope = {};
+      controler = this.$controller('RefractiveIndexController', {
+        $scope: $scope
+      });
+      $scope.elementlistnextclickHandler();
+      assert($scope.elementlistdisplay === false);
+      return assert($scope.resultdisplay === true);
     });
   });
 

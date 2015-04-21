@@ -19,9 +19,9 @@ describe('refractiveIndex Selection process', ->
     this.$compile = _$compile_
     this.$rootScope = _$rootScope_
     this.$httpBackend = _$httpBackend_
-    this.elementitemsGetHandler = this.$httpBackend.when('GET', '/elementitems/undefined').respond([{"title": "Ag"},
+    this.elementitemsGetHandler = this.$httpBackend.when('GET', '/elementitems/undefined/').respond([{"title": "Ag"},
       {"title": "Au"}])
-    this.elementlistitemsGetHandler = this.$httpBackend.when('GET', '/elementlistitems/undefined').respond([{"title": "peter"},
+    this.elementlistitemsGetHandler = this.$httpBackend.when('GET', '/elementlistitems/undefined/').respond([{"title": "peter"},
       {"title": "jack"}])
   ))
   afterEach(->
@@ -30,7 +30,7 @@ describe('refractiveIndex Selection process', ->
   )
   it('category selector listen to the selecttext-changed event', ->
     element = this.$compile("<peter-selector unitest='1' category-changed-handler></peter-selector>")(this.$rootScope)
-    this.$httpBackend.expectGET('/elementitems/undefined')
+    this.$httpBackend.expectGET('/elementitems/undefined/')
     element.triggerHandler('selectedtext-changed')
     assert(this.$rootScope.categorynextdisabled == false)
     this.$httpBackend.flush()
@@ -45,7 +45,7 @@ describe('refractiveIndex Selection process', ->
   )
   it('element selector listen to the selecttext-changed event', ->
     element = this.$compile("<peter-selector unitest='1' element-changed-handler></peter-selector>")(this.$rootScope)
-    this.$httpBackend.expectGET('/elementlistitems/undefined')
+    this.$httpBackend.expectGET('/elementlistitems/undefined/')
     element.triggerHandler('selectedtext-changed')
     assert(this.$rootScope.elementnextdisabled == false)
     this.$httpBackend.flush()
@@ -62,5 +62,12 @@ describe('refractiveIndex Selection process', ->
     element = this.$compile("<peter-selector unitest='1' elementlist-changed-handler></peter-selector>")(this.$rootScope)
     element.triggerHandler('selectedtext-changed')
     assert(this.$rootScope.elementlistnextdisabled == false)
+  )
+  it('Click Elementlist next button show the result', ->
+    $scope = {}
+    controler = this.$controller('RefractiveIndexController', {$scope: $scope})
+    $scope.elementlistnextclickHandler()
+    assert($scope.elementlistdisplay == false)
+    assert($scope.resultdisplay == true)
   )
 )

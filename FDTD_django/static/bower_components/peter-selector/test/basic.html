@@ -14,9 +14,9 @@
 <test-fixture id="basic">
     <template>
         <peter-selector selected="0">
-            <div name = "item1">item1</div>
-            <div name = "item2">item2</div>
-            <div name = "item3">item3</div>
+            <div attr="attr1" name = "item1">item1</div>
+            <div attr="attr2" name = "item2">item2</div>
+            <div attr="attr3" name = "item3">item3</div>
         </peter-selector>
     </template>
 </test-fixture>
@@ -46,7 +46,8 @@
             });
             test('handleselectedchange', function () {
                 peterselector.$.coreselector.children[0].click();
-                assert.equal(peterselector.selectedtext, 'item1')
+                assert.equal(peterselector.selectedtext, 'item1');
+                assert.equal(peterselector.selectedattr, 'attr1')
             })
         });
     });

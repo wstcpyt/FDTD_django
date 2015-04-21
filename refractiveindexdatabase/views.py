@@ -41,6 +41,28 @@ class ElementListItems(APIView):
         return Element.objects.filter(title=elementname).first()
 
 
+class ElementListItemsDetail(APIView):
+    def get(self, request, pk, format=None):
+        elementlistitemsdetail = self._get_elementlistitemsdetail(pk)
+        url = elementlistitemsdetail.datalink
+        doc = self._read_yaml_file_from_url(url)
+        return Response(doc)
+
+    @staticmethod
+    def _get_elementlistitemsdetail(pk):
+        return Elementlist.objects.filter(id=pk).first()
+
+    @staticmethod
+    def _read_yaml_file_from_url(url):
+        import yaml
+        from urllib.request import urlopen
+        file_to_be_parsed = urlopen(url)
+        doc = yaml.load(file_to_be_parsed)
+        return doc
+
+
+
+
 def database_directory_page(request):
     category = Category.objects.all()
     return render(request, 'database_directory.html', {'category': category})

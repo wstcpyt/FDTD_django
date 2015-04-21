@@ -1,6 +1,4 @@
 from behave import *
-from refractiveindexdatabase.models import Category
-import time
 use_step_matcher("re")
 
 
@@ -82,3 +80,15 @@ def step_impl(context):
 @step("Interact with the done button on elementlist panel")
 def step_impl(context):
     context.browser.find_element_by_id('elementlistnext').click()
+
+
+@then("see the result panel")
+def step_impl(context):
+    result = context.browser.find_element_by_id('refractiveindexresult')
+    result.click()
+
+
+@step("See the refractive index chart")
+def step_impl(context):
+    chart = context.browser.find_element_by_id('refractiveindexchart')
+    chart.click()

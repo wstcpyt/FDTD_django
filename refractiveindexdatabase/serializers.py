@@ -11,4 +11,4 @@ class ElementSerializer(serializers.ModelSerializer):
 class ElementListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Elementlist
-        fields = ('title',)
+        fields = ('id', 'title')

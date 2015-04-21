@@ -17,7 +17,8 @@
       return $scope.elementlistdisplay = true;
     };
     return $scope.elementlistnextclickHandler = function() {
-      return $scope.elementlistdisplay = false;
+      $scope.elementlistdisplay = false;
+      return $scope.resultdisplay = true;
     };
   });
 
@@ -51,7 +52,7 @@
     CategoryChangedEvent.prototype.updateChemelement = function() {
       var _this_;
       _this_ = this;
-      return this._$http.get('/elementitems/' + this._this.selectedtext).success(function(data) {
+      return this._$http.get('/elementitems/' + this._this.selectedtext + '/').success(function(data) {
         return _this_._updateHandler(data);
       }).error(function() {
         return console.log('cannot retrieve element list');
@@ -96,7 +97,7 @@
     ElementChangedEvent.prototype.updateChemelementlist = function() {
       var _this_;
       _this_ = this;
-      return this._$http.get('/elementlistitems/' + this._this.selectedtext).success(function(data) {
+      return this._$http.get('/elementlistitems/' + this._this.selectedtext + '/').success(function(data) {
         return _this_._updateHandler(data);
       }).error(function() {
         return console.log('cannot retrieve element list');

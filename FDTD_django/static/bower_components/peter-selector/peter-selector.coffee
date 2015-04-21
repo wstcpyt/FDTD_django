@@ -5,6 +5,9 @@ polymer = {
       type: String
       notify: true
     }
+    selectedattr: {
+      type: String
+    }
     selected: {
       type: String
       observer: 'handleselectedchange'
@@ -16,6 +19,7 @@ polymer = {
   }
   handleselectedchange: ->
     this.selectedtext = this.$.coreselector.items[this.selected].getAttribute(this.attrForSelected)
+    this.selectedattr = this.$.coreselector.items[this.selected].getAttribute('attr')
 }
 
 Polymer(polymer)

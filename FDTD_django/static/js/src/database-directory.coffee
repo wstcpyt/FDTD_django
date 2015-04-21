@@ -13,6 +13,7 @@ app.controller('RefractiveIndexController',
 
     $scope.elementlistnextclickHandler = ->
       $scope.elementlistdisplay = false
+      $scope.resultdisplay = true
 )
 
 app.directive('categoryChangedHandler', ($http) ->
@@ -34,7 +35,7 @@ class CategoryChangedEvent
     this._$scope.categorynextdisabled = false
   updateChemelement: ->
     _this_ = this
-    this._$http.get('/elementitems/' + this._this.selectedtext).
+    this._$http.get('/elementitems/' + this._this.selectedtext + '/').
     success((data) ->
       _this_._updateHandler(data)
     ).
@@ -63,7 +64,7 @@ class ElementChangedEvent
     this._$scope.elementnextdisabled = false
   updateChemelementlist: ->
     _this_ = this
-    this._$http.get('/elementlistitems/' + this._this.selectedtext).
+    this._$http.get('/elementlistitems/' + this._this.selectedtext + '/').
     success((data) ->
       _this_._updateHandler(data)
     ).
