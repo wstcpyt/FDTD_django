@@ -1,5 +1,7 @@
 :host {
-  display: block; }
+  display: block;
+  font-size: 14px;
+  font-family: 'RobotoDraft', Helvetica, Arial, sans-serif; }
 
 polyfill-next-selector {
   content: ':host > *'; }
@@ -8,14 +10,6 @@ polyfill-next-selector {
   margin: 0 8px 0 8px;
   text-align: start; }
 
-polyfill-next-selector {
-  content: 'paper-button'; }
-
-::content paper-button {
-  font-size: 14px;
-  margin: 5px;
-  font-family: 'RobotoDraft', Helvetica, Arial, sans-serif; }
-
 core-menu-button {
   position: fixed;
   right: 5px;
@@ -23,6 +17,13 @@ core-menu-button {
 
 .menunav {
   position: fixed;
-  right: 5px; }
+  right: 5px;
+  top: 15px; }
+
+#smallscreennavid {
+  width: 40px;
+  position: fixed;
+  right: 25px;
+  top: 25px; }
 
 /*# sourceMappingURL=collapse-menu.css.map */

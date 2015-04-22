@@ -2,17 +2,22 @@
   "name": "core-focusable",
   "private": false,
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5"
+    "polymer": "Polymer/polymer#0.8-preview"
   },
-  "version": "0.5.5",
-  "homepage": "https://github.com/Polymer/core-focusable",
-  "_release": "0.5.5",
+  "devDependencies": {
+    "web-component-tester": "~2.2.4",
+    "test-fixture": "polymer/test-fixture#~0.1.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#~0.5.5",
+    "font-roboto": "polymer/font-roboto#~0.5.5"
+  },
+  "homepage": "https://github.com/polymer/core-focusable",
+  "_release": "71fce023d1",
   "_resolution": {
-    "type": "version",
-    "tag": "0.5.5",
-    "commit": "3c949264904b89ed416b1c42b32b7b145209f78d"
+    "type": "branch",
+    "branch": "0.8-preview",
+    "commit": "71fce023d1a8b1d1fb67ae794dddb6e3018e9d95"
   },
-  "_source": "git://github.com/Polymer/core-focusable.git",
-  "_target": "^0.5",
-  "_originalSource": "Polymer/core-focusable"
+  "_source": "git://github.com/polymer/core-focusable.git",
+  "_target": "0.8-preview",
+  "_originalSource": "polymer/core-focusable"
 }

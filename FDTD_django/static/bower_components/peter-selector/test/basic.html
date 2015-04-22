@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>collapse-menu-basic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../peter-selector.html">
+</head>
+<body>
+<test-fixture id="basic">
+    <template>
+        <peter-selector selected="0">
+            <div attr="attr1" name = "item1">item1</div>
+            <div attr="attr2" name = "item2">item2</div>
+            <div attr="attr3" name = "item3">item3</div>
+        </peter-selector>
+    </template>
+</test-fixture>
+
+<script>
+    suite('basic', function () {
+        var peterselector;
+        suite('data binding between peter-selector and core-selector', function () {
+            setup(function () {
+                peterselector = fixture('basic');
+            });
+            test('core-selected-initial-selected-value', function () {
+                selected = peterselector.$.coreselector.selected;
+                assert.equal(selected, '0');
+            });
+            test('core-selected-can-response-to-selected-change', function () {
+                peterselector.$.coreselector.children[1].click();
+                assert.equal(peterselector.$.coreselector.selected, 1)
+            });
+            test('peter-selected-can-set-selected', function() {
+                peterselector.selected = '1';
+                assert.equal(peterselector.$.coreselector.selected, 1)
+            });
+            test('test-two-way-data-binding', function() {
+                peterselector.$.coreselector.children[2].click();
+                assert.equal(peterselector.selected, '2')
+            });
+            test('handleselectedchange', function () {
+                peterselector.$.coreselector.children[0].click();
+                assert.equal(peterselector.selectedtext, 'item1');
+                assert.equal(peterselector.selectedattr, 'attr1')
+            })
+        });
+    });
+</script>
+</body>
+</html>

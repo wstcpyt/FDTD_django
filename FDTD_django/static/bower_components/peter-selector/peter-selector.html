@@ -1,0 +1,17 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../core-selector/core-selector.html">
+
+<dom-module id="peter-selector">
+    <link rel="import" type="css" href="peter-selector.css">
+    <template>
+        <paper-card z="1">
+            <div class="scroll">
+                <core-selector id="coreselector"  selected={{selected}}>
+                    <content select="div"></content>
+                </core-selector>
+            </div>
+        </paper-card>
+    </template>
+</dom-module>
+<script src="peter-selector.js"></script>

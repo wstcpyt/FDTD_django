@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>collapse-menu-basic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../peter-dropdown.html">
+</head>
+<body>
+<test-fixture id="basic">
+    <template>
+        <peter-dropdown buttontext="Choose Category">
+            <div name="Item1" class="item">
+                Item1
+            </div>
+            <div name="Item2" class="item">
+                Item2
+            </div>
+        </peter-dropdown>
+    </template>
+</test-fixture>
+
+<script>
+    suite('basic', function () {
+        var peterdropdown;
+        suite('peterdropdown-toggle', function () {
+            setup(function () {
+                peterdropdown = fixture('basic');
+            });
+            test('peter-dropdown-item-selection-hide-first', function () {
+                assert.equal(peterdropdown.$.peterselector.style.display, 'none')
+            });
+            test('click-peter-button-peter-selector-display-block', function () {
+                peterdropdown.$.paperbutton.click();
+                assert.equal(peterdropdown.$.peterselector.style.display, 'block')
+            });
+            test('click-peter-button-peter-again-selector-display-none', function () {
+                peterdropdown.$.paperbutton.click();
+                peterdropdown.$.paperbutton.click();
+                assert.equal(peterdropdown.$.peterselector.style.display, 'none')
+            });
+            test('click-peter-selector-display-none', function () {
+                peterdropdown.$.paperbutton.click();
+                peterdropdown.$.peterselector.$.coreselector.children[0].click();
+                assert.equal(peterdropdown.$.peterselector.style.display, 'none');
+                assert.equal(peterdropdown.$.peterselector.selected, '0');
+                assert.equal(peterdropdown.buttontext, 'Item1')
+            });
+        });
+    });
+</script>
+</body>
+</html>

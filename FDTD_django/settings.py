@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from .secret_key import DATABASE_HOST, DATABASE_NAME, DATABASE_PASSWORD, DATABASE_USER
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,8 +38,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sketchstructure'
+    'landingpage',
+    'rest_framework',
+    'refractiveindexdatabase',
+    'django_behave'
 )
+
+TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,8 +85,12 @@ WSGI_APPLICATION = 'FDTD_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
+        'PORT': '5432'
     }
 }
 
@@ -106,8 +116,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '../static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'FDTD_django', 'static'),
-)
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
 )

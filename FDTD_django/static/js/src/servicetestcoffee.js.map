@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "servicetestcoffee.js",
+  "sourceRoot": "",
+  "sources": [
+    "servicetestcoffee.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,OAAO,CAAC,MAAR,CAAe,OAAf,EAAwB,EAAxB,CAAA,CAAA;;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,OAAf,CAAuB,CAAC,OAAxB,CAAgC,QAAhC,EAA0C,SAAA,GAAA;AACxC,QAAA,MAAA;WAAA,MAAA,GAAS,SAAC,IAAD,GAAA;aACP,IAAI,CAAC,IAAL,GAAY,KADL;IAAA,EAD+B;EAAA,CAA1C,CAFA,CAAA;AAAA"
+}
