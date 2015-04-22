@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  font-size: 14px;
+  font-family: 'RobotoDraft', Helvetica, Arial, sans-serif; }
+
+div .bar {
+  display: inline-block;
+  width: 50px;
+  height: 75px;
+  background: teal;
+  margin-right: 5px; }
+
+/*# sourceMappingURL=d3-chart.css.map */
