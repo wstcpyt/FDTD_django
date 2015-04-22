@@ -14,6 +14,7 @@ app.controller('RefractiveIndexController',
     $scope.elementlistnextclickHandler = ->
       $scope.elementlistdisplay = false
       $scope.resultdisplay = true
+
 )
 
 app.directive('categoryChangedHandler', ($http) ->

@@ -25,6 +25,7 @@
     "paper-shadow": "Polymer/paper-shadow#0.8-preview",
     "core-transition": "Polymer/core-transition#0.8-preview",
     "core-overlay": "Polymer/core-overlay#0.8-preview",
-    "paper-fab": "Polymer/paper-fab#0.8-preview"
+    "paper-fab": "Polymer/paper-fab#0.8-preview",
+    "n3-line-chart": "~1.1.6"
   }
 }
