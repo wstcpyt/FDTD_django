@@ -166,9 +166,16 @@
     D3Line.prototype._draw_line = function() {
       var lineGen;
       lineGen = this._getlineGen();
-      this.dataset1line = this.visualization.append('svg:path').attr('stroke', 'green').attr('stroke-width', 2).attr('fill', 'none');
-      this.dataset2line = this.visualization.append('svg:path').attr('stroke', 'blue').attr('stroke-width', 2).attr('fill', 'none');
-      return this._setdata(lineGen);
+      this.dataset1line = this.visualization.append('svg:path').attr('stroke', 'green').attr('stroke-width', 2).attr('fill', 'none').attr('d', lineGen(this.dataset1));
+      this.dataset2line = this.visualization.append('svg:path').attr('stroke', 'blue').attr('stroke-width', 2).attr('fill', 'none').attr('d', lineGen(this.dataset2));
+      this.totalLength1 = this.dataset1line.node().getTotalLength();
+      this.totalLength2 = this.dataset2line.node().getTotalLength();
+      return this._animatePath();
+    };
+
+    D3Line.prototype._animatePath = function() {
+      this.dataset1line.attr("stroke-dasharray", this.totalLength1 + " " + this.totalLength1).attr("stroke-dashoffset", this.totalLength1).transition().duration(2000).ease("linear").attr("stroke-dashoffset", 0);
+      return this.dataset2line.attr("stroke-dasharray", this.totalLength2 + " " + this.totalLength2).attr("stroke-dashoffset", this.totalLength2).transition().duration(2000).ease("linear").attr("stroke-dashoffset", 0);
     };
 
     D3Line.prototype._setdata = function(lineGen) {
