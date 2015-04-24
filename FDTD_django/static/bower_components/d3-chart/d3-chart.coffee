@@ -1,7 +1,29 @@
 polymer = {
   is: 'd3-chart'
   properties: {
-    data: {
+    zerodata: {
+      type: Array
+      value: [{
+        "sale": "0",
+        "year": "0"
+      }, {
+        "sale": "0",
+        "year": "0"
+      }, {
+        "sale": "0",
+        "year": "0"
+      }, {
+        "sale": "0",
+        "year": "0"
+      }, {
+        "sale": "0",
+        "year": "0"
+      },{
+        "sale": "0",
+        "year": "0"
+      }]
+    }
+    data1: {
       type: Array
       value: [{
         "sale": "202",
@@ -48,66 +70,119 @@ polymer = {
   }
   ready: ->
     _this = this
-    root = exports ? this
-    $(window).on('resize', ->
-      width = _this.$.visualisation.clientWidth
-      root.xScale = d3.scale.linear().range([margins.left, width - margins.right]).domain([2000,2010])
-      xAxis = d3.svg.axis()
-      .scale(root.xScale)
-      visualization.select('.x.axis').call(xAxis)
-      lineGen = d3.svg.line()
-        .x((d) ->
-          root.xScale(d.year))
-        .y((d) ->
-          yScale(d.sale))
-        .interpolate("basis")
-      visualization.select('#dataset1').attr('d', lineGen(dataset))
+    this.d3line = new D3Line(this)
+    this.d3line._init_variable()
+    this.d3line.draw()
+    d3.select(window).on('resize', ->
+      _this.d3line.width = _this.$.visualisation.clientWidth
+      _this.d3line._setresponsive()
     )
-    dataset = this.data
-    dataset2 = this.data2
-    visualization = d3.select(this.$.visualisation)
-    width = window.innerWidth*0.5
-    height = 500
-    margins = {
+}
+
+class D3Line
+  constructor: (@polymerthis) ->
+  _init_variable: ->
+    this.dataset1 = this.polymerthis.data1
+    this.dataset2 = this.polymerthis.data2
+    this.visualization = d3.select(this.polymerthis.$.visualisation)
+    this.container = d3.select(this.polymerthis.$.svgcontainer)
+    this.width = window.outerWidth*0.5
+    this.height = 500
+    this.margins = {
       top: 20,
       right: 20,
       bottom: 20,
       left: 50
     }
-    root.xScale = d3.scale.linear().range([margins.left, width - margins.right]).domain([2000,2010])
-    yScale = d3.scale.linear().range([height - margins.top, margins.bottom]).domain([134,215])
-    xAxis = d3.svg.axis()
-    .scale(root.xScale)
-    yAxis = d3.svg.axis()
-    .scale(yScale)
-    .orient("left")
-    visualization.append("svg:g")
-    .attr("class","x axis")
-    .attr("transform", "translate(0," + (height - margins.bottom) + ")")
-    .call(xAxis)
-    visualization.append("svg:g")
-    .attr("class","axis")
-    .attr("transform", "translate(" + (margins.left) + ",0)")
-    .call(yAxis)
-    lineGen = d3.svg.line()
-    .x((d) ->
-      root.xScale(d.year))
-    .y((d) ->
-      yScale(d.sale))
-    .interpolate("basis")
+    this.bisectDate = d3.bisector((d) ->
+      d.year
+    ).left
 
-    visualization.append('svg:path')
-    .attr("id","dataset1")
-    .attr('d', lineGen(dataset))
-    .attr('stroke', 'green')
-    .attr('stroke-width', 2)
-    .attr('fill', 'none')
+  draw: ->
+    this._set_scale()
+    this._set_axis()
+    this._set_tooltip()
+    this._draw_line()
 
-    visualization.append('svg:path')
-    .attr('d', lineGen(dataset2))
-    .attr('stroke', 'blue')
-    .attr('stroke-width', 2)
-    .attr('fill', 'none')
-}
+  _set_tooltip: ->
+    _this = this
+    this.focus = this.visualization.append("g")
+      .attr("class", "focus")
+      .style("display", "none")
+    this.focus.append("circle")
+      .attr("r", 4.5)
+    this.focus.append("text")
+      .attr("x", 9)
+      .attr("dy", ".35em")
+    this.visualization.append("rect")
+      .attr("class", "overlay")
+      .attr("width", this.width)
+      .attr("height", this.height)
+      .on("mouseover", ->
+        _this.focus
+          .style("display", null)
+      )
+      .on("mouseout", ->
+        _this.focus
+          .style("display", "none")
+      )
+      .on("mousemove", ->
+        x0 = _this.xScale.invert(d3.mouse(this)[0])
+        i = _this.bisectDate(_this.dataset1, x0, 1)
+        d = _this.dataset1[i-1]
+        _this.focus.attr("transform", "translate(" + _this.xScale(d.year) + "," + _this.yScale(d.sale) + ")")
+        _this.focus.select("text")
+          .text(d.year + ',' + d.sale);
+      )
+
+
+  _set_scale: ->
+    this.xScale = d3.scale.linear().range([this.margins.left, this.width - this.margins.right]).domain([2000,2010])
+    this.yScale = d3.scale.linear().range([this.height - this.margins.top, this.margins.bottom]).domain([134,215])
+  _set_axis: ->
+    this._set_axis_scale()
+    this.xaxis = this.visualization.append("svg:g")
+      .attr("class","axis")
+      .attr("transform", "translate(0," + (this.height - this.margins.bottom) + ")")
+    this.yaxis = this.visualization.append("svg:g")
+      .attr("class","axis")
+      .attr("transform", "translate(" + (this.margins.left) + ",0)")
+    this._call_axis()
+  _call_axis: ->
+    this.xaxis.call(this.xAxis)
+    this.yaxis.call(this.yAxis)
+  _set_axis_scale: ->
+    this.xAxis = d3.svg.axis().scale(this.xScale)
+    this.yAxis = d3.svg.axis()
+                    .scale(this.yScale)
+                    .orient("left")
+  _draw_line: ->
+    lineGen = this._getlineGen()
+    this.dataset1line = this.visualization.append('svg:path')
+      .attr('stroke', 'green')
+      .attr('stroke-width', 2)
+      .attr('fill', 'none')
+    this.dataset2line = this.visualization.append('svg:path')
+      .attr('stroke', 'blue')
+      .attr('stroke-width', 2)
+      .attr('fill', 'none')
+    this._setdata(lineGen)
+  _setdata: (lineGen)->
+    this.dataset1line.transition().duration(800).attr('d', lineGen(this.dataset1))
+    this.dataset2line.transition().duration(800).attr('d', lineGen(this.dataset2))
+  _getlineGen: ->
+    _this = this
+    d3.svg.line()
+      .x((d) ->
+        _this.xScale(d.year))
+      .y((d) ->
+        _this.yScale(d.sale))
+  _setresponsive: ->
+    this._set_scale()
+    this._set_axis_scale()
+    this._call_axis()
+    lineGen = this._getlineGen()
+    this._setdata(lineGen)
+
 
 Polymer(polymer)

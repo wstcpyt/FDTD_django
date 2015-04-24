@@ -16,9 +16,20 @@
     shape-rendering: crispEdges;
   }
 }
+
 .axis{
   text{
     font-family: Lato;
     font-size: 13px;
   }
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
 }

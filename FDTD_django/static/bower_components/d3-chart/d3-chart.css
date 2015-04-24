@@ -16,4 +16,12 @@
   font-family: Lato;
   font-size: 13px; }
 
+.focus circle {
+  fill: none;
+  stroke: steelblue; }
+
+.overlay {
+  fill: none;
+  pointer-events: all; }
+
 /*# sourceMappingURL=d3-chart.css.map */
