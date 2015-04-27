@@ -36,3 +36,8 @@ add_core_media_event_handler = (_this) ->
       _this.nav.toggleNav(_this.$.coremediaid.queryMatches)
   )
 Polymer(polymer)
+
+
+Point = (x,y) ->
+    this.x = x;
+    this.y = y;
