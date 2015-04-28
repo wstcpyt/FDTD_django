@@ -12,57 +12,18 @@
 {% block contents %}
     <div class="container" ng-app="refractiveIndexApp" ng-controller="RefractiveIndexController">
         <div class="cardcontainer" ng-show="categorydisplay" ng-init="categorydisplay=true" ng-cloak>
-            <div class="center">
-                <h1>STEP 1: Choose Category</h1>
-            </div>
-            <peter-selector id="categoryselector" category-changed-handler ng-click="">
-                {% for category in category %}
-                    <div name = "{{ category.title }}" class="item">
-                        {{ category.title }}
-                    </div>
-                {% endfor %}
-            </peter-selector>
-            <div class="nextbutton">
-                <paper-fab id="categorynext" ng-disabled="categorynextdisabled" icon="arrow-forward" ng-click="categorynextclickHandler()"></paper-fab>
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Choose Category <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    {% for category in category %}
+                        <li><a href="#">{{ category.title }}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-        <div class="cardcontainer" ng-show="elementdisplay" ng-init="elementdisplay=false" ng-cloak>
-            <div class="center">
-                <h1>STEP 2: Choose Element</h1>
-            </div>
-            {% verbatim %}
-            <peter-selector id="elementselector" element-changed-handler>
-                <div name="{{ element.title }}" ng-repeat="element in chemelement" class="item">
-                    {{ element.title }}
-                </div>
-            </peter-selector>
-            {% endverbatim %}
-            <div class="nextbutton">
-                <paper-fab id="elementnext" ng-disabled="elementnextdisabled" icon="arrow-forward" ng-click="elementnextclickHandler()"></paper-fab>
-            </div>
-        </div>
-        <div class="cardcontainer" ng-show="elementlistdisplay" ng-init="elementlistdisplay=false" ng-cloak>
-            <div class="center">
-                <h1>STEP 3: Choose Element List</h1>
-            </div>
-            {% verbatim %}
-            <peter-selector id="elementlistselector" elementlist-changed-handler>
-                <div attr="{{ elementlist.id }}" name="{{ elementlist.title }}" ng-repeat="elementlist in chemelementlist" class="item">
-                    {{ elementlist.title }}
-                </div>
-            </peter-selector>
-            {% endverbatim %}
-
-            <div class="nextbutton">
-                <paper-fab id="elementlistnext" ng-disabled="elementlistnextdisabled" class="green" icon="check" ng-click="elementlistnextclickHandler()"></paper-fab>
-            </div>
-        </div>
-        <div class="cardcontainer" ng-show="resultdisplay" ng-init="resultdisplay=false" ng-cloak>
-            <div class="center">
-                <h1 id="refractiveindexresult">Result</h1>
-            </div>
-        </div>
-        <d3-chart></d3-chart>
     </div>
     <script src="/static/js/src/database-directory.js"></script>
 {% endblock %}
