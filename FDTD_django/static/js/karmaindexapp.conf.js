@@ -17,8 +17,12 @@ module.exports = function(config) {
         files: [
             'node_modules/angular/angular.js',
             'node_modules/angular-mocks/angular-mocks.js',
-            './test/**/*.js',
-            './src/**/*.js'
+            '../bower_components/angular-aria/angular-aria.js',
+            '../bower_components/angular-animate/angular-animate.js',
+            '../bower_components/angular-material/angular-material.js',
+            'jquery-2.1.3.min.js',
+            './src/indexapp.js',
+            './test/indexapptest.js'
         ],
 
 

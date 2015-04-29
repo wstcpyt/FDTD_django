@@ -1,4 +1,5 @@
 @import "homepage";
+@import "indexapp";
 
 html, body {
   background-color: #EEE;
@@ -11,6 +12,7 @@ html, body {
   height: 70px;
   width: 100%;
   background-color: #ffffff;
+  z-index: 1030;
   md-tabs{
     height: 70px;
     .md-header{
@@ -29,4 +31,9 @@ html, body {
   padding-top: 100px;
   height: 2000px;
   background-color: #EEE;
+}
+
+.container{
+  padding-left: 20px;
+  padding-right: 20px;
 }

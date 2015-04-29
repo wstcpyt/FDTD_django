@@ -1,3 +1,7 @@
+.homepage img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 .homepage h1 {
   font-weight: 300;
   margin: 0;
@@ -6,6 +10,13 @@
 .homepage p {
   margin: 20px 0;
   line-height: 32px; }
+
+.indexapp md-toolbar {
+  position: fixed;
+  z-index: 1030; }
+.indexapp .extend {
+  padding-top: 100px;
+  height: 2000px; }
 
 html, body {
   background-color: #EEE; }
@@ -16,7 +27,8 @@ html, body {
   position: fixed;
   height: 70px;
   width: 100%;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  z-index: 1030; }
   .header md-tabs {
     height: 70px; }
     .header md-tabs .md-header {
@@ -32,5 +44,9 @@ html, body {
   padding-top: 100px;
   height: 2000px;
   background-color: #EEE; }
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px; }
 
 /*# sourceMappingURL=style.css.map */

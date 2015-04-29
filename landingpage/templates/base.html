@@ -7,28 +7,24 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     {% block head %}
     {% endblock %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!-- Angular Material -->
     <link rel="stylesheet" href="/static/bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
-<body ng-app="FDTDapp" ng-controller="fdtdcontroller">
+<body ng-app="FDTDapp">
 <input type="hidden" id="tabindex" name="variable" value="{{ tabindex }}">
-<div class="header navbar-fixed-top">
+<div class="header navbar-fixed-top" ng-controller="headercontroller">
     <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
         <md-tabs md-selected="selectedIndex">
-            <md-tab>
+            <md-tab ng-click="tab1clicked()">
                 <md-tab-label>
                     <span><img src="/static/images/FDTD.png"></span>
                 </md-tab-label>
             </md-tab>
             <md-tab ng-click="tab2clicked()">
                 <md-tab-label>
-                        REINDEX
+                        INDEX
                 </md-tab-label>
-            </md-tab>
-            <md-tab label="three">
             </md-tab>
         </md-tabs>
     </md-whiteframe>
@@ -37,25 +33,12 @@
     {% block contents %}
     {% endblock %}
 </div>
-{% comment %}<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-            <md-content class="md-padding">
-                <md-tabs>
-                    <md-tab label="one">
-                    </md-tab>
-                    <md-tab label="two">
-                    </md-tab>
-                    <md-tab label="three">
-                    </md-tab>
-                </md-tabs>
-            </md-content>
-    </div>
-</nav>{% endcomment %}
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 <script src="/static/bower_components/angular-aria/angular-aria.js"></script>
 <script src="/static/bower_components/angular-animate/angular-animate.js"></script>
 <script src="/static/bower_components/angular-material/angular-material.js"></script>
 <script src="/static/js/src/base.js"></script>
+
 </body>
 </html>

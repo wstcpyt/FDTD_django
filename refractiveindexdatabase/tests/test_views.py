@@ -2,14 +2,11 @@ __author__ = 'yutongpang'
 from django.test import TestCase
 from django.core.urlresolvers import resolve
 from refractiveindexdatabase.views import database_directory_page, Elementitems, ElementListItems, \
-    ElementListItemsDetail, identify_url_space
+    ElementListItemsDetail, identify_url_space, index_app_page
 from refractiveindexdatabase.models import Category, Element, Elementlist
 
 
 class DatabaseDirectoryTest(TestCase):
-    def setUp(self):
-        Category.objects.create(title='main')
-
     def test_url_resolves_to_database_directory_page_view(self):
         found = resolve('/databasedirectory/')
         self.assertEqual(found.func, database_directory_page)
@@ -17,12 +14,17 @@ class DatabaseDirectoryTest(TestCase):
     def test_database_directory_page_return_correct_html(self):
         response = self.client.get('/databasedirectory/')
         self.assertTemplateUsed(response, 'database_directory.html')
+        self.assertEquals(response.context['tabindex'], 1)
 
-    def test_database_directory_page_return_category_contents(self):
-        response = self.client.get('/databasedirectory/')
-        self.assertEqual(response.context['category'].count(), 1)
-        self.assertEqual(response.context['category'][0].title, 'main')
 
+class IndexAppTest(TestCase):
+    def test_url_resolves_to_index_app_page_view(self):
+        found = resolve('/indexapp/')
+        self.assertEqual(found.func, index_app_page)
+
+    def test_index_app_page_return_correct_html(self):
+        response = self.client.get('/indexapp/')
+        self.assertTemplateUsed(response, 'indexapp.html')
 
 class ElementItemsTEST(TestCase):
     def setUp(self):

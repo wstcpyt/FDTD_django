@@ -6,16 +6,8 @@
 {% endblock %}
 {% block contents %}
     <div class="container">
-            <!-- Single button -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    Choose Category <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    {% for category in category %}
-                        <li><a href="#">{{ category.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+        <div layout="row" layout-align="center center">
+            <a href="{% url 'indexapp' %}" id="gotoFDTDINDEX"><md-button class="md-raised md-primary">Go To FDTD INDEX</md-button></a>
         </div>
+    </div>
 {% endblock %}

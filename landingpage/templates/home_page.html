@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}FDTD{% endblock %}
-{% block head %}
-    <link rel="import" href="/static/bower_components/core-icon/core-icon.html">
-    <link rel="import" href="/static/bower_components/core-icons/core-icons.html">
-{% endblock %}
 {% block contents %}
     <div class="container homepage">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12 text-center">
-                <img class="responsive-img" src="/static/images/FDTD_singlelogo.png">
+        <div layout="column" layout-gt-md="row" layout-align-gt-md="center start" layout-align="start center">
+            <div flex>
+                <img src="/static/images/FDTD_singlelogo.png">
             </div>
-            <div class="col-md-6 col-sm-6  col-xs-12">
+            <div flex>
                 <h1>FDTD on the Cloud </h1>
                 <p>Finite-difference time-domain (FDTD) is a numerical analysis technique used for modeling
                     computational
