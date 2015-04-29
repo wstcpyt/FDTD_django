@@ -61,8 +61,6 @@ class ElementListItemsDetail(APIView):
         return doc
 
 
-
-
 def database_directory_page(request):
     category = Category.objects.all()
-    return render(request, 'database_directory.html', {'category': category})
+    return render(request, 'database_directory.html', {'category': category, 'tabindex': 1})
