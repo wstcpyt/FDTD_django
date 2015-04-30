@@ -14,9 +14,6 @@
 .indexapp md-toolbar {
   position: fixed;
   z-index: 1030; }
-.indexapp .extend {
-  padding-top: 100px;
-  height: 2000px; }
 
 html, body {
   background-color: #EEE; }
@@ -41,11 +38,11 @@ html, body {
       border-top: hidden; }
 
 .maincontent {
-  padding-top: 100px;
   height: 2000px;
   background-color: #EEE; }
 
 .container {
+  padding-top: 100px;
   padding-left: 20px;
   padding-right: 20px; }
 

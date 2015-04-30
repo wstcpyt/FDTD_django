@@ -1,4 +1,4 @@
-describe('Unit Test Headercontroller', ->
+describe('Unit Test SearchCtrl', ->
   root = exports ? this
   beforeEach(module('material.components.slider'));
   beforeEach(module('FDTDapp'))
@@ -7,7 +7,9 @@ describe('Unit Test Headercontroller', ->
   ))
   it('', ->
     $scope = {}
-    controller = this.$controller('headercontroller', {$scope: $scope})
-    assert.equal(0, 1)
+    controller = this.$controller('SearchCtrl', {$scope: $scope})
+    loadAll()
+    result = createFilterFor('a')
+    console.log(result)
   )
 )
