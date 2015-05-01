@@ -6,21 +6,30 @@
 
   app.controller('SearchCtrl', function($scope, $log, $http) {
     $scope.elements = loadAll($http, $scope);
+    $scope.hideelementlist = true;
     $scope.querySearch = function(query) {
-      return $scope.elements.filter(createFilterFor(query));
+      var results;
+      results = query ? $scope.elements.filter(createFilterFor(query)) : $scope.elements;
+      return results;
     };
     $scope.selectedItemChange = function(item) {
-      queryElementList($scope, $http, item);
-      return $log.info('Item changed to ' + item.display);
+      if (item !== void 0) {
+        $log.info('Item changed to ' + item.display);
+        return queryElementList($scope, $http, item);
+      }
     };
-    return $scope.searchTextChange = function(text) {
+    $scope.searchTextChange = function(text) {
       return $log.info('Text changed to ' + text);
+    };
+    return $scope.drawChart = function(item) {
+      return console.log(item.id);
     };
   });
 
   queryElementList = function(_$scope, _$http, item) {
     return _$http.get('/elementlistitems/' + item.display + '/').success(function(data) {
-      return _$scope.elementlist = data;
+      _$scope.elementlist = data;
+      return _$scope.hideelementlist = false;
     }).error(function() {
       return console.log('cannot retrieve element list');
     });
@@ -35,7 +44,7 @@
         };
       });
     }).error(function() {
-      return $log.info('cannont retrieve element');
+      return console.log('cannont retrieve element');
     });
   };
 

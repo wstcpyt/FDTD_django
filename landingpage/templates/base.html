@@ -14,14 +14,14 @@
 <body ng-app="FDTDapp">
 <input type="hidden" id="tabindex" name="variable" value="{{ tabindex }}">
 <div class="header navbar-fixed-top" ng-controller="headercontroller">
-    <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+    <md-whiteframe class="md-whiteframe-z1" layout="column">
         <md-tabs md-selected="selectedIndex">
-            <md-tab ng-click="tab1clicked()">
+            <md-tab md-on-select="tab1clicked()">
                 <md-tab-label>
                     <span><img src="/static/images/FDTD.png"></span>
                 </md-tab-label>
             </md-tab>
-            <md-tab ng-click="tab2clicked()">
+            <md-tab md-on-select="tab2clicked()">
                 <md-tab-label>
                         INDEX
                 </md-tab-label>

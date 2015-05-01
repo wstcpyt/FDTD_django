@@ -29,10 +29,10 @@
                     <br/>
                 </form>
                 <div layout layout-align="center center">
-                    <md-whiteframe class="md-whiteframe-z1" layout="column">
+                    <md-whiteframe class="md-whiteframe-z1" layout="column" ng-hide='hideelementlist'>
                         <md-content>
                             <md-list>
-                                <md-list-item class="md-3-line" ng-repeat="item in elementlist">
+                                <md-list-item ng-mousedown="drawChart(item)" class="md-3-line" ng-repeat="item in elementlist">
                                     <div class="md-list-item-text">
                                         <h3 id="elementlisttitle">{{item.title}}</h3>
                                     </div>
@@ -44,7 +44,6 @@
                 </div>
             </div>
         </div>
-
         {% endverbatim %}
     </div>
 {% endblock %}

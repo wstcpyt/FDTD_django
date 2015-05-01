@@ -5,7 +5,8 @@ use_step_matcher("re")
 
 @when("Click the tab_002 in the header")
 def step_impl(context):
-    tab_002 = context.browser.find_element_by_id('tab_002')
+    tab_002 = context.browser.find_elements_by_xpath('//md-tab-item')[1]
+    print(tab_002)
     tab_002.click()
 
 
@@ -22,7 +23,7 @@ def step_impl(context):
 
 @when("Click the tab_001 in the header")
 def step_impl(context):
-    tab_001 = context.browser.find_element_by_id('tab_001')
+    tab_001 = context.browser.find_elements_by_xpath('//md-tab-item')[0]
     tab_001.click()
 
 
