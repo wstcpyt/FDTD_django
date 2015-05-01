@@ -43,10 +43,15 @@
                     </md-whiteframe>
                 </div>
             </div>
+            <md-whiteframe class="md-whiteframe-z1" layout="column">
+                <svg class="d3linesvg" height="500" width="500"></svg>
+            </md-whiteframe>
         </div>
         {% endverbatim %}
     </div>
 {% endblock %}
 {% block javascript %}
+    <script src="/static/js/lib/d3line/lib/d3.min.js"></script>
+    <script src="/static/js/lib/d3line/src/d3line.js"></script>
     <script src="/static/js/src/indexapp.js"></script>
 {% endblock %}

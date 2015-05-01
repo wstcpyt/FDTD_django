@@ -5,6 +5,7 @@
   app = angular.module('FDTDapp', ['ngMaterial']);
 
   app.controller('SearchCtrl', function($scope, $log, $http) {
+    var d3line, data1, data2, visulization;
     $scope.elements = loadAll($http, $scope);
     $scope.hideelementlist = true;
     $scope.querySearch = function(query) {
@@ -21,9 +22,54 @@
     $scope.searchTextChange = function(text) {
       return $log.info('Text changed to ' + text);
     };
-    return $scope.drawChart = function(item) {
+    $scope.drawChart = function(item) {
       return console.log(item.id);
     };
+    visulization = document.querySelector('.d3linesvg');
+    data1 = [
+      {
+        "sale": "202",
+        "year": "2000"
+      }, {
+        "sale": "215",
+        "year": "2001"
+      }, {
+        "sale": "179",
+        "year": "2002"
+      }, {
+        "sale": "199",
+        "year": "2003"
+      }, {
+        "sale": "134",
+        "year": "2003"
+      }, {
+        "sale": "176",
+        "year": "2010"
+      }
+    ];
+    data2 = [
+      {
+        "sale": "152",
+        "year": "2000"
+      }, {
+        "sale": "189",
+        "year": "2002"
+      }, {
+        "sale": "179",
+        "year": "2004"
+      }, {
+        "sale": "199",
+        "year": "2006"
+      }, {
+        "sale": "134",
+        "year": "2008"
+      }, {
+        "sale": "176",
+        "year": "2010"
+      }
+    ];
+    d3line = new D3Line(visulization, data1, data2);
+    return d3line.draw();
   });
 
   queryElementList = function(_$scope, _$http, item) {
