@@ -5,18 +5,81 @@
     root = typeof exports !== "undefined" && exports !== null ? exports : this;
     beforeEach(module('material.components.slider'));
     beforeEach(module('FDTDapp'));
-    beforeEach(inject(function(_$controller_) {
-      return this.$controller = _$controller_;
+    beforeEach(inject(function(_$controller_, _$httpBackend_, _$http_) {
+      this.$http = _$http_;
+      this.$controller = _$controller_;
+      this.$httpBackend = _$httpBackend_;
+      this.$httpBackend.when('GET', '/elementitems/all/').respond([
+        {
+          "title": "Ag"
+        }, {
+          "title": "Ag3AsS3"
+        }
+      ]);
+      return this.$httpBackend.when('GET', '/elementlistitems/Ag/').respond([
+        {
+          "title": "peter"
+        }, {
+          "title": "jack"
+        }
+      ]);
     }));
-    return it('', function() {
-      var $scope, controller, result;
+    afterEach(function() {
+      this.$httpBackend.verifyNoOutstandingExpectation();
+      return this.$httpBackend.verifyNoOutstandingRequest();
+    });
+    it('SearchCtrl', function() {
+      var $scope, controller;
       $scope = {};
       controller = this.$controller('SearchCtrl', {
         $scope: $scope
       });
-      loadAll();
-      result = createFilterFor('a');
-      return console.log(result);
+      this.$httpBackend.expectGET('/elementitems/all/');
+      this.$httpBackend.flush();
+      $scope.elements = [
+        {
+          value: 'apple'
+        }
+      ];
+      assert.equal($scope.querySearch('a')[0].value, 'apple');
+      return assert.equal($scope.querySearch('p')[0], void 0);
+    });
+    it('booleanFn', function() {
+      var lowercaseQuery1, lowercaseQuery2, state;
+      state = {
+        value: "This is a Test"
+      };
+      lowercaseQuery1 = "is";
+      assert.equal(booleanFn(state, lowercaseQuery1), false);
+      lowercaseQuery2 = "This";
+      return assert.equal(booleanFn(state, lowercaseQuery2), true);
+    });
+    it('loadAll', function() {
+      var $scope;
+      $scope = {};
+      this.$controller('SearchCtrl', {
+        $scope: $scope
+      });
+      this.$httpBackend.flush();
+      this.$httpBackend.expectGET('/elementitems/all/');
+      loadAll(this.$http, $scope);
+      this.$httpBackend.flush();
+      return assert.equal($scope.elements[0].value, 'ag');
+    });
+    return it('queryElementList', function() {
+      var $scope, item;
+      $scope = {};
+      this.$controller('SearchCtrl', {
+        $scope: $scope
+      });
+      this.$httpBackend.flush();
+      item = {
+        display: 'Ag'
+      };
+      this.$httpBackend.expectGET('/elementlistitems/Ag/');
+      $scope.selectedItemChange(item);
+      this.$httpBackend.flush();
+      return assert.equal($scope.elementlist[0].title, 'peter');
     });
   });
 

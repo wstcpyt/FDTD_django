@@ -12,13 +12,21 @@ def identify_url_space(url):
 class Elementitems(APIView):
     def get(self, request, categoryname, format=None):
         categoryname = identify_url_space(categoryname)
-        elementlist = self._get_elementlist(categoryname)
-        serializer = ElementSerializer(elementlist, many=True)
-        return Response(serializer.data)
+        if categoryname == 'all':
+            elementlist = self._get_all_elementlist()
+            serializer = ElementSerializer(elementlist, many=True)
+            return Response(serializer.data)
+        else:
+            elementlist = self._get_elementlist(categoryname)
+            serializer = ElementSerializer(elementlist, many=True)
+            return Response(serializer.data)
 
     def _get_elementlist(self, categoryname):
         category = self._get_category(categoryname)
         return Element.objects.filter(category=category).all()
+
+    def _get_all_elementlist(self):
+        return Element.objects.all()
 
     @staticmethod
     def _get_category(categoryname):

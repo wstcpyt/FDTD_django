@@ -50,6 +50,9 @@ class ElementItemsTEST(TestCase):
     def test_get_elementitems(self):
         self.assertEqual(self.elementitems._get_elementlist('main')[0].title, 'Ag')
 
+    def test_get_all_element(self):
+        response = self.client.get('/elementitems/all/')
+        self.assertEqual(response.content, b'[{"title":"Ag"}]')
 
 class ElementListItemsTest(TestCase):
     def setUp(self):

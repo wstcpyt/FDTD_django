@@ -1,36 +1,45 @@
 app = angular.module('FDTDapp', ['ngMaterial'])
-app.controller('SearchCtrl', ($scope, $log)->
-  $scope.states = loadAll()
+app.controller('SearchCtrl', ($scope, $log, $http)->
+  $scope.elements = loadAll($http, $scope)
 
   $scope.querySearch = (query) ->
-    $scope.states.filter( createFilterFor(query) )
+    $scope.elements.filter( createFilterFor(query) )
 
   $scope.selectedItemChange = (item) ->
-    $log.info('Item changed to ' + JSON.stringify(item))
+    queryElementList($scope ,$http, item)
+    $log.info('Item changed to ' + item.display)
 
   $scope.searchTextChange = (text) ->
     $log.info('Text changed to ' + text)
 )
 
-@loadAll = ->
-  allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,
-                Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,
-                Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,
-                Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,
-                North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,
-                South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,
-                Wisconsin, Wyoming'
-  return allStates.split(/, +/g).map((state)->
-    return {
-      value: state.toLowerCase(),
-      display: state
-    }
+queryElementList = (_$scope,_$http, item)->
+  _$http.get('/elementlistitems/' + item.display + '/').
+  success((data) ->
+    _$scope.elementlist = data
+  ).
+  error(->
+      console.log('cannot retrieve element list')
   )
 
-createFilterFor = (query) ->
-  this.lowercaseQuery = angular.lowercase(query)
-  return filterFn = (state) ->
-    booleanFn(state)
 
-booleanFn = (state)->
-  (state.value.indexOf(this.lowercaseQuery) == 0)
+@loadAll = (_$http, _$scope)->
+  _$http.get('/elementitems/all/').
+  success((data) ->
+    _$scope.elements = data.map((element)->
+      return {
+      value: element.title.toLowerCase(),
+      display: element.title
+      }
+    )
+  ).
+  error(->
+    $log.info('cannont retrieve element')
+  )
+@createFilterFor = (query) ->
+  lowercaseQuery = angular.lowercase(query)
+  return filterFn = (state) ->
+    booleanFn(state, lowercaseQuery)
+
+@booleanFn = (state, lowercaseQuery)->
+  (state.value.indexOf(lowercaseQuery) == 0)

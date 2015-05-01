@@ -1,4 +1,5 @@
 from behave import *
+import time
 use_step_matcher("re")
 
 
@@ -34,3 +35,23 @@ def step_impl(context):
 @then("see the title is INDEXApp")
 def step_impl(context):
     assert 'INDEXApp' in context.browser.title
+
+
+@given("Customer on index app page")
+def step_impl(context):
+    index_app_page_url = context.server_url + '/indexapp/'
+    context.browser.get(index_app_page_url)
+
+
+@when("search an element")
+def step_impl(context):
+    searcharea = context.browser.find_element_by_tag_name('input')
+    searcharea.send_keys('a')
+    time.sleep(0.5)
+    searchspan = context.browser.find_element_by_class_name('searchspan')
+    searchspan.click()
+
+@then("see the element list")
+def step_impl(context):
+    elementlisttitle = context.browser.find_element_by_id('elementlisttitle')
+    assert elementlisttitle.text == 'peter'

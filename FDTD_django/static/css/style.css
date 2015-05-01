@@ -14,9 +14,22 @@
 .indexapp md-toolbar {
   position: fixed;
   z-index: 1030; }
+.indexapp md-whiteframe {
+  width: 700px; }
+  .indexapp md-whiteframe h3 {
+    font-weight: 500;
+    font-size: 14px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    margin: 0; }
+  .indexapp md-whiteframe h3:hover {
+    background-color: #eef6ff; }
 
 html, body {
-  background-color: #EEE; }
+  background-color: #EEE;
+  font-family: 'RobotoDraft',Helvetica,Arial, sans-serif; }
 
 .header {
   top: 0;

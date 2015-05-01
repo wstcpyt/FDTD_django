@@ -15,3 +15,8 @@ Feature: Refractive Index database
     Given Customer come to the refractive index landing page
     When Click goto FDTD INDEX
     Then see the title is INDEXApp
+
+   Scenario: Customer on index app page can search element
+    Given Customer on index app page
+    When search an element
+    Then see the element list
