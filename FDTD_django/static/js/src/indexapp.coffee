@@ -1,7 +1,5 @@
 app = angular.module('FDTDapp', ['ngMaterial'])
 app.controller('SearchCtrl', ($scope, $log, $http)->
-  $scope.chartshow = true
-  console.log($scope.chartshow)
   $scope.elements = loadAll($http, $scope)
   $scope.hideelementlist = true
   $scope.querySearch = (query) ->
@@ -17,22 +15,25 @@ app.controller('SearchCtrl', ($scope, $log, $http)->
     $log.info('Text changed to ' + text)
 
   $scope.drawIndexChart = (item)->
-    $("#chartframe").css({"width": "900px", "height": "500px", "margin-top" : "30px"})
-    $("#linechart_material").css({"margin": "30px"})
     $scope.elementlist = [item]
     $("md-list-item").css({"backgroundColor": "rgb(238, 246, 255)"})
-    drawchart = new DrawChart(item, $http)
+    drawchart = new DrawChart(item, $http, $scope)
     drawchart.drawIndexChart()
 )
 
 class @DrawChart
-  constructor: (@item, @_$http)->
+  constructor: (@item, @_$http, @_$scope)->
   drawIndexChart: ->
     self = this
-    self._$http.get('/elementlistitemsdetail/'+ this.item.id + "/")
+    self._$http.get('/elementlistitemsdetail/'+ self.item.id + "/")
     .success((data) ->
-      dataArray = self.gendataArrayfromRawData(data)
-      self.drawGoogleChart(dataArray)
+      if data["DATA"]["0"]["type"] == "tabulated nk"
+        $("#chartframe").show()
+        self._$scope.chartshow = true
+        dataArray = self.gendataArrayfromRawData(data)
+        self.drawGoogleChart(dataArray)
+      else
+        $("#chartframe").hide()
     ).
     error(->
       console.log('cannot retrieve elementlist index data')

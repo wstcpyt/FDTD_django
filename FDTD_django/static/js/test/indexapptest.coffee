@@ -63,7 +63,7 @@ describe('Unit Test SearchCtrl', ->
     $scope = {}
     this.$controller('SearchCtrl', {$scope: $scope})
     this.$httpBackend.flush()
-    drawChart = new DrawChart(this.item, this.$http)
+    drawChart = new DrawChart(this.item, this.$http, $scope)
     mock = sinon.mock(drawChart)
     mock.expects('drawGoogleChart').once().returns(1)
     this.$httpBackend.expectGET('/elementlistitemsdetail/1/')

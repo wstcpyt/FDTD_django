@@ -23,6 +23,12 @@
     cursor: pointer; }
   .indexapp md-whiteframe md-list-item:active {
     background-color: dodgerblue; }
+.indexapp #chartframe {
+  background-color: #ffffff;
+  height: 500px;
+  width: 900px;
+  margin-top: 30px;
+  display: none; }
 
 html, body {
   background-color: #EEE;

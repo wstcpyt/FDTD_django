@@ -5,8 +5,6 @@
   app = angular.module('FDTDapp', ['ngMaterial']);
 
   app.controller('SearchCtrl', function($scope, $log, $http) {
-    $scope.chartshow = true;
-    console.log($scope.chartshow);
     $scope.elements = loadAll($http, $scope);
     $scope.hideelementlist = true;
     $scope.querySearch = function(query) {
@@ -25,36 +23,35 @@
     };
     return $scope.drawIndexChart = function(item) {
       var drawchart;
-      $("#chartframe").css({
-        "width": "900px",
-        "height": "500px",
-        "margin-top": "30px"
-      });
-      $("#linechart_material").css({
-        "margin": "30px"
-      });
       $scope.elementlist = [item];
       $("md-list-item").css({
         "backgroundColor": "rgb(238, 246, 255)"
       });
-      drawchart = new DrawChart(item, $http);
+      drawchart = new DrawChart(item, $http, $scope);
       return drawchart.drawIndexChart();
     };
   });
 
   this.DrawChart = (function() {
-    function DrawChart(item1, _$http1) {
+    function DrawChart(item1, _$http1, _$scope1) {
       this.item = item1;
       this._$http = _$http1;
+      this._$scope = _$scope1;
     }
 
     DrawChart.prototype.drawIndexChart = function() {
       var self;
       self = this;
-      return self._$http.get('/elementlistitemsdetail/' + this.item.id + "/").success(function(data) {
+      return self._$http.get('/elementlistitemsdetail/' + self.item.id + "/").success(function(data) {
         var dataArray;
-        dataArray = self.gendataArrayfromRawData(data);
-        return self.drawGoogleChart(dataArray);
+        if (data["DATA"]["0"]["type"] === "tabulated nk") {
+          $("#chartframe").show();
+          self._$scope.chartshow = true;
+          dataArray = self.gendataArrayfromRawData(data);
+          return self.drawGoogleChart(dataArray);
+        } else {
+          return $("#chartframe").hide();
+        }
       }).error(function() {
         return console.log('cannot retrieve elementlist index data');
       });
