@@ -5,7 +5,6 @@
   app = angular.module('FDTDapp', ['ngMaterial']);
 
   app.controller('SearchCtrl', function($scope, $log, $http) {
-    var d3line, data1, data2, visulization;
     $scope.elements = loadAll($http, $scope);
     $scope.hideelementlist = true;
     $scope.querySearch = function(query) {
@@ -22,55 +21,59 @@
     $scope.searchTextChange = function(text) {
       return $log.info('Text changed to ' + text);
     };
-    $scope.drawChart = function(item) {
-      return console.log(item.id);
+    return $scope.drawIndexChart = function(item) {
+      var drawchart;
+      $("#chartframe").css({
+        "width": "900px",
+        "height": "500px",
+        "margin-top": "30px"
+      });
+      $("#linechart_material").css({
+        "margin": "30px"
+      });
+      drawchart = new DrawChart(item, $http);
+      return drawchart.drawIndexChart();
     };
-    visulization = document.querySelector('.d3linesvg');
-    data1 = [
-      {
-        "sale": "202",
-        "year": "2000"
-      }, {
-        "sale": "215",
-        "year": "2001"
-      }, {
-        "sale": "179",
-        "year": "2002"
-      }, {
-        "sale": "199",
-        "year": "2003"
-      }, {
-        "sale": "134",
-        "year": "2003"
-      }, {
-        "sale": "176",
-        "year": "2010"
-      }
-    ];
-    data2 = [
-      {
-        "sale": "152",
-        "year": "2000"
-      }, {
-        "sale": "189",
-        "year": "2002"
-      }, {
-        "sale": "179",
-        "year": "2004"
-      }, {
-        "sale": "199",
-        "year": "2006"
-      }, {
-        "sale": "134",
-        "year": "2008"
-      }, {
-        "sale": "176",
-        "year": "2010"
-      }
-    ];
-    d3line = new D3Line(visulization, data1, data2);
-    return d3line.draw();
   });
+
+  this.DrawChart = (function() {
+    function DrawChart(item1, _$http1) {
+      this.item = item1;
+      this._$http = _$http1;
+    }
+
+    DrawChart.prototype.drawIndexChart = function() {
+      var self;
+      self = this;
+      return self._$http.get('/elementlistitemsdetail/' + this.item.id + "/").success(function(data) {
+        var dataArray;
+        dataArray = self.gendataArrayfromRawData(data);
+        return self.drawGoogleChart(dataArray);
+      }).error(function() {
+        return console.log('cannot retrieve elementlist index data');
+      });
+    };
+
+    DrawChart.prototype.drawGoogleChart = function(dataArray) {
+      return drawChart(dataArray);
+    };
+
+    DrawChart.prototype.gendataArrayfromRawData = function(data) {
+      var dataArray, i, len, object, ref;
+      dataArray = [];
+      ref = data["DATA"]["0"]["data"].split('\n');
+      for (i = 0, len = ref.length; i < len; i++) {
+        object = ref[i];
+        if (object.split(' ').length === 3) {
+          dataArray.push(object.split(' ').map(Number));
+        }
+      }
+      return dataArray;
+    };
+
+    return DrawChart;
+
+  })();
 
   queryElementList = function(_$scope, _$http, item) {
     return _$http.get('/elementlistitems/' + item.display + '/').success(function(data) {

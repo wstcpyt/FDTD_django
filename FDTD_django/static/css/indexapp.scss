@@ -12,5 +12,8 @@
       background-color: rgb(238, 246, 255);
       cursor: pointer;
     }
+    md-list-item:active{
+      background-color: dodgerblue;
+    }
   }
 }

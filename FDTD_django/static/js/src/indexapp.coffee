@@ -14,51 +14,34 @@ app.controller('SearchCtrl', ($scope, $log, $http)->
   $scope.searchTextChange = (text) ->
     $log.info('Text changed to ' + text)
 
-  $scope.drawChart = (item)->
-    console.log(item.id)
-
-  visulization = document.querySelector('.d3linesvg')
-  data1 = [{
-    "sale": "202",
-    "year": "2000"
-  }, {
-    "sale": "215",
-    "year": "2001"
-  }, {
-    "sale": "179",
-    "year": "2002"
-  }, {
-    "sale": "199",
-    "year": "2003"
-  }, {
-    "sale": "134",
-    "year": "2003"
-  }, {
-    "sale": "176",
-    "year": "2010"
-  }];
-  data2 = [{
-    "sale": "152",
-    "year": "2000"
-  }, {
-    "sale": "189",
-    "year": "2002"
-  }, {
-    "sale": "179",
-    "year": "2004"
-  }, {
-    "sale": "199",
-    "year": "2006"
-  }, {
-    "sale": "134",
-    "year": "2008"
-  }, {
-    "sale": "176",
-    "year": "2010"
-  }]
-  d3line = new D3Line(visulization, data1, data2)
-  d3line.draw()
+  $scope.drawIndexChart = (item)->
+    $("#chartframe").css({"width": "900px", "height": "500px", "margin-top" : "30px"})
+    $("#linechart_material").css({"margin": "30px"})
+    drawchart = new DrawChart(item, $http)
+    drawchart.drawIndexChart()
 )
+
+class @DrawChart
+  constructor: (@item, @_$http)->
+  drawIndexChart: ->
+    self = this
+    self._$http.get('/elementlistitemsdetail/'+ this.item.id + "/")
+    .success((data) ->
+      dataArray = self.gendataArrayfromRawData(data)
+      self.drawGoogleChart(dataArray)
+    ).
+    error(->
+      console.log('cannot retrieve elementlist index data')
+    )
+  drawGoogleChart: (dataArray)->
+    drawChart(dataArray)
+
+  gendataArrayfromRawData: (data) ->
+    dataArray = []
+    for object in data["DATA"]["0"]["data"].split('\n')
+      if object.split(' ').length == 3
+        dataArray.push(object.split(' ').map(Number))
+    return dataArray
 
 queryElementList = (_$scope,_$http, item)->
   _$http.get('/elementlistitems/' + item.display + '/').

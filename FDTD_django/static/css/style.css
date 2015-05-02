@@ -21,6 +21,8 @@
   .indexapp md-whiteframe md-list-item:hover {
     background-color: #eef6ff;
     cursor: pointer; }
+  .indexapp md-whiteframe md-list-item:active {
+    background-color: dodgerblue; }
 
 html, body {
   background-color: #EEE;

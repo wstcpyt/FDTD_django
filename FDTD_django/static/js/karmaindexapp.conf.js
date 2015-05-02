@@ -22,6 +22,7 @@ module.exports = function(config) {
             '../bower_components/angular-material/angular-material.js',
             'jquery-2.1.3.min.js',
             './src/indexapp.js',
+            './lib/sinon.js',
             './test/indexapptest.js'
         ],
 

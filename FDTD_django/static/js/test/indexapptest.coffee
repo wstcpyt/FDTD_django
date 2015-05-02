@@ -6,8 +6,13 @@ describe('Unit Test SearchCtrl', ->
     this.$http = _$http_
     this.$controller = _$controller_
     this.$httpBackend = _$httpBackend_
+    this.data = {"DATA":[{"type":"tabulated nk","data":"0.2066 0.5 0.870386410508\n0.21089508319 0.5 0.965578874806\n"}]}
+    this.item = {
+      id:1
+    }
     this.$httpBackend.when('GET', '/elementitems/all/').respond([{"title":"Ag"},{"title":"Ag3AsS3"}])
     this.$httpBackend.when('GET', '/elementlistitems/Ag/').respond([{"title":"peter"},{"title":"jack"}])
+    this.$httpBackend.when('GET', '/elementlistitemsdetail/1/').respond(this.data)
   ))
   afterEach(->
     this.$httpBackend.verifyNoOutstandingExpectation()
@@ -51,7 +56,28 @@ describe('Unit Test SearchCtrl', ->
     item = {display:'Ag'}
     this.$httpBackend.expectGET('/elementlistitems/Ag/')
     $scope.selectedItemChange(item)
-    this.$httpBackend.flush();
+    this.$httpBackend.flush()
     assert.equal($scope.elementlist[0].title, 'peter')
+  )
+  it('drawIndexChart', ->
+    $scope = {}
+    this.$controller('SearchCtrl', {$scope: $scope})
+    this.$httpBackend.flush()
+    drawChart = new DrawChart(this.item, this.$http)
+    mock = sinon.mock(drawChart)
+    mock.expects('drawGoogleChart').once().returns(1)
+    this.$httpBackend.expectGET('/elementlistitemsdetail/1/')
+    drawChart.drawIndexChart()
+    this.$httpBackend.flush()
+    mock.verify()
+    mock.restore()
+
+  )
+  it('gendataArrayfromRawData', ->
+    drawChart = new DrawChart(this.item, this.$http)
+    result = drawChart.gendataArrayfromRawData(this.data)
+    assert.equal(result.length, 2)
+    assert.equal(result[0][0], 0.2066)
+    assert.equal(result[1][0], 0.21089508319)
   )
 )

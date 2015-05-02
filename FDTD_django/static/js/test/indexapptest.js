@@ -9,6 +9,17 @@
       this.$http = _$http_;
       this.$controller = _$controller_;
       this.$httpBackend = _$httpBackend_;
+      this.data = {
+        "DATA": [
+          {
+            "type": "tabulated nk",
+            "data": "0.2066 0.5 0.870386410508\n0.21089508319 0.5 0.965578874806\n"
+          }
+        ]
+      };
+      this.item = {
+        id: 1
+      };
       this.$httpBackend.when('GET', '/elementitems/all/').respond([
         {
           "title": "Ag"
@@ -16,13 +27,14 @@
           "title": "Ag3AsS3"
         }
       ]);
-      return this.$httpBackend.when('GET', '/elementlistitems/Ag/').respond([
+      this.$httpBackend.when('GET', '/elementlistitems/Ag/').respond([
         {
           "title": "peter"
         }, {
           "title": "jack"
         }
       ]);
+      return this.$httpBackend.when('GET', '/elementlistitemsdetail/1/').respond(this.data);
     }));
     afterEach(function() {
       this.$httpBackend.verifyNoOutstandingExpectation();
@@ -66,7 +78,7 @@
       this.$httpBackend.flush();
       return assert.equal($scope.elements[0].value, 'ag');
     });
-    return it('queryElementList', function() {
+    it('queryElementList', function() {
       var $scope, item;
       $scope = {};
       this.$controller('SearchCtrl', {
@@ -80,6 +92,30 @@
       $scope.selectedItemChange(item);
       this.$httpBackend.flush();
       return assert.equal($scope.elementlist[0].title, 'peter');
+    });
+    it('drawIndexChart', function() {
+      var $scope, drawChart, mock;
+      $scope = {};
+      this.$controller('SearchCtrl', {
+        $scope: $scope
+      });
+      this.$httpBackend.flush();
+      drawChart = new DrawChart(this.item, this.$http);
+      mock = sinon.mock(drawChart);
+      mock.expects('drawGoogleChart').once().returns(1);
+      this.$httpBackend.expectGET('/elementlistitemsdetail/1/');
+      drawChart.drawIndexChart();
+      this.$httpBackend.flush();
+      mock.verify();
+      return mock.restore();
+    });
+    return it('gendataArrayfromRawData', function() {
+      var drawChart, result;
+      drawChart = new DrawChart(this.item, this.$http);
+      result = drawChart.gendataArrayfromRawData(this.data);
+      assert.equal(result.length, 2);
+      assert.equal(result[0][0], 0.2066);
+      return assert.equal(result[1][0], 0.21089508319);
     });
   });
 

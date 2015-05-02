@@ -3,6 +3,9 @@
     INDEXApp
 {% endblock %}
 {% block head %}
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/static/js/lib/googlelinechart/googlelinechart.js"></script>
 {% endblock %}
 {% block contents %}
     <div class="indexapp">
@@ -13,7 +16,7 @@
         </md-toolbar>
         <div class="container">
             {% verbatim %}
-            <div ng-controller="SearchCtrl" layout="column">
+            <div ng-controller="SearchCtrl">
                 <form ng-submit="$event.preventDefault()">
                     <md-autocomplete
                             md-selected-item="selectedItem"
@@ -29,10 +32,10 @@
                     <br/>
                 </form>
                 <div layout layout-align="center center">
-                    <md-whiteframe class="md-whiteframe-z1" layout="column" ng-hide='hideelementlist'>
+                    <md-whiteframe class="md-whiteframe-z1" ng-hide='hideelementlist'>
                         <md-content>
                             <md-list>
-                                <md-list-item ng-mousedown="drawChart(item)" class="md-3-line" ng-repeat="item in elementlist">
+                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist">
                                     <div class="md-list-item-text">
                                         <h3 id="elementlisttitle">{{item.title}}</h3>
                                     </div>
@@ -43,15 +46,15 @@
                     </md-whiteframe>
                 </div>
             </div>
-            <md-whiteframe class="md-whiteframe-z1" layout="column">
-                <svg class="d3linesvg" height="500" width="500"></svg>
-            </md-whiteframe>
+            <div layout layout-align="center center">
+                <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe" style="background-color: #ffffff">
+                    <div id="linechart_material" style="height: inherit"></div>
+                </md-whiteframe>
+            </div>
         </div>
         {% endverbatim %}
     </div>
 {% endblock %}
 {% block javascript %}
-    <script src="/static/js/lib/d3line/lib/d3.min.js"></script>
-    <script src="/static/js/lib/d3line/src/d3line.js"></script>
     <script src="/static/js/src/indexapp.js"></script>
 {% endblock %}
