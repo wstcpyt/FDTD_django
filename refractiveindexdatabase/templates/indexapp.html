@@ -45,12 +45,14 @@
                         </md-content>
                     </md-whiteframe>
                 </div>
+                <div layout layout-align="center center">
+                    <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe" style="background-color: #ffffff">
+                        <div ng-show="chartshow" id="linechart_material" style="height: inherit"></div>
+                        <div ng-show="!chartshow">coming soon</div>
+                    </md-whiteframe>
+                </div>
             </div>
-            <div layout layout-align="center center">
-                <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe" style="background-color: #ffffff">
-                    <div id="linechart_material" style="height: inherit"></div>
-                </md-whiteframe>
-            </div>
+
         </div>
         {% endverbatim %}
     </div>
