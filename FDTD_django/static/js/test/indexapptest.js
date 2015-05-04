@@ -17,8 +17,18 @@
           }
         ]
       };
+      this.data_others = {
+        "DATA": [
+          {
+            "type": "others"
+          }
+        ]
+      };
       this.item = {
         id: 1
+      };
+      this.item_others = {
+        id: 2
       };
       this.$httpBackend.when('GET', '/elementitems/all/').respond([
         {
@@ -34,7 +44,8 @@
           "title": "jack"
         }
       ]);
-      return this.$httpBackend.when('GET', '/elementlistitemsdetail/1/').respond(this.data);
+      this.$httpBackend.when('GET', '/elementlistitemsdetail/1/').respond(this.data);
+      return this.$httpBackend.when('GET', '/elementlistitemsdetail/2/').respond(this.data_others);
     }));
     afterEach(function() {
       this.$httpBackend.verifyNoOutstandingExpectation();
@@ -93,7 +104,7 @@
       this.$httpBackend.flush();
       return assert.equal($scope.elementlist[0].title, 'peter');
     });
-    it('drawIndexChart', function() {
+    it('drawIndexChart_tabulated_nk', function() {
       var $scope, drawChart, mock;
       $scope = {};
       this.$controller('SearchCtrl', {
@@ -104,6 +115,22 @@
       mock = sinon.mock(drawChart);
       mock.expects('drawGoogleChart').once().returns(1);
       this.$httpBackend.expectGET('/elementlistitemsdetail/1/');
+      drawChart.drawIndexChart();
+      this.$httpBackend.flush();
+      mock.verify();
+      return mock.restore();
+    });
+    it('drawIndexChart_others', function() {
+      var $scope, drawChart, mock;
+      $scope = {};
+      this.$controller('SearchCtrl', {
+        $scope: $scope
+      });
+      this.$httpBackend.flush();
+      drawChart = new DrawChart(this.item_others, this.$http, $scope);
+      mock = sinon.mock(drawChart);
+      mock.expects('drawGoogleChart').never();
+      this.$httpBackend.expectGET('/elementlistitemsdetail/2/');
       drawChart.drawIndexChart();
       this.$httpBackend.flush();
       mock.verify();

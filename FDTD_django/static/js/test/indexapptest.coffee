@@ -7,12 +7,17 @@ describe('Unit Test SearchCtrl', ->
     this.$controller = _$controller_
     this.$httpBackend = _$httpBackend_
     this.data = {"DATA":[{"type":"tabulated nk","data":"0.2066 0.5 0.870386410508\n0.21089508319 0.5 0.965578874806\n"}]}
+    this.data_others = {"DATA":[{"type":"others"}]}
     this.item = {
       id:1
+    }
+    this.item_others = {
+      id:2
     }
     this.$httpBackend.when('GET', '/elementitems/all/').respond([{"title":"Ag"},{"title":"Ag3AsS3"}])
     this.$httpBackend.when('GET', '/elementlistitems/Ag/').respond([{"title":"peter"},{"title":"jack"}])
     this.$httpBackend.when('GET', '/elementlistitemsdetail/1/').respond(this.data)
+    this.$httpBackend.when('GET', '/elementlistitemsdetail/2/').respond(this.data_others)
   ))
   afterEach(->
     this.$httpBackend.verifyNoOutstandingExpectation()
@@ -59,7 +64,7 @@ describe('Unit Test SearchCtrl', ->
     this.$httpBackend.flush()
     assert.equal($scope.elementlist[0].title, 'peter')
   )
-  it('drawIndexChart', ->
+  it('drawIndexChart_tabulated_nk', ->
     $scope = {}
     this.$controller('SearchCtrl', {$scope: $scope})
     this.$httpBackend.flush()
@@ -71,7 +76,19 @@ describe('Unit Test SearchCtrl', ->
     this.$httpBackend.flush()
     mock.verify()
     mock.restore()
-
+  )
+  it('drawIndexChart_others', ->
+    $scope = {}
+    this.$controller('SearchCtrl', {$scope: $scope})
+    this.$httpBackend.flush()
+    drawChart = new DrawChart(this.item_others, this.$http, $scope)
+    mock = sinon.mock(drawChart)
+    mock.expects('drawGoogleChart').never()
+    this.$httpBackend.expectGET('/elementlistitemsdetail/2/')
+    drawChart.drawIndexChart()
+    this.$httpBackend.flush()
+    mock.verify()
+    mock.restore()
   )
   it('gendataArrayfromRawData', ->
     drawChart = new DrawChart(this.item, this.$http)

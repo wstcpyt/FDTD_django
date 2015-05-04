@@ -35,7 +35,7 @@
                     <md-whiteframe class="md-whiteframe-z1" ng-hide='hideelementlist'>
                         <md-content>
                             <md-list>
-                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist">
+                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist" >
                                     <div class="md-list-item-text">
                                         <h3 id="elementlisttitle">{{item.title}}</h3>
                                     </div>
@@ -46,8 +46,8 @@
                     </md-whiteframe>
                 </div>
                 <div layout layout-align="center center">
-                    <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe">
-                            <div id="linechart_material" style="height: inherit; padding: 30px"></div>
+                    <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe" >
+                            <div id="linechart_material" style="height: inherit"></div>
                     </md-whiteframe>
                 </div>
             </div>

@@ -12,6 +12,5 @@ google.load('visualization', '1.1', {packages: ['line']});
       subtitle: 'in millions of dollars (USD)',
     }
   }
-
   chart = new google.charts.Line(document.getElementById('linechart_material'))
   chart.draw(data, options)
