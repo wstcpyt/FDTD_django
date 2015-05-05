@@ -6,17 +6,19 @@ Feature: Refractive Index database
     When Click the tab_002 in the header
     Then see the title is DatabaseDirectory
 
-   Scenario: Customer on refractive index database page can go back to home page
+  Scenario: Customer on refractive index database page can go back to home page
     Given Customer come to the refractive index landing page
     When Click the tab_001 in the header
     Then see the title is FDTD
 
-   Scenario: Customer on index landing page go to index app page
+  Scenario: Customer on index landing page go to index app page
     Given Customer come to the refractive index landing page
     When Click goto FDTD INDEX
     Then see the title is INDEXApp
 
-   Scenario: Customer on index app page can search element
+  Scenario: Customer on index app page can search element and get RFIndex Chart
     Given Customer on index app page
     When search an element
-    Then see the element list
+    And see the element list
+    And click the first elementlist
+    Then see the google chart svg

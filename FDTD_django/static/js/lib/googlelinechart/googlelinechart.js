@@ -4,7 +4,7 @@
     packages: ['line']
   });
 
-  this.drawChart = function(dataArray) {
+  this.drawChart = function(dataArray, item) {
     var chart, data, options;
     data = new google.visualization.DataTable();
     data.addColumn('number', 'Wavelength');
@@ -13,7 +13,7 @@
     data.addRows(dataArray);
     options = {
       chart: {
-        title: 'Box Office Earnings in First Two Weeks of Opening',
+        title: item.title,
         subtitle: 'in millions of dollars (USD)'
       }
     };

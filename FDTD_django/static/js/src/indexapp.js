@@ -6,7 +6,8 @@
 
   app.controller('SearchCtrl', function($scope, $log, $http) {
     $scope.elements = loadAll($http, $scope);
-    $scope.hideelementlist = true;
+    $scope.hideelementlist = false;
+    $scope.loadingchart = false;
     $scope.querySearch = function(query) {
       var results;
       results = query ? $scope.elements.filter(createFilterFor(query)) : $scope.elements;
@@ -35,6 +36,7 @@
       $("#linechart_material").css({
         "margin": "30px"
       });
+      $scope.loadingchart = true;
       drawchart = new DrawChart(item, $http, $scope);
       return drawchart.drawIndexChart();
     };
@@ -55,7 +57,8 @@
         if (data["DATA"]["0"]["type"] === "tabulated nk") {
           $("#chartframe").fadeIn();
           dataArray = self.gendataArrayfromRawData(data);
-          return self.drawGoogleChart(dataArray);
+          self.drawGoogleChart(dataArray);
+          return self._$scope.loadingchart = false;
         } else {
           return $("#chartframe").fadeOut();
         }
@@ -65,7 +68,7 @@
     };
 
     DrawChart.prototype.drawGoogleChart = function(dataArray) {
-      return drawChart(dataArray);
+      return drawChart(dataArray, this.item);
     };
 
     DrawChart.prototype.gendataArrayfromRawData = function(data) {

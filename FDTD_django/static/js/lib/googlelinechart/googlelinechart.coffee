@@ -1,5 +1,5 @@
 google.load('visualization', '1.1', {packages: ['line']});
-@drawChart = (dataArray)->
+@drawChart = (dataArray, item)->
   data = new google.visualization.DataTable()
   data.addColumn('number', 'Wavelength')
   data.addColumn('number', 'n')
@@ -8,7 +8,7 @@ google.load('visualization', '1.1', {packages: ['line']});
 
   options = {
     chart: {
-      title: 'Box Office Earnings in First Two Weeks of Opening',
+      title: item.title,
       subtitle: 'in millions of dollars (USD)',
     }
   }

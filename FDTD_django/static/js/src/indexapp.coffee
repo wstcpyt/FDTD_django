@@ -1,7 +1,8 @@
 app = angular.module('FDTDapp', ['ngMaterial'])
 app.controller('SearchCtrl', ($scope, $log, $http)->
   $scope.elements = loadAll($http, $scope)
-  $scope.hideelementlist = true
+  $scope.hideelementlist = false
+  $scope.loadingchart = false
   $scope.querySearch = (query) ->
     results = if query then $scope.elements.filter( createFilterFor(query) ) else $scope.elements
     return results
@@ -19,6 +20,7 @@ app.controller('SearchCtrl', ($scope, $log, $http)->
     $("md-list-item").css({"backgroundColor": "rgb(238, 246, 255)"})
     $("#chartframe").css({"width": "900px", "height": "500px", "margin-top" : "30px"})
     $("#linechart_material").css({"margin": "30px"})
+    $scope.loadingchart = true
     drawchart = new DrawChart(item, $http, $scope)
     drawchart.drawIndexChart()
 )
@@ -33,6 +35,7 @@ class @DrawChart
         $("#chartframe").fadeIn()
         dataArray = self.gendataArrayfromRawData(data)
         self.drawGoogleChart(dataArray)
+        self._$scope.loadingchart = false
       else
         $("#chartframe").fadeOut()
     ).
@@ -40,7 +43,7 @@ class @DrawChart
       console.log('cannot retrieve elementlist index data')
     )
   drawGoogleChart: (dataArray)->
-    drawChart(dataArray)
+    drawChart(dataArray, this.item)
 
   gendataArrayfromRawData: (data) ->
     dataArray = []
