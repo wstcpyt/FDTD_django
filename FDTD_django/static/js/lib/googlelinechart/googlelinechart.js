@@ -18,7 +18,10 @@
       }
     };
     chart = new google.charts.Line(document.getElementById('linechart_material'));
-    return chart.draw(data, options);
+    chart.draw(data, options);
+    return $(window).resize(function() {
+      return chart.draw(data, options);
+    });
   };
 
 }).call(this);

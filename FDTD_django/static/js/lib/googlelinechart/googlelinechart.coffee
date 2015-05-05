@@ -14,3 +14,6 @@ google.load('visualization', '1.1', {packages: ['line']});
   }
   chart = new google.charts.Line(document.getElementById('linechart_material'))
   chart.draw(data, options)
+  $(window).resize(->
+    chart.draw(data, options)
+  )
