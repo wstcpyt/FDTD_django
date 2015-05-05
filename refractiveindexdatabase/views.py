@@ -54,6 +54,8 @@ class ElementListItemsDetail(APIView):
         elementlistitemsdetail = self._get_elementlistitemsdetail(pk)
         url = elementlistitemsdetail.datalink
         doc = self._read_yaml_file_from_url(url)
+        doc["ELEMENT"] = elementlistitemsdetail.element.title
+        doc["PAPER"] = elementlistitemsdetail.title
         return Response(doc)
 
     @staticmethod

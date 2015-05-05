@@ -57,7 +57,7 @@
         if (data["DATA"]["0"]["type"] === "tabulated nk") {
           $("#chartframe").fadeIn();
           dataArray = self.gendataArrayfromRawData(data);
-          self.drawGoogleChart(dataArray);
+          self.drawGoogleChart(dataArray, data);
           return self._$scope.loadingchart = false;
         } else {
           return $("#chartframe").fadeOut();
@@ -67,8 +67,8 @@
       });
     };
 
-    DrawChart.prototype.drawGoogleChart = function(dataArray) {
-      return drawChart(dataArray, this.item);
+    DrawChart.prototype.drawGoogleChart = function(dataArray, JSONDATA) {
+      return drawChart(dataArray, JSONDATA);
     };
 
     DrawChart.prototype.gendataArrayfromRawData = function(data) {

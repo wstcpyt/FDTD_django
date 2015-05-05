@@ -4,17 +4,17 @@
     packages: ['line']
   });
 
-  this.drawChart = function(dataArray, item) {
+  this.drawChart = function(dataArray, JSONDATA) {
     var chart, data, options;
     data = new google.visualization.DataTable();
-    data.addColumn('number', 'Wavelength');
+    data.addColumn('number', 'Wavelength (µm)');
     data.addColumn('number', 'n');
     data.addColumn('number', 'k');
     data.addRows(dataArray);
     options = {
       chart: {
-        title: item.title,
-        subtitle: 'in millions of dollars (USD)'
+        title: JSONDATA['ELEMENT'],
+        subtitle: '(' + JSONDATA['PAPER'] + ')'
       }
     };
     chart = new google.charts.Line(document.getElementById('linechart_material'));

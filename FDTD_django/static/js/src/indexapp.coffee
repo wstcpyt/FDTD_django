@@ -34,7 +34,7 @@ class @DrawChart
       if data["DATA"]["0"]["type"] == "tabulated nk"
         $("#chartframe").fadeIn()
         dataArray = self.gendataArrayfromRawData(data)
-        self.drawGoogleChart(dataArray)
+        self.drawGoogleChart(dataArray, data)
         self._$scope.loadingchart = false
       else
         $("#chartframe").fadeOut()
@@ -42,8 +42,8 @@ class @DrawChart
     error(->
       console.log('cannot retrieve elementlist index data')
     )
-  drawGoogleChart: (dataArray)->
-    drawChart(dataArray, this.item)
+  drawGoogleChart: (dataArray, JSONDATA)->
+    drawChart(dataArray, JSONDATA)
 
   gendataArrayfromRawData: (data) ->
     dataArray = []

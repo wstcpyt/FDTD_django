@@ -106,3 +106,5 @@ class ElementListItemsDetailTest(TestCase):
         pk = elementlist[0].id
         response = self.client.get('/elementlistitemsdetail/' + str(pk) + '/')
         self.assertIn(b'REFERENCES', response.content)
+        self.assertIn(b'ELEMENT', response.content)
+        self.assertIn(b'PAPER', response.content)
