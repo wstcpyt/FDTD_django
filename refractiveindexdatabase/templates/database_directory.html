@@ -5,9 +5,68 @@
 {% block head %}
 {% endblock %}
 {% block contents %}
-    <div class="container">
-        <div layout="row" layout-align="center center">
-            <a href="{% url 'indexapp' %}" id="gotoFDTDINDEX"><md-button class="md-raised md-primary">Go To FDTD INDEX</md-button></a>
-        </div>
+    <div class="indexpage">
+        <section>
+            <div layout="column" layout-align="start center">
+                <div flex>
+                    <img src="/static/images/INDEX.png">
+                </div>
+                <div flex layout="column" layout-align="start center">
+                    <h1>Refractive Index Database </h1>
+                    <p>Refractive Index Database serve both as a complete and independent database for the refractive index
+                        for common materials, and also as a supplementary database to our FDTD on the cloud.</p>
+                    <a href="{% url 'indexapp' %}" id="gotoFDTDINDEX"><md-button id="indexappbutton" class="md-raised md-primary">Go To FDTD INDEX</md-button></a>
+                </div>
+            </div>
+        </section>
+        <section style="background: #ffffff">
+            <div layout="column" layout-gt-md="row" layout-align-gt-md="center center" layout-align="start center">
+                <div flex="30">
+                    <img src="/static/images/chart.png">
+                </div>
+                <div flex="50">
+                    <h2>More Than Numbers</h2>
+                    <p>We make the refractive index data pop with responsive and interactive charts. Which can be directly
+                        exported in different format.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div layout="column" layout-gt-md="row" layout-align-gt-md="center center" layout-align="start center">
+                <div flex="50">
+                    <h2>REST API</h2>
+                    <p>The REST API lets you interact with Refractive Index Database from anything that can send an HTTP
+                        request. Application written in any programming language can interact with data on our Refractive Index
+                        Database.</p>
+                </div>
+                <div flex="30">
+                    <img src="/static/images/REST.png">
+                </div>
+            </div>
+        </section>
+        <section style="background: #ffffff">
+            <div layout="column" layout-gt-md="row" layout-align-gt-md="center center" layout-align="start center">
+                <div flex="30">
+                    <img src="/static/images/search.png">
+                </div>
+                <div flex="50">
+                    <h2>Smart Search</h2>
+                    <p>A search interface for custom search such as search all the material with an refractive index in
+                        a specific range. What's more? Autocomplete and internal caching, all the things you love about
+                        smart search.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div layout="column" layout-align-gt-md="center center" layout-align="start center">
+                <div>
+                    <img id="dashboard" src="/static/images/dashboard.png">
+                </div>
+                <div>
+                    <h2>Powerful Dashboard</h2>
+                    <p>The powerful dashboard make all the good things about our Refractive Index Database come true!</p>
+                </div>
+            </div>
+        </section>
     </div>
 {% endblock %}

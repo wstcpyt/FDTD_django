@@ -10,12 +10,15 @@
     <!-- Angular Material -->
     <link rel="stylesheet" href="/static/bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="icon"
+          type="image/png"
+          href="/static/images/FDTDicon.png">
 </head>
 <body ng-app="FDTDapp">
 <input type="hidden" id="tabindex" name="variable" value="{{ tabindex }}">
 <div class="header navbar-fixed-top" ng-controller="headercontroller" style="display: none;">
     <md-whiteframe class="md-whiteframe-z1" layout="column">
-        <md-tabs md-selected="selectedIndex">
+        <md-tabs md-selected="selectedIndex" md-no-pagination="true">
             <md-tab md-on-select="tab1clicked()">
                 <md-tab-label>
                     <span><img src="/static/images/FDTDsmall.png">FDTD</span>
@@ -42,7 +45,7 @@
 <script>
     {# FOUC PREVENTION#}
     $( document ).ready(function() {
-        $('.navbar-fixed-top').show()
+        $('.navbar-fixed-top').show();
     });
 </script>
 </body>
