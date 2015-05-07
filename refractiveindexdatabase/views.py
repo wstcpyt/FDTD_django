@@ -12,13 +12,21 @@ def identify_url_space(url):
 class Elementitems(APIView):
     def get(self, request, categoryname, format=None):
         categoryname = identify_url_space(categoryname)
-        elementlist = self._get_elementlist(categoryname)
-        serializer = ElementSerializer(elementlist, many=True)
-        return Response(serializer.data)
+        if categoryname == 'all':
+            elementlist = self._get_all_elementlist()
+            serializer = ElementSerializer(elementlist, many=True)
+            return Response(serializer.data)
+        else:
+            elementlist = self._get_elementlist(categoryname)
+            serializer = ElementSerializer(elementlist, many=True)
+            return Response(serializer.data)
 
     def _get_elementlist(self, categoryname):
         category = self._get_category(categoryname)
         return Element.objects.filter(category=category).all()
+
+    def _get_all_elementlist(self):
+        return Element.objects.all()
 
     @staticmethod
     def _get_category(categoryname):
@@ -46,6 +54,8 @@ class ElementListItemsDetail(APIView):
         elementlistitemsdetail = self._get_elementlistitemsdetail(pk)
         url = elementlistitemsdetail.datalink
         doc = self._read_yaml_file_from_url(url)
+        doc["ELEMENT"] = elementlistitemsdetail.element.title
+        doc["PAPER"] = elementlistitemsdetail.title
         return Response(doc)
 
     @staticmethod
@@ -61,8 +71,9 @@ class ElementListItemsDetail(APIView):
         return doc
 
 
-
-
 def database_directory_page(request):
-    category = Category.objects.all()
-    return render(request, 'database_directory.html', {'category': category})
+    return render(request, 'database_directory.html', {'tabindex': 1})
+
+
+def index_app_page(request):
+    return render(request,'indexapp.html')

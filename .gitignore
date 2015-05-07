@@ -4,3 +4,4 @@ db.sqlite3
 .idea/
 .DS_Store
 FDTD_django/secret_key.py
+.elasticbeanstalk

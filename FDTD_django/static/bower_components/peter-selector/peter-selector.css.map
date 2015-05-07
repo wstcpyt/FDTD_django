@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,OAAQ;EACN,UAAU,EAAE,KAAK;EACjB,QAAQ,EAAE,MAAM;;AAElB,6BAA8B;EAC5B,OAAO,EAAE,IAAI;;AAEf,mCAAoC;EAClC,OAAO,EAAE,IAAI;EACb,gBAAgB,EAAE,OAAO;;AAE3B,wCAAyC;EACvC,gBAAgB,EAAE,OAAO",
-"sources": ["peter-selector.scss"],
-"names": [],
-"file": "peter-selector.css"
-}

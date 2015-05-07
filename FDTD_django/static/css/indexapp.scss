@@ -1,0 +1,22 @@
+.indexapp{
+  md-toolbar{
+    position: fixed;
+    z-index: 1030;
+  }
+  md-whiteframe{
+    width: 700px;
+    md-list{
+      padding: 0;
+    }
+    md-list-item:hover{
+      background-color: rgb(238, 246, 255);
+      cursor: pointer;
+    }
+    md-list-item:active{
+      background-color: dodgerblue;
+    }
+  }
+      #chartframe{
+      background-color: #ffffff;
+    }
+}

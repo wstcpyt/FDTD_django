@@ -4,7 +4,4 @@ from django.shortcuts import render
 
 
 def home_page(request):
-    return render(request, 'home_page.html')
-
-def database_directory_page(request):
-    return render(request, 'database_directory.html')
+    return render(request, 'home_page.html', {'tabindex': 0})

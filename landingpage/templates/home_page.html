@@ -1,25 +1,23 @@
 {% extends 'base.html' %}
 {% block title %}FDTD{% endblock %}
-{% block head %}
-    <link rel="import" href="/static/bower_components/core-icon/core-icon.html">
-    <link rel="import" href="/static/bower_components/core-icons/core-icons.html">
-{% endblock %}
 {% block contents %}
-    <div class="container">
-        <div class="row">
-            <div class="col m6 s12 center-align">
-                <img class="responsive-img" src="/static/images/FDTD_singlelogo.png">
-            </div>
-            <div class="col m6 s12">
-                <div class="summary layout vertical">
+    <div class="homepage">
+        <section>
+            <div layout="column" layout-align="start center">
+                <div flex>
+                    <img src="/static/images/FDTD_singlelogo.png">
+                </div>
+                <div flex layout="column" layout-align="start center">
                     <h1>FDTD on the Cloud </h1>
                     <p>Finite-difference time-domain (FDTD) is a numerical analysis technique used for modeling
                         computational
                         electrodynamics. We make it easier and faster to create anything from a simple 1D simulation to a 3D
                         simulation using our web interface on the cloud.</p>
-                    <material-button raised="true" link="https://www.polymer-project.org/0.5/docs/elements/"><core-icon icon="stars"></core-icon><p>Get Started</p></material-button>
+                    <a href="{% url 'databasedir' %}"><md-button class="md-raised md-primary">Get Started</md-button></a>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
+{% endblock %}
+{% block javascript %}
 {% endblock %}
