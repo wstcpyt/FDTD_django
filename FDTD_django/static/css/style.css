@@ -37,9 +37,6 @@
     .indexpage section #indexappbutton {
       width: 200px;
       height: 55px; }
-    @media screen and (max-width: 600px) {
-      .indexpage section #dashboard {
-        width: 350px; } }
     .indexpage section img {
       display: block;
       margin-left: auto;
