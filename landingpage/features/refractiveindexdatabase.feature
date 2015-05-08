@@ -22,3 +22,8 @@ Feature: Refractive Index database
     And see the element list
     And click the first elementlist
     Then see the google chart svg
+
+  Scenario: Customer on index landing page go to RESTAPIguide page
+    Given Customer come to the refractive index landing page
+    When Click goto RESTAPI guide page
+    Then see the title is RESTGuide

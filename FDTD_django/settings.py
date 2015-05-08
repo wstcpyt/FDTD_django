@@ -39,8 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'landingpage',
     'rest_framework',
+    'guide',
     'refractiveindexdatabase',
-    'django_behave'
+    'django_behave',
 )
 
 TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'

@@ -96,3 +96,14 @@ def step_impl(context):
 @then("see the google chart svg")
 def step_impl(context):
     wait_for_element_with_tag_name(context, 'svg')
+
+
+@when("Click goto RESTAPI guide page")
+def step_impl(context):
+    gotoRESTAPIguide = context.browser.find_element_by_id('gotoGuide')
+    gotoRESTAPIguide.click()
+
+
+@then("see the title is RESTGuide")
+def step_impl(context):
+    assert 'Guide' in context.browser.title

@@ -5,7 +5,7 @@ urlpatterns = [
     # Examples:
     url(r'^$', 'landingpage.views.home_page', name='home'),
     url(r'^', include('refractiveindexdatabase.urls')),
-    url(r'^databasedirectory/$', 'refractiveindexdatabase.views.database_directory_page', name='databasedir'),
+    url(r'^', include('guide.urls')),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
