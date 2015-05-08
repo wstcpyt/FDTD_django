@@ -3,18 +3,18 @@
 {% block contents %}
     <div class="homepage">
         <section>
-            <div layout="column" layout-align="start center">
-                <div flex>
-                    <img src="/static/images/FDTD_singlelogo.png">
-                </div>
-                <div flex layout="column" layout-align="start center">
-                    <h1>FDTD on the Cloud </h1>
+            <img class="img-responsive" src="/static/images/FDTD_singlelogo.png">
+            <h1 class="text-center">FDTD on the Cloud </h1>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
                     <p>Finite-difference time-domain (FDTD) is a numerical analysis technique used for modeling
                         computational
                         electrodynamics. We make it easier and faster to create anything from a simple 1D simulation to a 3D
                         simulation using our web interface on the cloud.</p>
-                    <a href="{% url 'databasedir' %}"><md-button class="md-raised md-primary">Get Started</md-button></a>
                 </div>
+            </div>
+            <div class="text-center">
+                <a href="{% url 'databasedir' %}"><md-button class="md-raised md-primary">Get Started</md-button></a>
             </div>
         </section>
     </div>

@@ -9,9 +9,12 @@
 {% endblock %}
 {% block contents %}
     <div class="indexapp">
-        <md-toolbar id="toolbar" style="display: none;">
+        <md-toolbar id="toolbar" class="md-toolbar-tools" style="display: none;">
+            <md-button class="md-icon-button" aria-label="Settings">
+                <md-icon md-svg-icon="/static/images/icons/menu.svg"></md-icon>
+            </md-button>
             <div class="md-toolbar-tools">
-                <span>Refractive Index</span>
+                <span>Refractive Index Database</span>
             </div>
         </md-toolbar>
         <div class="container">
@@ -30,9 +33,6 @@
                         <md-item-template>
                             <span class="searchspan" md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
                         </md-item-template>
-                        <md-not-found>
-                            No matches found.
-                        </md-not-found>
                     </md-autocomplete>
                     <br/>
                 </form>
@@ -40,7 +40,7 @@
                     <md-whiteframe class="md-whiteframe-z1" ng-hide='hideelementlist'>
                         <md-content>
                             <md-list>
-                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist" >
+                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist">
                                     <div class="md-list-item-text">
                                         <h3 id="elementlisttitle">{{item.title}}</h3>
                                     </div>
@@ -50,7 +50,7 @@
                         </md-content>
                     </md-whiteframe>
                 </div>
-                <div id="linechart" layout layout-align="center center" style="display: none">
+                <div id="linechart" layout layout-align="center center" style="display: none;">
                     <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe" >
                         <md-progress-circular ng-show="loadingchart" md-mode="indeterminate"></md-progress-circular>
                         <div id="linechart_material" style="height: inherit"></div>

@@ -24,10 +24,6 @@
     };
     return $scope.drawIndexChart = function(item) {
       var drawchart;
-      $scope.elementlist = [item];
-      $("md-list-item").css({
-        "backgroundColor": "rgb(238, 246, 255)"
-      });
       $("#chartframe").css({
         "width": "900px",
         "height": "500px",

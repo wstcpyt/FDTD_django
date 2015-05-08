@@ -16,8 +16,6 @@ app.controller('SearchCtrl', ($scope, $log, $http)->
     $log.info('Text changed to ' + text)
 
   $scope.drawIndexChart = (item)->
-    $scope.elementlist = [item]
-    $("md-list-item").css({"backgroundColor": "rgb(238, 246, 255)"})
     $("#chartframe").css({"width": "900px", "height": "500px", "margin-top" : "30px"})
     $("#linechart_material").css({"margin": "30px"})
     $scope.loadingchart = true
