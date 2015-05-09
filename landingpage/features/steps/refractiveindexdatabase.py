@@ -107,3 +107,9 @@ def step_impl(context):
 @then("see the title is RESTGuide")
 def step_impl(context):
     assert 'Guide' in context.browser.title
+
+
+@when("Click the gotoindexlandingpage button")
+def step_impl(context):
+    gotoIndexlandingpage = context.browser.find_element_by_id('gotoIndexlandingpage')
+    gotoIndexlandingpage.click()

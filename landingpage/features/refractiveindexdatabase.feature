@@ -27,3 +27,8 @@ Feature: Refractive Index database
     Given Customer come to the refractive index landing page
     When Click goto RESTAPI guide page
     Then see the title is RESTGuide
+
+  Scenario: Customer Come to refractive index Database landing page from the landing page
+    Given Customer come to Landing Page without login
+    When Click the gotoindexlandingpage button
+    Then see the title is DatabaseDirectory
