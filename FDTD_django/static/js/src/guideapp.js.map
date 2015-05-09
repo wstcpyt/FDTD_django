@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "guideapp.js",
+  "sourceRoot": "",
+  "sources": [
+    "guideapp.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,GAAA;;AAAA,EAAA,GAAA,GAAM,OAAO,CAAC,MAAR,CAAe,SAAf,EAA0B,CAAC,YAAD,CAA1B,CAAN,CAAA;;AAAA,EACA,GAAG,CAAC,UAAJ,CAAe,WAAf,EAA4B,SAAC,MAAD,EAAS,IAAT,EAAe,KAAf,GAAA,CAA5B,CADA,CAAA;;AAAA,EAGA,GAAG,CAAC,UAAJ,CAAe,UAAf,EAA2B,SAAC,MAAD,EAAS,IAAT,EAAe,KAAf,GAAA,CAA3B,CAHA,CAAA;AAAA"
+}

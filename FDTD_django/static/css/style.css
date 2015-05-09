@@ -36,9 +36,6 @@
   padding-top: 70px; }
   .indexpage section {
     padding: 50px; }
-    .indexpage section #indexappbutton {
-      width: 200px;
-      height: 55px; }
     .indexpage section img {
       display: block;
       margin-left: auto;
@@ -59,6 +56,18 @@
       font-size: 18px;
       font-weight: 300;
       line-height: 32px; }
+
+.topmenu {
+  width: 304px;
+  margin: 0;
+  padding: 0 0 0 15px;
+  font-size: 16px; }
+
+.submenu {
+  width: 304px;
+  margin: 0;
+  padding: 0 0 0 30px;
+  font-size: 14px; }
 
 html, body {
   background-color: #EEE;

@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Guide</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'appbase.html' %}
+{% block title %}
+    Guide
+{% endblock %}
+{% block contents %}
+    <div ng-controller="GuideCtrl" layout="column" style="height:100%;">
+        <section layout="row" flex>
+            <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+                <md-toolbar class="md-theme-indigo">
+                    <h1 class="md-toolbar-tools">Guide</h1>
+                </md-toolbar>
+                <md-content ng-controller="LeftCtrl">
+                    <md-button md-ripple-size="full" class="text-left topmenu" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        <div layout="row">
+                            <div>REST API</div>
+                            <span flex></span>
+                            <md-icon md-svg-icon="/static/images/icons/arrow_drop_down.svg"></md-icon>
+                        </div>
+                    </md-button>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <ul style="padding: 0; margin: 0">
+                            <li>
+                                <md-button md-ripple-size="full" class="text-left submenu">
+                                    <div>Getting Started</div>
+                                </md-button>
+                            </li>
+                        </ul>
+                    </div>
+                </md-content>
+            </md-sidenav>
+            <md-content flex>
+                <md-toolbar class="md-theme-indigo">
+                    <h1 class="md-toolbar-tools">REST API</h1>
+                </md-toolbar>
+                <div layout-padding>
+                    <h1 class="md-display-2">Getting Start</h1>
+                    <p>
+                        The right sidenav will focus on a specific child element.
+                    </p>
+                </div>
+            </md-content>
+        </section>
+    </div>
+{%  endblock %}
+{% block javascript %}
+    <script src="/static/js/src/guideapp.js"></script>
+{% endblock %}
