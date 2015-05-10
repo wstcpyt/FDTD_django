@@ -20,6 +20,13 @@
         <div class="container">
             {% verbatim %}
             <div id="search" ng-controller="SearchCtrl" style="display: none">
+                <div style="margin-top: 30px" class="panel panel-primary">
+                    <div class="panel-heading">REFRACTIVE INDEX DATABASE IS IN DEVELOPER PREVIEW </div>
+                    <div class="panel-body">REFRACTIVE INDEX DATABASE is a <span style="color: red">WORK IN PROGRESS</span>
+                        and APIs are subject to change.
+                        It is intended for early adopters who want to test
+                        out the interface and provide feedback</div>
+                </div>
                 <form ng-submit="$event.preventDefault()">
                     <md-autocomplete
                             md-selected-item="selectedItem"
