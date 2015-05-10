@@ -1,15 +1,20 @@
 .topmenu{
-  width: 304px;
+  width: 256px;
   margin: 0;
   padding: 0 0 0 15px;
   font-size: 16px;
 }
 .submenu{
-  width: 304px;
+  width: 250px;
   margin: 0;
   padding: 0 0 0 30px;
   font-size: 14px;
 }
 .fixedtop{
   position: fixed;
+}
+
+md-sidenav{
+    min-width: 256px !important;
+    width: 256px !important;
 }
