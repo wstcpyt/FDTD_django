@@ -104,7 +104,7 @@ def step_impl(context):
     gotoRESTAPIguide.click()
 
 
-@then("see the title is RESTGuide")
+@then("see the title is Guide")
 def step_impl(context):
     assert 'Guide' in context.browser.title
 

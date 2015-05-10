@@ -12,7 +12,13 @@
         <section layout="row" flex>
             <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
                 <md-toolbar class="md-theme-indigo">
-                    <h1 class="md-toolbar-tools">Guide</h1>
+                    <a id="gotoIndexlandingpage" style="color: #ffffff; text-decoration: none" href="{% url 'databasedir' %}">
+                        <h1 class="md-toolbar-tools">
+                            <span style="margin-right: 10px">
+                            <img src="/static/images/INDEXsmall.png">
+                            </span>Guide
+                        </h1>
+                    </a>
                 </md-toolbar>
                 <md-content ng-controller="LeftCtrl">
                     <md-button md-ripple-size="full" class="text-left topmenu" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
