@@ -75,6 +75,9 @@
   padding: 0 0 0 30px;
   font-size: 14px; }
 
+.fixedtop {
+  position: fixed; }
+
 html, body {
   background-color: #EEE;
   font-family: 'RobotoDraft',Helvetica,Arial, sans-serif; }
