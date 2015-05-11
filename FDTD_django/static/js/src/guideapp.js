@@ -15,6 +15,14 @@
       }, 300);
       return debounceFn;
     };
+    $scope.navmenus = [
+      {
+        'menu': 'REST API',
+        'href': '#RESTAPI',
+        'formatname': 'RESTAPI',
+        'submenus': ['Getting Started', 'Quick Reference', 'Response Format']
+      }
+    ];
     $scope.toggleLeft = buildToggler('left');
     $scope.screenIsgtmd = $mdMedia('gt-md');
     $scope.$watch(function() {
@@ -22,7 +30,6 @@
     }, function() {
       return $scope.screenIsgtmd = $mdMedia('gt-md');
     });
-    $scope.submenuselected = -1;
     $scope.selectsubmenu = function(submenu, navmenu) {
       var pageurl;
       pageurl = '/static/guidepage/' + navmenu.menu.replace(' ', '') + submenu.replace(' ', '') + '.html';
@@ -34,14 +41,6 @@
     $scope.selectmenu = function(navmenu) {
       return $scope.collapsemenuselected = navmenu.menu;
     };
-    $scope.navmenus = [
-      {
-        'menu': 'REST API',
-        'href': '#RESTAPI',
-        'formatname': 'RESTAPI',
-        'submenus': ['Getting Started', 'Quick Reference', 'Response Format']
-      }
-    ];
     urlvariable = $location.url().split(/\s*\/\s*/g);
     if (urlvariable.length === 3) {
       $scope.pageurl = '/static/guidepage/' + urlvariable[1].replace('%20', '') + urlvariable[2].replace('%20', '') + '.html';
