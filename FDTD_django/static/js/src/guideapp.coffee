@@ -16,15 +16,16 @@ app.controller('GuideCtrl', ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMed
   , ->
     $scope.screenIsgtmd = $mdMedia('gt-md')
   )
-  $scope.pageurl = ''
   $scope.submenuselected = -1
-  $scope.loadpage = (submenu, navmenu, index)->
+  $scope.selectsubmenu = (submenu, navmenu)->
     pageurl =  '/static/guidepage/' + submenu.replace(' ', '') + '.html'
     $scope.pageurl = pageurl
-    $scope.submenuselected = index;
+    $scope.submenuselected = submenu
     $scope.menuselected = navmenu.menu
-  $scope.selectmenu = (index) ->
-    $scope.menuselectedindex = index
+    $location.url('/'+navmenu.menu+'/'+submenu)
+
+  $scope.selectmenu = (navmenu) ->
+    $scope.collapsemenuselected = navmenu.menu
 
   $scope.navmenus = [
     {
@@ -40,7 +41,12 @@ app.controller('GuideCtrl', ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMed
       'submenus': ['Getting Started', 'DATABASE']
     }
   ]
-  console.log($location.url())
+  urlvariable = $location.url().split(/\s*\/\s*/g)
+  if urlvariable.length == 3
+    $scope.pageurl = '/static/guidepage/' + urlvariable[2].replace('%20', '') + '.html'
+    $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ')
+    $scope.menuselected = $scope.collapsemenuselected
+    $scope.submenuselected = urlvariable[2].replace('%20', ' ')
 )
 app.controller('LeftCtrl', ($scope, $log, $http)->
 )

@@ -5,7 +5,7 @@
   app = angular.module('FDTDapp', ['ngMaterial', 'hljs']);
 
   app.controller('GuideCtrl', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location) {
-    var buildToggler;
+    var buildToggler, urlvariable;
     buildToggler = function(navID) {
       var debounceFn;
       debounceFn = $mdUtil.debounce(function() {
@@ -22,17 +22,17 @@
     }, function() {
       return $scope.screenIsgtmd = $mdMedia('gt-md');
     });
-    $scope.pageurl = '';
     $scope.submenuselected = -1;
-    $scope.loadpage = function(submenu, navmenu, index) {
+    $scope.selectsubmenu = function(submenu, navmenu) {
       var pageurl;
       pageurl = '/static/guidepage/' + submenu.replace(' ', '') + '.html';
       $scope.pageurl = pageurl;
-      $scope.submenuselected = index;
-      return $scope.menuselected = navmenu.menu;
+      $scope.submenuselected = submenu;
+      $scope.menuselected = navmenu.menu;
+      return $location.url('/' + navmenu.menu + '/' + submenu);
     };
-    $scope.selectmenu = function(index) {
-      return $scope.menuselectedindex = index;
+    $scope.selectmenu = function(navmenu) {
+      return $scope.collapsemenuselected = navmenu.menu;
     };
     $scope.navmenus = [
       {
@@ -47,7 +47,13 @@
         'submenus': ['Getting Started', 'DATABASE']
       }
     ];
-    return console.log($location.url());
+    urlvariable = $location.url().split(/\s*\/\s*/g);
+    if (urlvariable.length === 3) {
+      $scope.pageurl = '/static/guidepage/' + urlvariable[2].replace('%20', '') + '.html';
+      $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ');
+      $scope.menuselected = $scope.collapsemenuselected;
+      return $scope.submenuselected = urlvariable[2].replace('%20', ' ');
+    }
   });
 
   app.controller('LeftCtrl', function($scope, $log, $http) {});

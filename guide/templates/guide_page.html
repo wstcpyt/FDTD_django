@@ -24,17 +24,17 @@
                     {% verbatim %}
                     <ul style="padding: 0; margin: 0">
                         <li ng-repeat="navmenu in navmenus">
-                            <md-button md-ripple-size="full" class="text-left topmenu" ng-click="selectmenu($index)">
+                            <md-button md-ripple-size="full" class="text-left topmenu" ng-click="selectmenu(navmenu)">
                                 <div layout="row">
                                     <div>{{ navmenu.menu }}</div>
                                     <span flex></span>
                                     <md-icon md-svg-icon="/static/images/icons/arrow_drop_down.svg"></md-icon>
                                 </div>
                             </md-button>
-                            <div ng-hide="$index!=menuselectedindex">
+                            <div ng-class="{hidesubnav :navmenu.menu!=collapsemenuselected}">
                                 <ul style="padding: 0; margin: 0">
                                     <li ng-repeat="submenu in navmenu.submenus">
-                                        <md-button style="text-transform: capitalize" md-ripple-size="full" class="text-left submenu" ng-click="loadpage(submenu, navmenu, $index)" ng-class="{sel: $index == submenuselected && menuselected==navmenu.menu}" ng-href="#/{{ navmenu.menu }}/{{ submenu }}">
+                                        <md-button style="text-transform: capitalize" md-ripple-size="full" class="text-left submenu" ng-click="selectsubmenu(submenu, navmenu)" ng-class="{sel: submenuselected == submenu && menuselected==navmenu.menu}">
                                             <div>{{ submenu }}</div>
                                         </md-button>
                                     </li>

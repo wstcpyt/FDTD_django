@@ -85,6 +85,9 @@ md-sidenav {
 .sel {
   color: #3498db; }
 
+.hidesubnav {
+  display: none; }
+
 html, body {
   background-color: #EEE;
   font-family: 'RobotoDraft',Helvetica,Arial, sans-serif; }
