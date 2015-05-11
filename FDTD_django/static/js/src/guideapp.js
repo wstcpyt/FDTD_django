@@ -25,7 +25,7 @@
     $scope.submenuselected = -1;
     $scope.selectsubmenu = function(submenu, navmenu) {
       var pageurl;
-      pageurl = '/static/guidepage/' + submenu.replace(' ', '') + '.html';
+      pageurl = '/static/guidepage/' + navmenu.menu.replace(' ', '') + submenu.replace(' ', '') + '.html';
       $scope.pageurl = pageurl;
       $scope.submenuselected = submenu;
       $scope.menuselected = navmenu.menu;
@@ -40,16 +40,17 @@
         'href': '#RESTAPI',
         'formatname': 'RESTAPI',
         'submenus': ['Getting Started', 'Quick Reference', 'Response Format']
-      }, {
-        'menu': 'DATABASE',
-        'href': '#DATABASE',
-        'formatname': 'DATABASE',
-        'submenus': ['Getting Started', 'DATABASE']
       }
     ];
     urlvariable = $location.url().split(/\s*\/\s*/g);
     if (urlvariable.length === 3) {
-      $scope.pageurl = '/static/guidepage/' + urlvariable[2].replace('%20', '') + '.html';
+      $scope.pageurl = '/static/guidepage/' + urlvariable[1].replace('%20', '') + urlvariable[2].replace('%20', '') + '.html';
+      $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ');
+      $scope.menuselected = $scope.collapsemenuselected;
+      return $scope.submenuselected = urlvariable[2].replace('%20', ' ');
+    } else {
+      urlvariable = '/REST%20API/Getting%20Started'.split(/\s*\/\s*/g);
+      $scope.pageurl = '/static/guidepage/' + urlvariable[1].replace('%20', '') + urlvariable[2].replace('%20', '') + '.html';
       $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ');
       $scope.menuselected = $scope.collapsemenuselected;
       return $scope.submenuselected = urlvariable[2].replace('%20', ' ');
