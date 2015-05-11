@@ -2,9 +2,9 @@
 (function() {
   var app;
 
-  app = angular.module('FDTDapp', ['ngMaterial']);
+  app = angular.module('FDTDapp', ['ngMaterial', 'hljs']);
 
-  app.controller('GuideCtrl', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia) {
+  app.controller('GuideCtrl', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location) {
     var buildToggler;
     buildToggler = function(navID) {
       var debounceFn;
@@ -17,11 +17,37 @@
     };
     $scope.toggleLeft = buildToggler('left');
     $scope.screenIsgtmd = $mdMedia('gt-md');
-    return $scope.$watch(function() {
+    $scope.$watch(function() {
       return $mdMedia('gt-md');
     }, function() {
       return $scope.screenIsgtmd = $mdMedia('gt-md');
     });
+    $scope.pageurl = '';
+    $scope.submenuselected = -1;
+    $scope.loadpage = function(submenu, navmenu, index) {
+      var pageurl;
+      pageurl = '/static/guidepage/' + submenu.replace(' ', '') + '.html';
+      $scope.pageurl = pageurl;
+      $scope.submenuselected = index;
+      return $scope.menuselected = navmenu.menu;
+    };
+    $scope.selectmenu = function(index) {
+      return $scope.menuselectedindex = index;
+    };
+    $scope.navmenus = [
+      {
+        'menu': 'REST API',
+        'href': '#RESTAPI',
+        'formatname': 'RESTAPI',
+        'submenus': ['Getting Started', 'Quick Reference', 'Response Format']
+      }, {
+        'menu': 'DATABASE',
+        'href': '#DATABASE',
+        'formatname': 'DATABASE',
+        'submenus': ['Getting Started', 'DATABASE']
+      }
+    ];
+    return console.log($location.url());
   });
 
   app.controller('LeftCtrl', function($scope, $log, $http) {});

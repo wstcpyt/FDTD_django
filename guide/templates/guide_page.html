@@ -5,7 +5,7 @@
 {% block head %}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/dark.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
 {% endblock %}
 {% block contents %}
     <div ng-controller="GuideCtrl" layout="column" style="height:100%;">
@@ -21,32 +21,28 @@
                     </a>
                 </md-toolbar>
                 <md-content ng-controller="LeftCtrl">
-                    <md-button md-ripple-size="full" class="text-left topmenu" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        <div layout="row">
-                            <div>REST API</div>
-                            <span flex></span>
-                            <md-icon md-svg-icon="/static/images/icons/arrow_drop_down.svg"></md-icon>
-                        </div>
-                    </md-button>
-                    <div id="collapseOne" class="panel-collapse collapse">
-                        <ul style="padding: 0; margin: 0">
-                            <li>
-                                <md-button md-ripple-size="full" class="text-left submenu">
-                                    <div>Getting Started</div>
-                                </md-button>
-                            </li>
-                            <li>
-                                <md-button md-ripple-size="full" class="text-left submenu">
-                                    <div>Quick Reference</div>
-                                </md-button>
-                            </li>
-                            <li>
-                                <md-button md-ripple-size="full" class="text-left submenu">
-                                    <div>Response Format</div>
-                                </md-button>
-                            </li>
-                        </ul>
-                    </div>
+                    {% verbatim %}
+                    <ul style="padding: 0; margin: 0">
+                        <li ng-repeat="navmenu in navmenus">
+                            <md-button md-ripple-size="full" class="text-left topmenu" ng-click="selectmenu($index)">
+                                <div layout="row">
+                                    <div>{{ navmenu.menu }}</div>
+                                    <span flex></span>
+                                    <md-icon md-svg-icon="/static/images/icons/arrow_drop_down.svg"></md-icon>
+                                </div>
+                            </md-button>
+                            <div ng-hide="$index!=menuselectedindex">
+                                <ul style="padding: 0; margin: 0">
+                                    <li ng-repeat="submenu in navmenu.submenus">
+                                        <md-button style="text-transform: capitalize" md-ripple-size="full" class="text-left submenu" ng-click="loadpage(submenu, navmenu, $index)" ng-class="{sel: $index == submenuselected && menuselected==navmenu.menu}" ng-href="#/{{ navmenu.menu }}/{{ submenu }}">
+                                            <div>{{ submenu }}</div>
+                                        </md-button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endverbatim %}
                 </md-content>
             </md-sidenav>
             <md-content flex>
@@ -60,85 +56,7 @@
                         Getting Started
                     </h1>
                 </md-toolbar>
-                <div class="container-fluid" style="margin-left:20px; margin-top:70px">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-md-8">
-                                <div style="margin-top: 30px" class="panel panel-primary">
-                                    <div class="panel-heading">REST API IS IN DEVELOPER PREVIEW </div>
-                                    <div class="panel-body">REST API and this guide are a <span style="color: red">WORK IN PROGRESS</span> and APIs are subject to change.
-                                        It is intended for early adopters who want to test
-                                    out the REST API and provide feedback</div>
-                                </div>
-                                <h1 class="md-display-1">Getting Started</h1>
-                                <p class="md-body-1">
-                                    The REST API lets you interact with Refractive Index Database from anything that can send an
-                                    HTTP request. There are many things you can do with our REST API. For example:
-                                </p>
-                                <ul>
-                                    <li>Application written in any programming language can interact with data on our Refractive
-                                        Index Database.</li>
-                                    <li>You can Search any element easily with our REST API</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="col-md-8">
-                                <h1 class="md-display-1">Quick Reference</h1>
-                                <p class="md-body-1">
-                                    All API access is over HTTP, and accessed via the <a href="http://www.infomagnetic.com">http://www.infomagnetic.com</a>
-                                    domain.
-                                </p>
-                                <h1 class="md-headline">query</h1>
-                                <div style="overflow: auto">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th>URL</th>
-                                        <th>HTTP Verb</th>
-                                        <th>Functionality</th>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #0040D0">/elementlistitems/&#60elementname&gt/</td>
-                                        <td>GET</td>
-                                        <td>Retrieving paper list according to element</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #0040D0">/elementlistitemsdetail/&#60pk&gt/</td>
-                                        <td>GET</td>
-                                        <td>Retrieving element detail information according to primary key</td>
-                                    </tr>
-                                </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="col-md-8">
-                                <h1 class="md-display-1">Response Format</h1>
-                                <p class="md-body-1">
-                                    The response format for all requests is a JSON object.
-                                    For example, <a href="http://www.infomagnetic.com//elementlistitemsdetail/14/">
-                               /elementlistitemsdetail/14/</a> will return the JSON object:
-                                </p>
-                                <pre data-initialized="true"><code class="json hljs">
-{
-    "DATA": [
-        {
-            "type": "formula 4",
-            "range": "0.59 4.6",
-            "coefficients": "6.346 0.342 0 0.09 1 0 0 0 1 -0.0011 2"
-        }
-    ],
-    "REFERENCES": " <a href="http://dx.doi.org/10.1063/1.1754880">K. F. Hulme et al. Synthetic proustite (Ag<sub>3</sub>AsS<sub>3</sub>)"</a>,
-    "COMMENTS": "Extraordinary ray (e), 20 C",
-    "ELEMENT": "Ag3AsS3",
-    "PAPER": "Hulme-e"
-}
-                                </code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <div ng-include="pageurl"></div>
             </md-content>
         </section>
     </div>
