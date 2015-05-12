@@ -1,4 +1,5 @@
 from django.db import models
+from django_pgjson.fields import JsonField
 
 
 class Category(models.Model):
@@ -17,4 +18,5 @@ class Elementlist(models.Model):
     comments = models.TextField(default='')
     type = models.TextField()
     datalink = models.TextField()
+    data = JsonField(default='{}')
 
