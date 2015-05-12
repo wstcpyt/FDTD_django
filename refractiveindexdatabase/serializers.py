@@ -8,6 +8,7 @@ class ElementSerializer(serializers.ModelSerializer):
         model = Element
         fields = ('title',)
 
+
 class ElementListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Elementlist

@@ -85,7 +85,7 @@ class ElementListItemsDetailTest(TestCase):
         category = Category.objects.filter(title='main').first()
         Element.objects.create(category=category, title='Ag')
         element = Element.objects.filter(title='Ag').first()
-        Elementlist.objects.create(element=element, title='peter', datalink='https://refractiveindex.s3.amazonaws.com/253da551-dc13-4a23-aa91-c3b76067f875')
+        Elementlist.objects.create(element=element, title='peter')
 
     def test_url_resolve_to_elementlistitemsdetial(self):
         found = resolve('/elementlistitemsdetail/1/')
@@ -97,14 +97,9 @@ class ElementListItemsDetailTest(TestCase):
         elementlistitemsdeatial = self.elementlistitemsdetail._get_elementlistitemsdetail(pk)
         self.assertEquals(elementlistitemsdeatial.title, 'peter')
 
-    def test_read_yaml_file_from_url(self):
-        result = self.elementlistitemsdetail._read_yaml_file_from_url('https://refractiveindex.s3.amazonaws.com/253da551-dc13-4a23-aa91-c3b76067f875')
-        self.assertIn('REFERENCES', result)
-
     def test_return_json_response(self):
         elementlist = Elementlist.objects.all()
         pk = elementlist[0].id
         response = self.client.get('/elementlistitemsdetail/' + str(pk) + '/')
-        self.assertIn(b'REFERENCES', response.content)
         self.assertIn(b'ELEMENT', response.content)
         self.assertIn(b'PAPER', response.content)

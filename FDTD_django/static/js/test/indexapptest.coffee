@@ -7,7 +7,7 @@ describe('Unit Test SearchCtrl', ->
     this.$controller = _$controller_
     this.$httpBackend = _$httpBackend_
     this.data = {"DATA":[{"type":"tabulated nk","data":"0.2066 0.5 0.870386410508\n0.21089508319 0.5 0.965578874806\n"}]}
-    this.data_others = {"DATA":[{"type":"others"}]}
+    this.data_others = {"DATA":[{"type":"others","data":"0.2066 0.5 \n0.21089508319 0.5 \n"}]}
     this.item = {
       id:1
     }
@@ -77,13 +77,13 @@ describe('Unit Test SearchCtrl', ->
     mock.verify()
     mock.restore()
   )
-  it('drawIndexChart_others', ->
+  it('drawIndexChart_n', ->
     $scope = {}
     this.$controller('SearchCtrl', {$scope: $scope})
     this.$httpBackend.flush()
     drawChart = new DrawChart(this.item_others, this.$http, $scope)
     mock = sinon.mock(drawChart)
-    mock.expects('drawGoogleChart').never()
+    mock.expects('drawGoogleChart').once()
     this.$httpBackend.expectGET('/elementlistitemsdetail/2/')
     drawChart.drawIndexChart()
     this.$httpBackend.flush()

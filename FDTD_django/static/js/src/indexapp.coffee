@@ -29,13 +29,10 @@ class @DrawChart
     self = this
     self._$http.get('/elementlistitemsdetail/'+ self.item.id + "/")
     .success((data) ->
-      if data["DATA"]["0"]["type"] == "tabulated nk"
         $("#chartframe").fadeIn()
         dataArray = self.gendataArrayfromRawData(data)
         self.drawGoogleChart(dataArray, data)
         self._$scope.loadingchart = false
-      else
-        $("#chartframe").fadeOut()
     ).
     error(->
       console.log('cannot retrieve elementlist index data')
@@ -46,7 +43,7 @@ class @DrawChart
   gendataArrayfromRawData: (data) ->
     dataArray = []
     for object in data["DATA"]["0"]["data"].split('\n')
-      if object.split(' ').length == 3
+      if object.split(' ').length > 1
         dataArray.push(object.split(' ').map(Number))
     return dataArray
 
