@@ -1,4 +1,4 @@
-{% extends 'appbase.html' %}
+{% extends 'sidnavbase.html' %}
 {% block title %}
     Guide
 {% endblock %}
@@ -7,7 +7,25 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
     <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
 {% endblock %}
-
+{% block sidenavtoolbar %}
+    <a id="gotoIndexlandingpage" style="color: #ffffff; text-decoration: none" href="{% url 'databasedir' %}">
+        <h1 class="md-toolbar-tools">
+                            <span style="margin-right: 10px">
+                            <img src="/static/images/INDEXsmall.png">
+                            </span>Guide
+        </h1>
+    </a>
+{% endblock %}
+{% block maintoolbar %}
+    <h1 class="md-toolbar-tools">
+        <md-button ng-hide="screenIsgtmd" ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-icon="/static/images/icons/menu.svg"></md-icon>
+        </md-button>
+        {% verbatim %}
+        {{ maintoolbartitle }}
+        {% endverbatim %}
+    </h1>
+{% endblock %}
 {% block leftctrl %}
     <md-content ng-controller="LeftCtrl">
         {% verbatim %}
@@ -42,6 +60,5 @@
     </div>
 {% endblock %}
 {% block javascript %}
-    <script src="/static/js/src/sidenav/appbase.module.js"></script>
     <script src="/static/js/src/guideapp.module.js"></script>
 {% endblock %}
