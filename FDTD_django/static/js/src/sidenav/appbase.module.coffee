@@ -1,4 +1,4 @@
-app = angular.module('FDTDapp', ['ngMaterial', 'hljs'])
+app = angular.module('FDTDapp.appbase', ['ngMaterial', 'hljs'])
 app.controller('GuideCtrl', ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location)->
   buildToggler= (navID)->
     debounceFn = $mdUtil.debounce(->
@@ -9,15 +9,6 @@ app.controller('GuideCtrl', ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMed
       )
     , 300)
     return debounceFn
-
-  $scope.navmenus = [
-    {
-      'menu': 'REST API'
-      'href': '#RESTAPI'
-      'formatname': 'RESTAPI'
-      'submenus': ['Getting Started', 'Quick Reference', 'Response Format']
-    }
-  ]
 
   $scope.toggleLeft = buildToggler('left')
   $scope.screenIsgtmd = $mdMedia('gt-md')
@@ -48,6 +39,4 @@ app.controller('GuideCtrl', ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMed
     $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ')
     $scope.menuselected = $scope.collapsemenuselected
     $scope.submenuselected = urlvariable[2].replace('%20', ' ')
-)
-app.controller('LeftCtrl', ($scope, $log, $http)->
 )

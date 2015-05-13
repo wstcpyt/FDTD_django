@@ -7,64 +7,41 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
     <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
 {% endblock %}
-{% block contents %}
-    <div ng-controller="GuideCtrl" layout="column" style="height:100%;">
-        <section layout="row" flex>
-            <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-                <md-toolbar class="md-theme-indigo">
-                    <a id="gotoIndexlandingpage" style="color: #ffffff; text-decoration: none" href="{% url 'databasedir' %}">
-                        <h1 class="md-toolbar-tools">
-                            <span style="margin-right: 10px">
-                            <img src="/static/images/INDEXsmall.png">
-                            </span>Guide
-                        </h1>
-                    </a>
-                </md-toolbar>
-                <md-content ng-controller="LeftCtrl">
-                    {% verbatim %}
+
+{% block leftctrl %}
+    <md-content ng-controller="LeftCtrl">
+        {% verbatim %}
+        <ul style="padding: 0; margin: 0">
+            <li ng-repeat="navmenu in navmenus">
+                <md-button md-ripple-size="full" class="text-left topmenu" ng-click="selectmenu(navmenu)">
+                    <div layout="row">
+                        <div>{{ navmenu.menu }}</div>
+                        <span flex></span>
+                        <md-icon md-svg-icon="/static/images/icons/arrow_drop_down.svg"></md-icon>
+                    </div>
+                </md-button>
+                <div ng-class="{hidesubnav :navmenu.menu!=collapsemenuselected}">
                     <ul style="padding: 0; margin: 0">
-                        <li ng-repeat="navmenu in navmenus">
-                            <md-button md-ripple-size="full" class="text-left topmenu" ng-click="selectmenu(navmenu)">
-                                <div layout="row">
-                                    <div>{{ navmenu.menu }}</div>
-                                    <span flex></span>
-                                    <md-icon md-svg-icon="/static/images/icons/arrow_drop_down.svg"></md-icon>
-                                </div>
+                        <li ng-repeat="submenu in navmenu.submenus">
+                            <md-button style="text-transform: capitalize" md-ripple-size="full" class="text-left submenu" ng-click="selectsubmenu(submenu, navmenu)" ng-class="{sel: submenuselected == submenu && menuselected==navmenu.menu}">
+                                <div>{{ submenu }}</div>
                             </md-button>
-                            <div ng-class="{hidesubnav :navmenu.menu!=collapsemenuselected}">
-                                <ul style="padding: 0; margin: 0">
-                                    <li ng-repeat="submenu in navmenu.submenus">
-                                        <md-button style="text-transform: capitalize" md-ripple-size="full" class="text-left submenu" ng-click="selectsubmenu(submenu, navmenu)" ng-class="{sel: submenuselected == submenu && menuselected==navmenu.menu}">
-                                            <div>{{ submenu }}</div>
-                                        </md-button>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
-                    {% endverbatim %}
-                </md-content>
-            </md-sidenav>
-            <md-content flex>
-                <md-toolbar class="fixedtop">
-                    <h1 class="md-toolbar-tools">
-                        <md-button ng-hide="screenIsgtmd" ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
-                            <md-icon md-svg-icon="/static/images/icons/menu.svg"></md-icon>
-                        </md-button>
-                        REST API
-                        <span><md-icon md-svg-icon="/static/images/icons/rightarrow.svg"></md-icon></span>
-                        Getting Started
-                    </h1>
-                </md-toolbar>
-                <div class="container-fluid" style="margin-left:20px; margin-top:70px">
-                    <div class="row">
-                        <div ng-include="pageurl"></div>
-                    </div>
                 </div>
-            </md-content>
-        </section>
+            </li>
+        </ul>
+        {% endverbatim %}
+    </md-content>
+{% endblock %}
+{% block mainpage %}
+    <div class="container-fluid" style="margin-left:20px; margin-top:70px">
+        <div class="row">
+            <div ng-include="pageurl"></div>
+        </div>
     </div>
-{%  endblock %}
+{% endblock %}
 {% block javascript %}
-    <script src="/static/js/src/guideapp.js"></script>
+    <script src="/static/js/src/sidenav/appbase.module.js"></script>
+    <script src="/static/js/src/guideapp.module.js"></script>
 {% endblock %}

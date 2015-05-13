@@ -2,7 +2,7 @@
 (function() {
   var app;
 
-  app = angular.module('FDTDapp', ['ngMaterial', 'hljs']);
+  app = angular.module('FDTDapp.appbase', ['ngMaterial', 'hljs']);
 
   app.controller('GuideCtrl', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location) {
     var buildToggler, urlvariable;
@@ -15,14 +15,6 @@
       }, 300);
       return debounceFn;
     };
-    $scope.navmenus = [
-      {
-        'menu': 'REST API',
-        'href': '#RESTAPI',
-        'formatname': 'RESTAPI',
-        'submenus': ['Getting Started', 'Quick Reference', 'Response Format']
-      }
-    ];
     $scope.toggleLeft = buildToggler('left');
     $scope.screenIsgtmd = $mdMedia('gt-md');
     $scope.$watch(function() {
@@ -56,8 +48,6 @@
     }
   });
 
-  app.controller('LeftCtrl', function($scope, $log, $http) {});
-
 }).call(this);
 
-//# sourceMappingURL=guideapp.js.map
+//# sourceMappingURL=appbase.module.js.map
