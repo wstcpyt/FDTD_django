@@ -1,1 +1,1 @@
-module = angular.module('FDTDapp.sidenav', ['FDTDapp.sidenav.sidenav.ctrl'])
+module = angular.module('FDTDapp.sidenav', ['FDTDapp.sidenav.ctrl'])

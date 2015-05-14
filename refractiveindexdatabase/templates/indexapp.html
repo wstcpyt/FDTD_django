@@ -6,9 +6,6 @@
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="/static/js/lib/googlelinechart/googlelinechart.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/dark.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
-    <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
 {% endblock %}
 {% block contents %}
     <div class="indexapp">
@@ -163,7 +160,8 @@
 
 {% endblock %}
 {% block javascript %}
-    <script src="/static/js/src/indexapp.js"></script>
+    <script src="/static/js/src/indexapp/search/search.module.js"></script>
+    <script src="/static/js/src/indexapp/indexapp.module.js"></script>
     <script>
         {# FOUC PREVENTION#}
         $( document ).ready(function() {

@@ -2,7 +2,7 @@
 (function() {
   var module;
 
-  module = angular.module('FDTDapp', ['FDTDapp.sidenav', 'FDTDapp.guideapp.ctrl', 'hljs']);
+  module = angular.module('FDTDapp', ['FDTDapp.sidenav', 'guideapp.ctrl', 'hljs']);
 
 }).call(this);
 

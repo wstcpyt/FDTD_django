@@ -2,7 +2,7 @@
 (function() {
   var module;
 
-  module = angular.module('FDTDapp.sidenav', ['FDTDapp.sidenav.sidenav.ctrl']);
+  module = angular.module('FDTDapp.sidenav', ['FDTDapp.sidenav.ctrl']);
 
 }).call(this);
 

@@ -2,7 +2,7 @@
 (function() {
   var module;
 
-  module = angular.module('FDTDapp.sidenav.sidenav.ctrl', ['ngMaterial']);
+  module = angular.module('FDTDapp.sidenav.ctrl', ['ngMaterial']);
 
   module.controller('SidenavCtrl', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location, $rootScope) {
     var buildToggler;
