@@ -2,9 +2,9 @@
 (function() {
   var module;
 
-  module = angular.module('FDTDapp.appbase.guide.ctrl', ['ngMaterial']);
+  module = angular.module('FDTDapp.sidenav.sidenav.ctrl', ['ngMaterial']);
 
-  module.controller('GuideCtrl', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location, $rootScope) {
+  module.controller('SidenavCtrl', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location, $rootScope) {
     var buildToggler;
     buildToggler = function(navID) {
       var debounceFn;
@@ -26,4 +26,4 @@
 
 }).call(this);
 
-//# sourceMappingURL=guide.ctrl.js.map
+//# sourceMappingURL=sidenav.ctrl.js.map

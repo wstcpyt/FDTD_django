@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "sidenav.module.js",
+  "sourceRoot": "",
+  "sources": [
+    "sidenav.module.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,MAAA;;AAAA,EAAA,MAAA,GAAS,OAAO,CAAC,MAAR,CAAe,iBAAf,EAAkC,CAAC,8BAAD,CAAlC,CAAT,CAAA;AAAA"
+}

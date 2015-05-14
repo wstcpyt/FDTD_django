@@ -1,4 +1,4 @@
-app = angular.module('FDTDapp', ['ngMaterial'])
+app = angular.module('FDTDapp', ['ngMaterial','FDTDapp.sidenav','hljs'])
 app.controller('SearchCtrl', ($scope, $log, $http)->
   $scope.elements = loadAll($http, $scope)
   $scope.hideelementlist = false
@@ -78,3 +78,6 @@ queryElementList = (_$scope,_$http, item)->
 
 @booleanFn = (state, lowercaseQuery)->
   (state.value.indexOf(lowercaseQuery) == 0)
+
+app.controller('LeftCtrl', ()->
+)

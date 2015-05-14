@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "guideapp.module.js",
+  "sourceRoot": "",
+  "sources": [
+    "guideapp.module.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,MAAA;;AAAA,EAAA,MAAA,GAAS,OAAO,CAAC,MAAR,CAAe,SAAf,EAA0B,CAAC,iBAAD,EAAoB,uBAApB,EAA4C,MAA5C,CAA1B,CAAT,CAAA;AAAA"
+}

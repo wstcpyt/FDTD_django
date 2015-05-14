@@ -1,1 +1,0 @@
-module = angular.module('FDTDapp.appbase', ['FDTDapp.appbase.guide.ctrl'])

@@ -1,5 +1,5 @@
-app = angular.module('FDTDapp', ['FDTDapp.appbase','hljs'])
-app.controller('LeftCtrl', ($scope, $location, $rootScope)->
+module = angular.module('FDTDapp.guideapp.ctrl', ['ngMaterial'])
+module.controller('LeftCtrl', ($scope, $location, $rootScope)->
   $rootScope.maintoolbartitle = "Getting Started"
   $scope.navmenus = [
     {

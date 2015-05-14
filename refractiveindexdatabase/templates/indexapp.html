@@ -1,4 +1,4 @@
-{% extends 'appbase.html' %}
+{% extends 'sidnavbase.html' %}
 {% block title %}
     INDEXApp
 {% endblock %}
@@ -6,17 +6,12 @@
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="/static/js/lib/googlelinechart/googlelinechart.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+    <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
 {% endblock %}
 {% block contents %}
     <div class="indexapp">
-        <md-toolbar id="toolbar" class="md-toolbar-tools" style="display: none;">
-            <md-button class="md-icon-button" aria-label="Settings">
-                <md-icon md-svg-icon="/static/images/icons/menu.svg"></md-icon>
-            </md-button>
-            <div class="md-toolbar-tools">
-                <span>Refractive Index Database</span>
-            </div>
-        </md-toolbar>
         <div class="container">
             {% verbatim %}
             <div id="search" ng-controller="SearchCtrl" style="display: none">
@@ -68,6 +63,104 @@
         </div>
         {% endverbatim %}
     </div>
+{% endblock %}
+{% block sidenavtoolbar %}
+    <a id="gotoIndexlandingpage" style="color: #ffffff; text-decoration: none" href="{% url 'databasedir' %}">
+        <h1 class="md-toolbar-tools">
+                            <span style="margin-right: 10px">
+                            <img src="/static/images/INDEXsmall.png">
+                            </span>Index App
+        </h1>
+    </a>
+{% endblock %}
+{% block maintoolbar %}
+    <h1 class="md-toolbar-tools">
+        <md-button ng-hide="screenIsgtmd" ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-icon="/static/images/icons/menu.svg"></md-icon>
+        </md-button>
+          App
+    </h1>
+{% endblock %}
+{% block leftctrl %}
+    <md-content ng-controller="LeftCtrl">
+        {% verbatim %}
+        <ul style="padding: 0; margin: 0">
+            <li ng-repeat="navmenu in navmenus">
+                <md-button md-ripple-size="full" class="text-left topmenu" ng-click="selectmenu(navmenu)">
+                    <div layout="row">
+                        <div>{{ navmenu.menu }}</div>
+                        <span flex></span>
+                        <md-icon md-svg-icon="/static/images/icons/arrow_drop_down.svg"></md-icon>
+                    </div>
+                </md-button>
+                <div ng-class="{hidesubnav :navmenu.menu!=collapsemenuselected}">
+                    <ul style="padding: 0; margin: 0">
+                        <li ng-repeat="submenu in navmenu.submenus">
+                            <md-button style="text-transform: capitalize" md-ripple-size="full" class="text-left submenu" ng-click="selectsubmenu(submenu, navmenu)" ng-class="{sel: submenuselected == submenu && menuselected==navmenu.menu}">
+                                <div>{{ submenu }}</div>
+                            </md-button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        {% endverbatim %}
+    </md-content>
+{% endblock %}
+{% block mainpage %}
+    <div class="indexapp">
+        <div class="container-fluid" style="padding-top: 100px;">
+            {% verbatim %}
+            <div id="search" ng-controller="SearchCtrl" style="display: none">
+                <div style="margin-top: 30px" class="panel panel-primary">
+                    <div class="panel-heading">REFRACTIVE INDEX DATABASE IS IN DEVELOPER PREVIEW </div>
+                    <div class="panel-body">REFRACTIVE INDEX DATABASE is a <span style="color: red">WORK IN PROGRESS</span>
+                        and APIs are subject to change.
+                        It is intended for early adopters who want to test
+                        out the interface and provide feedback</div>
+                </div>
+                <form ng-submit="$event.preventDefault()">
+                    <md-autocomplete
+                            md-selected-item="selectedItem"
+                            md-search-text-change="searchTextChange(searchText)"
+                            md-search-text="searchText"
+                            md-selected-item-change="selectedItemChange(item)"
+                            md-items="item in querySearch(searchText)"
+                            md-item-text="item.display"
+                            md-min-length="0"
+                            placeholder="Search your element">
+                        <md-item-template>
+                            <span class="searchspan" md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                    </md-autocomplete>
+                    <br/>
+                </form>
+                <div id="elementlist" layout layout-align="center center" style="display: none">
+                    <md-whiteframe class="md-whiteframe-z1" ng-hide='hideelementlist'>
+                        <md-content>
+                            <md-list>
+                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist">
+                                    <div class="md-list-item-text">
+                                        <h3 id="elementlisttitle">{{item.title}}</h3>
+                                    </div>
+                                    <md-divider ng-if="!$last"></md-divider>
+                                </md-list-item>
+                            </md-list>
+                        </md-content>
+                    </md-whiteframe>
+                </div>
+                <div id="linechart" layout layout-align="center center" style="display: none;">
+                    <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe" >
+                        <md-progress-circular ng-show="loadingchart" md-mode="indeterminate"></md-progress-circular>
+                        <div id="linechart_material" style="height: inherit"></div>
+                    </md-whiteframe>
+                </div>
+            </div>
+
+        </div>
+        {% endverbatim %}
+    </div>
+
 {% endblock %}
 {% block javascript %}
     <script src="/static/js/src/indexapp.js"></script>

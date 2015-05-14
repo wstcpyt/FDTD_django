@@ -1,5 +1,5 @@
-module = angular.module('FDTDapp.appbase.guide.ctrl', ['ngMaterial'])
-module.controller('GuideCtrl', ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location, $rootScope)->
+module = angular.module('FDTDapp.sidenav.sidenav.ctrl', ['ngMaterial'])
+module.controller('SidenavCtrl', ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, $location, $rootScope)->
   buildToggler= (navID)->
     debounceFn = $mdUtil.debounce(->
       $mdSidenav(navID)

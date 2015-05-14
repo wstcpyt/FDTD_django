@@ -2,7 +2,7 @@
 (function() {
   var app, queryElementList;
 
-  app = angular.module('FDTDapp', ['ngMaterial']);
+  app = angular.module('FDTDapp', ['ngMaterial', 'FDTDapp.sidenav', 'hljs']);
 
   app.controller('SearchCtrl', function($scope, $log, $http) {
     $scope.elements = loadAll($http, $scope);
@@ -113,6 +113,8 @@
   this.booleanFn = function(state, lowercaseQuery) {
     return state.value.indexOf(lowercaseQuery) === 0;
   };
+
+  app.controller('LeftCtrl', function() {});
 
 }).call(this);
 
