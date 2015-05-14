@@ -7,60 +7,6 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="/static/js/lib/googlelinechart/googlelinechart.js"></script>
 {% endblock %}
-{% block contents %}
-    <div class="indexapp">
-        <div class="container">
-            {% verbatim %}
-            <div id="search" ng-controller="SearchCtrl" style="display: none">
-                <div style="margin-top: 30px" class="panel panel-primary">
-                    <div class="panel-heading">REFRACTIVE INDEX DATABASE IS IN DEVELOPER PREVIEW </div>
-                    <div class="panel-body">REFRACTIVE INDEX DATABASE is a <span style="color: red">WORK IN PROGRESS</span>
-                        and APIs are subject to change.
-                        It is intended for early adopters who want to test
-                        out the interface and provide feedback</div>
-                </div>
-                <form ng-submit="$event.preventDefault()">
-                    <md-autocomplete
-                            md-selected-item="selectedItem"
-                            md-search-text-change="searchTextChange(searchText)"
-                            md-search-text="searchText"
-                            md-selected-item-change="selectedItemChange(item)"
-                            md-items="item in querySearch(searchText)"
-                            md-item-text="item.display"
-                            md-min-length="0"
-                            placeholder="Search your element">
-                        <md-item-template>
-                            <span class="searchspan" md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
-                        </md-item-template>
-                    </md-autocomplete>
-                    <br/>
-                </form>
-                <div id="elementlist" layout layout-align="center center" style="display: none">
-                    <md-whiteframe class="md-whiteframe-z1" ng-hide='hideelementlist'>
-                        <md-content>
-                            <md-list>
-                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist">
-                                    <div class="md-list-item-text">
-                                        <h3 id="elementlisttitle">{{item.title}}</h3>
-                                    </div>
-                                    <md-divider ng-if="!$last"></md-divider>
-                                </md-list-item>
-                            </md-list>
-                        </md-content>
-                    </md-whiteframe>
-                </div>
-                <div id="linechart" layout layout-align="center center" style="display: none;">
-                    <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe" >
-                        <md-progress-circular ng-show="loadingchart" md-mode="indeterminate"></md-progress-circular>
-                        <div id="linechart_material" style="height: inherit"></div>
-                    </md-whiteframe>
-                </div>
-            </div>
-
-        </div>
-        {% endverbatim %}
-    </div>
-{% endblock %}
 {% block sidenavtoolbar %}
     <a id="gotoIndexlandingpage" style="color: #ffffff; text-decoration: none" href="{% url 'databasedir' %}">
         <h1 class="md-toolbar-tools">
