@@ -1,10 +1,23 @@
 .indexapp{
+  .title{
+    background-color: rgb(238, 246, 255);
+  }
+  .container{
+    -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.26);
+    -moz-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.26);
+    box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.26);
+    padding: 0;
+  }
+  .expand{
+    background-color: rgb(238, 246, 255);
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
   md-toolbar{
     position: fixed;
     z-index: 1030;
   }
   md-whiteframe{
-    width: 700px;
     md-list{
       padding: 0;
     }
@@ -16,7 +29,7 @@
       background-color: dodgerblue;
     }
   }
-      #chartframe{
-      background-color: #ffffff;
-    }
+  #chartframe{
+    background-color: #ffffff;
+  }
 }

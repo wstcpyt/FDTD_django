@@ -2,7 +2,6 @@ module = angular.module('indexapp.search', [])
 module.controller('SearchCtrl', ($scope, $log, $http)->
   $scope.elements = loadAll($http, $scope)
   $scope.hideelementlist = false
-  $scope.loadingchart = false
   $scope.querySearch = (query) ->
     results = if query then $scope.elements.filter( createFilterFor(query) ) else $scope.elements
     return results
@@ -14,38 +13,7 @@ module.controller('SearchCtrl', ($scope, $log, $http)->
 
   $scope.searchTextChange = (text) ->
     $log.info('Text changed to ' + text)
-
-  $scope.drawIndexChart = (item)->
-    $("#chartframe").css({"width": "900px", "height": "500px", "margin-top" : "30px"})
-    $("#linechart_material").css({"margin": "30px"})
-    $scope.loadingchart = true
-    drawchart = new DrawChart(item, $http, $scope)
-    drawchart.drawIndexChart()
 )
-
-class @DrawChart
-  constructor: (@item, @_$http, @_$scope)->
-  drawIndexChart: ->
-    self = this
-    self._$http.get('/elementlistitemsdetail/'+ self.item.id + "/")
-    .success((data) ->
-        $("#chartframe").fadeIn()
-        dataArray = self.gendataArrayfromRawData(data)
-        self.drawGoogleChart(dataArray, data)
-        self._$scope.loadingchart = false
-    ).
-    error(->
-      console.log('cannot retrieve elementlist index data')
-    )
-  drawGoogleChart: (dataArray, JSONDATA)->
-    drawChart(dataArray, JSONDATA)
-
-  gendataArrayfromRawData: (data) ->
-    dataArray = []
-    for object in data["DATA"]["0"]["data"].split('\n')
-      if object.split(' ').length > 1
-        dataArray.push(object.split(' ').map(Number))
-    return dataArray
 
 queryElementList = (_$scope,_$http, item)->
   _$http.get('/elementlistitems/' + item.display + '/').

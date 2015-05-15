@@ -1,2 +1,2 @@
-module = angular.module('FDTDapp', ['ngMaterial','FDTDapp.sidenav', 'indexapp.search'])
+module = angular.module('FDTDapp', ['ngMaterial','FDTDapp.sidenav', 'indexapp.search', 'indexapp.chart'])
 

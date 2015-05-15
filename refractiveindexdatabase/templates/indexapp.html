@@ -21,7 +21,7 @@
         <md-button ng-hide="screenIsgtmd" ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
             <md-icon md-svg-icon="/static/images/icons/menu.svg"></md-icon>
         </md-button>
-          App
+        App
     </h1>
 {% endblock %}
 {% block leftctrl %}
@@ -79,24 +79,20 @@
                     <br/>
                 </form>
                 <div id="elementlist" layout layout-align="center center" style="display: none">
-                    <md-whiteframe class="md-whiteframe-z1" ng-hide='hideelementlist'>
-                        <md-content>
-                            <md-list>
-                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist">
-                                    <div class="md-list-item-text">
-                                        <h3 id="elementlisttitle">{{item.title}}</h3>
+
+                            <md-list ng-controller="chartCtrl" ng-hide='hideelementlist'>
+                                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist" ng-class="{expand :paperselected==item.title}" style="padding: 0;">
+                                    <div class="container" style="width: 900px; background-color: #ffffff">
+                                        <div class="md-list-item-text" style="padding-left: 10px" ng-class="{title :paperselected==item.title}">
+                                            <h3 id="elementlisttitle">{{item.title}}</h3>
+                                        </div>
+                                        <div ng-hide="paperselected!=item.title">
+                                            <div id="{{item.title}}" style="height: 400px; margin-bottom: 20px"></div>
+                                        </div>
                                     </div>
                                     <md-divider ng-if="!$last"></md-divider>
                                 </md-list-item>
                             </md-list>
-                        </md-content>
-                    </md-whiteframe>
-                </div>
-                <div id="linechart" layout layout-align="center center" style="display: none;">
-                    <md-whiteframe class="md-whiteframe-z1" layout="column" id="chartframe" >
-                        <md-progress-circular ng-show="loadingchart" md-mode="indeterminate"></md-progress-circular>
-                        <div id="linechart_material" style="height: inherit"></div>
-                    </md-whiteframe>
                 </div>
             </div>
 
@@ -106,13 +102,13 @@
 
 {% endblock %}
 {% block javascript %}
+    <script src="/static/js/src/indexapp/chart/chart.module.js"></script>
     <script src="/static/js/src/indexapp/search/search.module.js"></script>
     <script src="/static/js/src/indexapp/indexapp.module.js"></script>
     <script>
         {# FOUC PREVENTION#}
         $( document ).ready(function() {
             $('#elementlist').show();
-            $('#linechart').show();
             $('#search').show();
             $('#toolbar').show()
         });

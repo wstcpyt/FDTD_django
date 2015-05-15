@@ -1,4 +1,4 @@
-app = angular.module('FDTDapp', ['ngMaterial'])
+app = angular.module('head.ctrl', [])
 app.controller('headercontroller', ($scope)->
   tabvalue = $('#tabindex').val()
   tabvalue = parseInt(tabvalue)

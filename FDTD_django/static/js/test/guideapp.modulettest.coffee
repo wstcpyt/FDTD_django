@@ -1,6 +1,6 @@
 describe('Unit Test guideapp.ctrl', ->
   root = exports ? this
-  beforeEach(module('FDTDapp.guideapp.ctrl'))
+  beforeEach(module('guideapp.ctrl'))
   beforeEach(inject((_$controller_, _$location_, _$rootScope_)->
     this.$controller = _$controller_
     this.$location = _$location_

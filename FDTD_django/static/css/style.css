@@ -23,18 +23,27 @@
       font-weight: 300;
       line-height: 32px; }
 
+.indexapp .title {
+  background-color: #eef6ff; }
+.indexapp .container {
+  -webkit-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.26);
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.26);
+  padding: 0; }
+.indexapp .expand {
+  background-color: #eef6ff;
+  margin-bottom: 50px;
+  margin-top: 50px; }
 .indexapp md-toolbar {
   position: fixed;
   z-index: 1030; }
-.indexapp md-whiteframe {
-  width: 700px; }
-  .indexapp md-whiteframe md-list {
-    padding: 0; }
-  .indexapp md-whiteframe md-list-item:hover {
-    background-color: #eef6ff;
-    cursor: pointer; }
-  .indexapp md-whiteframe md-list-item:active {
-    background-color: dodgerblue; }
+.indexapp md-whiteframe md-list {
+  padding: 0; }
+.indexapp md-whiteframe md-list-item:hover {
+  background-color: #eef6ff;
+  cursor: pointer; }
+.indexapp md-whiteframe md-list-item:active {
+  background-color: dodgerblue; }
 .indexapp #chartframe {
   background-color: #ffffff; }
 
@@ -118,8 +127,5 @@ html, body {
 
 .maincontent {
   background-color: #EEE; }
-
-.container {
-  padding-top: 100px; }
 
 /*# sourceMappingURL=style.css.map */

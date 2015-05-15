@@ -2,7 +2,7 @@
 (function() {
   var module;
 
-  module = angular.module('guideapp.ctrl', ['ngMaterial']);
+  module = angular.module('guideapp.ctrl', []);
 
   module.controller('LeftCtrl', function($scope, $location, $rootScope) {
     var urlvariable;

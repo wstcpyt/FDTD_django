@@ -1,4 +1,4 @@
-module = angular.module('guideapp.ctrl', ['ngMaterial'])
+module = angular.module('guideapp.ctrl', [])
 module.controller('LeftCtrl', ($scope, $location, $rootScope)->
   $scope.navmenus = [
     {

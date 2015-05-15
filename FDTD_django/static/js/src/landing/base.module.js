@@ -2,7 +2,7 @@
 (function() {
   var app;
 
-  app = angular.module('FDTDapp', ['ngMaterial']);
+  app = angular.module('FDTDapp', ['ngMaterial', 'head.ctrl']);
 
   app.controller('headercontroller', function($scope) {
     var tabvalue;
@@ -19,4 +19,4 @@
 
 }).call(this);
 
-//# sourceMappingURL=base.js.map
+//# sourceMappingURL=base.module.js.map

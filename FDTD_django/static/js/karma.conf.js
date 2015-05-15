@@ -21,9 +21,17 @@ module.exports = function(config) {
             '../bower_components/angular-animate/angular-animate.js',
             '../bower_components/angular-material/angular-material.js',
             'jquery-2.1.3.min.js',
-            './src/guideapp/guideapp.ctrl.js',
             './lib/sinon.js',
-            './test/guideapp.modulettest.js'
+            // test source
+            './test/*.js',
+            //test base
+            './src/landing/head.ctrl.js',
+            //test guide module
+            './src/guideapp/guideapp.ctrl.js',
+            //test search module
+            './src/indexapp/search/search.module.js',
+            //test chart module
+            './src/indexapp/chart/chart.module.js'
         ],
 
 
@@ -63,7 +71,7 @@ module.exports = function(config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome', 'Firefox'],
+        browsers: ['Chrome'],
 
 
         // Continuous Integration mode

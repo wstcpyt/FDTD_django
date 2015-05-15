@@ -1,7 +1,7 @@
 describe('Unit Test SearchCtrl', ->
   root = exports ? this
   beforeEach(module('material.components.slider'));
-  beforeEach(module('FDTDapp'))
+  beforeEach(module('indexapp.search'))
   beforeEach(inject((_$controller_, _$httpBackend_, _$http_)->
     this.$http = _$http_
     this.$controller = _$controller_
