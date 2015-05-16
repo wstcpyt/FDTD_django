@@ -37,6 +37,12 @@
 .indexapp md-toolbar {
   position: fixed;
   z-index: 1030; }
+.indexapp md-list-item .md-list-item-text {
+  cursor: pointer; }
+  .indexapp md-list-item .md-list-item-text md-icon {
+    color: #bdc3c7; }
+  .indexapp md-list-item .md-list-item-text md-icon:hover {
+    color: #34495e; }
 .indexapp md-whiteframe md-list {
   padding: 0; }
 .indexapp md-whiteframe md-list-item:hover {

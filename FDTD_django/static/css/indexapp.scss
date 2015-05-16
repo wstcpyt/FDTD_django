@@ -17,6 +17,17 @@
     position: fixed;
     z-index: 1030;
   }
+  md-list-item{
+    .md-list-item-text{
+      cursor: pointer;
+      md-icon{
+        color: #bdc3c7;
+      }
+      md-icon:hover{
+        color: #34495e;
+      }
+    }
+  }
   md-whiteframe{
     md-list{
       padding: 0;

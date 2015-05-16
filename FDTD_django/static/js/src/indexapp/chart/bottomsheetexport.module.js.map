@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "bottomsheetexport.module.js",
+  "sourceRoot": "",
+  "sources": [
+    "bottomsheetexport.module.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,MAAA;;AAAA,EAAA,MAAA,GAAS,OAAO,CAAC,MAAR,CAAe,4BAAf,EAA6C,EAA7C,CAAT,CAAA;AAAA"
+}
