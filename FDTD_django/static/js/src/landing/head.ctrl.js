@@ -4,18 +4,20 @@
 
   app = angular.module('head.ctrl', []);
 
-  app.controller('headercontroller', function($scope) {
-    var tabvalue;
-    tabvalue = $('#tabindex').val();
-    tabvalue = parseInt(tabvalue);
-    $scope.selectedIndex = tabvalue;
-    $scope.tab2clicked = function() {
-      return window.location.href = "/databasedirectory/";
-    };
-    return $scope.tab1clicked = function() {
-      return window.location.href = "/";
-    };
-  });
+  app.controller('headercontroller', [
+    '$scope', function($scope) {
+      var tabvalue;
+      tabvalue = $('#tabindex').val();
+      tabvalue = parseInt(tabvalue);
+      $scope.selectedIndex = tabvalue;
+      $scope.tab2clicked = function() {
+        return window.location.href = "/databasedirectory/";
+      };
+      return $scope.tab1clicked = function() {
+        return window.location.href = "/";
+      };
+    }
+  ]);
 
 }).call(this);
 

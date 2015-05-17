@@ -1,5 +1,5 @@
 module = angular.module('indexapp.search', [])
-module.controller('SearchCtrl', ($scope, $log, $http)->
+module.controller('SearchCtrl', ['$scope', '$log', '$http', ($scope, $log, $http)->
   $scope.elements = loadAll($http, $scope)
   $scope.hideelementlist = false
   $scope.querySearch = (query) ->
@@ -13,7 +13,7 @@ module.controller('SearchCtrl', ($scope, $log, $http)->
 
   $scope.searchTextChange = (text) ->
     $log.info('Text changed to ' + text)
-)
+])
 
 queryElementList = (_$scope,_$http, item)->
   _$http.get('/elementlistitems/' + item.display + '/').

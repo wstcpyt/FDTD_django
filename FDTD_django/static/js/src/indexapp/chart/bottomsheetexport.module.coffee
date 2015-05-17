@@ -1,10 +1,10 @@
 module = angular.module('indexapp.bottomsheetexport', [])
-.config(($mdIconProvider) ->
+.config(['$mdIconProvider',($mdIconProvider) ->
     $mdIconProvider
       .icon('txt', '/static/images/icons/txt.svg', 24)
       .icon('csv', '/static/images/icons/csv.svg', 24)
-  )
-.controller('bottomCtrl', ($scope, $timeout, $mdBottomSheet) ->
+  ])
+.controller('bottomCtrl', ['$scope','$timeout', '$mdBottomSheet', ($scope, $timeout, $mdBottomSheet) ->
   $scope.alert = ''
   $scope.showGridBottomSheet = ($event) ->
     $scope.alert = ''
@@ -16,8 +16,8 @@ module = angular.module('indexapp.bottomsheetexport', [])
       console.log(clickedItem.name)
       $scope.alert = clickedItem.name + ' clicked!'
     )
-)
-.controller('GridBottomSheetCtrl', ($scope, $mdBottomSheet) ->
+])
+.controller('GridBottomSheetCtrl', ['$scope', '$mdBottomSheet', ($scope, $mdBottomSheet) ->
   $scope.items = [
     { name: 'TXT', icon: 'txt' },
     { name: 'CSV', icon: 'csv' },
@@ -25,8 +25,8 @@ module = angular.module('indexapp.bottomsheetexport', [])
   $scope.listItemClick = ($index) ->
     clickedItem = $scope.items[$index]
     $mdBottomSheet.hide(clickedItem)
-)
-.run(($http, $templateCache) ->
+])
+.run(['$http', '$templateCache', ($http, $templateCache) ->
     urls = [
       '/static/images/icons/txt.svg',
       '/static/images/icons/csv.svg',
@@ -34,4 +34,4 @@ module = angular.module('indexapp.bottomsheetexport', [])
     angular.forEach(urls, (url) ->
       $http.get(url, {cache: $templateCache})
     );
-  )
+  ])

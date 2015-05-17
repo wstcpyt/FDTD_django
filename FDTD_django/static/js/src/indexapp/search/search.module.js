@@ -4,24 +4,26 @@
 
   module = angular.module('indexapp.search', []);
 
-  module.controller('SearchCtrl', function($scope, $log, $http) {
-    $scope.elements = loadAll($http, $scope);
-    $scope.hideelementlist = false;
-    $scope.querySearch = function(query) {
-      var results;
-      results = query ? $scope.elements.filter(createFilterFor(query)) : $scope.elements;
-      return results;
-    };
-    $scope.selectedItemChange = function(item) {
-      if (item !== void 0) {
-        $log.info('Item changed to ' + item.display);
-        return queryElementList($scope, $http, item);
-      }
-    };
-    return $scope.searchTextChange = function(text) {
-      return $log.info('Text changed to ' + text);
-    };
-  });
+  module.controller('SearchCtrl', [
+    '$scope', '$log', '$http', function($scope, $log, $http) {
+      $scope.elements = loadAll($http, $scope);
+      $scope.hideelementlist = false;
+      $scope.querySearch = function(query) {
+        var results;
+        results = query ? $scope.elements.filter(createFilterFor(query)) : $scope.elements;
+        return results;
+      };
+      $scope.selectedItemChange = function(item) {
+        if (item !== void 0) {
+          $log.info('Item changed to ' + item.display);
+          return queryElementList($scope, $http, item);
+        }
+      };
+      return $scope.searchTextChange = function(text) {
+        return $log.info('Text changed to ' + text);
+      };
+    }
+  ]);
 
   queryElementList = function(_$scope, _$http, item) {
     return _$http.get('/elementlistitems/' + item.display + '/').success(function(data) {

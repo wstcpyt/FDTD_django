@@ -2,45 +2,53 @@
 (function() {
   var module;
 
-  module = angular.module('indexapp.bottomsheetexport', []).config(function($mdIconProvider) {
-    return $mdIconProvider.icon('txt', '/static/images/icons/txt.svg', 24).icon('csv', '/static/images/icons/csv.svg', 24);
-  }).controller('bottomCtrl', function($scope, $timeout, $mdBottomSheet) {
-    $scope.alert = '';
-    return $scope.showGridBottomSheet = function($event) {
+  module = angular.module('indexapp.bottomsheetexport', []).config([
+    '$mdIconProvider', function($mdIconProvider) {
+      return $mdIconProvider.icon('txt', '/static/images/icons/txt.svg', 24).icon('csv', '/static/images/icons/csv.svg', 24);
+    }
+  ]).controller('bottomCtrl', [
+    '$scope', '$timeout', '$mdBottomSheet', function($scope, $timeout, $mdBottomSheet) {
       $scope.alert = '';
-      return $mdBottomSheet.show({
-        templateUrl: '/static/html/bottom-sheet-grid-template.html',
-        controller: 'GridBottomSheetCtrl',
-        targetEvent: $event
-      }).then(function(clickedItem) {
-        console.log(clickedItem.name);
-        return $scope.alert = clickedItem.name + ' clicked!';
+      return $scope.showGridBottomSheet = function($event) {
+        $scope.alert = '';
+        return $mdBottomSheet.show({
+          templateUrl: '/static/html/bottom-sheet-grid-template.html',
+          controller: 'GridBottomSheetCtrl',
+          targetEvent: $event
+        }).then(function(clickedItem) {
+          console.log(clickedItem.name);
+          return $scope.alert = clickedItem.name + ' clicked!';
+        });
+      };
+    }
+  ]).controller('GridBottomSheetCtrl', [
+    '$scope', '$mdBottomSheet', function($scope, $mdBottomSheet) {
+      $scope.items = [
+        {
+          name: 'TXT',
+          icon: 'txt'
+        }, {
+          name: 'CSV',
+          icon: 'csv'
+        }
+      ];
+      return $scope.listItemClick = function($index) {
+        var clickedItem;
+        clickedItem = $scope.items[$index];
+        return $mdBottomSheet.hide(clickedItem);
+      };
+    }
+  ]).run([
+    '$http', '$templateCache', function($http, $templateCache) {
+      var urls;
+      urls = ['/static/images/icons/txt.svg', '/static/images/icons/csv.svg'];
+      return angular.forEach(urls, function(url) {
+        return $http.get(url, {
+          cache: $templateCache
+        });
       });
-    };
-  }).controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
-    $scope.items = [
-      {
-        name: 'TXT',
-        icon: 'txt'
-      }, {
-        name: 'CSV',
-        icon: 'csv'
-      }
-    ];
-    return $scope.listItemClick = function($index) {
-      var clickedItem;
-      clickedItem = $scope.items[$index];
-      return $mdBottomSheet.hide(clickedItem);
-    };
-  }).run(function($http, $templateCache) {
-    var urls;
-    urls = ['/static/images/icons/txt.svg', '/static/images/icons/csv.svg'];
-    return angular.forEach(urls, function(url) {
-      return $http.get(url, {
-        cache: $templateCache
-      });
-    });
-  });
+    }
+  ]);
 
 }).call(this);
 

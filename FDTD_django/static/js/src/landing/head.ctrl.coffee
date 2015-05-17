@@ -1,5 +1,5 @@
 app = angular.module('head.ctrl', [])
-app.controller('headercontroller', ($scope)->
+app.controller('headercontroller', ['$scope', ($scope)->
   tabvalue = $('#tabindex').val()
   tabvalue = parseInt(tabvalue)
   $scope.selectedIndex = tabvalue
@@ -7,4 +7,4 @@ app.controller('headercontroller', ($scope)->
     window.location.href = "/databasedirectory/"
   $scope.tab1clicked = ->
     window.location.href = "/"
-)
+])

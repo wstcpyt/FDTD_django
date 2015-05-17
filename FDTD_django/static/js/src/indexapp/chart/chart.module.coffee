@@ -1,10 +1,10 @@
 module = angular.module('indexapp.chart', [])
-module.controller('chartCtrl', ($scope, $http)->
+module.controller('chartCtrl', ['$scope','$http', ($scope, $http)->
   $scope.drawIndexChart = (item)->
     $scope.paperselected = item.title
     drawchart = new DrawChart(item, $http, $scope)
     drawchart.drawIndexChart()
-)
+])
 
 class @DrawChart
   constructor: (@item, @_$http, @_$scope)->

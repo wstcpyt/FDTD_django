@@ -4,14 +4,16 @@
 
   module = angular.module('indexapp.chart', []);
 
-  module.controller('chartCtrl', function($scope, $http) {
-    return $scope.drawIndexChart = function(item) {
-      var drawchart;
-      $scope.paperselected = item.title;
-      drawchart = new DrawChart(item, $http, $scope);
-      return drawchart.drawIndexChart();
-    };
-  });
+  module.controller('chartCtrl', [
+    '$scope', '$http', function($scope, $http) {
+      return $scope.drawIndexChart = function(item) {
+        var drawchart;
+        $scope.paperselected = item.title;
+        drawchart = new DrawChart(item, $http, $scope);
+        return drawchart.drawIndexChart();
+      };
+    }
+  ]);
 
   this.DrawChart = (function() {
     function DrawChart(item1, _$http, _$scope) {
