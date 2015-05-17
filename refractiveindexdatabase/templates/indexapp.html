@@ -86,12 +86,8 @@
                                     <div layout="row">
                                         <h3 id="elementlisttitle">{{item.title}}</h3>
                                         <span flex></span>
-                                        <div ng-show="paperselected==item.title">
-                                            <md-tooltip>
-                                                export data
-                                            </md-tooltip>
-                                            <md-icon md-svg-src="/static/images/icons/getapp.svg"></md-icon>
-
+                                        <div ng-show="paperselected==item.title" ng-controller="bottomCtrl" style="margin-right: 10px;">
+                                            <md-icon ng-click="showGridBottomSheet($event)" md-svg-src="/static/images/icons/getapp.svg"></md-icon>
                                         </div>
                                     </div>
                                 </div>
@@ -111,6 +107,7 @@
 
 {% endblock %}
 {% block javascript %}
+    <script src="/static/js/src/indexapp/chart/bottomsheetexport.module.js"></script>
     <script src="/static/js/src/indexapp/chart/chart.module.js"></script>
     <script src="/static/js/src/indexapp/search/search.module.js"></script>
     <script src="/static/js/src/indexapp/indexapp.module.js"></script>
