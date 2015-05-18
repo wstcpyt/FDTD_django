@@ -11,6 +11,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular-material": "~0.9.4"
+    "angular-material": "~0.9.4",
+    "requirejs": "latest",
+    "requirejs-domready": "latest"
   }
 }
