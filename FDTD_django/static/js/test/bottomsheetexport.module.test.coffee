@@ -1,9 +1,10 @@
 describe('Unit Test indexapp.bottomsheetexport', ->
   beforeEach(module('indexapp.bottomsheetexport'))
   beforeEach(module('indexdata.service'))
-  beforeEach(inject((generateCSVfileService, generateTXTfileService)->
+  beforeEach(inject((generateCSVfileService, generateTXTfileService, generateJSONfileService)->
     this.generateCSVfileService = generateCSVfileService
     this.generateTXTfileService = generateTXTfileService
+    this.generateJSONfileService = generateJSONfileService
   ))
   it('generateCSVfileService', ->
     dataarray_nk =[[1, 2, 3], [2, 3, 4]]
@@ -24,5 +25,11 @@ describe('Unit Test indexapp.bottomsheetexport', ->
     this.generateTXTfileService.generateTXT(dataarray_n)
     txtarray_n = this.generateTXTfileService.txtContent.split(",")
     assert.equal(txtarray_n.length, 2)
+  )
+  it('generateJSONfileService', ->
+    jsonobject = {"Ref": 'test'}
+    this.generateJSONfileService.generateJSON(jsonobject)
+    jsonstring = this.generateJSONfileService.JSONContent
+    assert.equal(jsonstring,'data:text;charset=utf-8,{"Ref":"test"}')
   )
 )

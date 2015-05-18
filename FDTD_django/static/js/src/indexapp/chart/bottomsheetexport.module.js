@@ -50,15 +50,32 @@
       };
       return 0;
     }
+  ]).service("generateJSONfileService", [
+    function() {
+      var self;
+      self = this;
+      self.generateJSON = function(jsonobject) {
+        var jsonstring;
+        jsonstring = JSON.stringify(jsonobject);
+        self.JSONContent = "data:text;charset=utf-8,";
+        return self.JSONContent += jsonstring;
+      };
+      self.downloadJSON = function() {
+        var encodedUri;
+        encodedUri = encodeURI(self.JSONContent);
+        return window.open(encodedUri);
+      };
+      return 0;
+    }
   ]).controller('bottomCtrl', [
-    '$scope', '$timeout', '$mdBottomSheet', 'generateCSVfileService', 'indexdataService', 'generateTXTfileService', function($scope, $timeout, $mdBottomSheet, generateCSVfileService, indexdataService, generateTXTfileService) {
+    '$scope', '$timeout', '$mdBottomSheet', 'generateCSVfileService', 'indexdataService', 'generateTXTfileService', 'generateJSONfileService', function($scope, $timeout, $mdBottomSheet, generateCSVfileService, indexdataService, generateTXTfileService, generateJSONfileService) {
       return $scope.showGridBottomSheet = function($event) {
         return $mdBottomSheet.show({
           templateUrl: '/static/html/bottom-sheet-grid-template.html',
           controller: 'GridBottomSheetCtrl',
           targetEvent: $event
         }).then(function(clickedItem) {
-          var dataarray;
+          var dataarray, jsonobject;
           if (clickedItem.name === 'CSV') {
             dataarray = indexdataService.indexdata.dataArray;
             generateCSVfileService.generateCSV(dataarray);
@@ -67,7 +84,12 @@
           if (clickedItem.name === 'TXT') {
             dataarray = indexdataService.indexdata.dataArray;
             generateTXTfileService.generateTXT(dataarray);
-            return generateTXTfileService.downloadTXT();
+            generateTXTfileService.downloadTXT();
+          }
+          if (clickedItem.name === 'JSONstring') {
+            jsonobject = indexdataService.indexdata.data;
+            generateJSONfileService.generateJSON(jsonobject);
+            return generateJSONfileService.downloadJSON();
           }
         });
       };
@@ -81,6 +103,9 @@
         }, {
           name: 'CSV',
           icon: 'csv'
+        }, {
+          name: 'JSONstring',
+          icon: 'txt'
         }
       ];
       return $scope.listItemClick = function($index) {

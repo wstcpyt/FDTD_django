@@ -33,9 +33,20 @@ module = angular.module('indexapp.bottomsheetexport', [])
       window.open(encodedUri)
     0
   ])
+.service("generateJSONfileService", [->
+    self = this
+    self.generateJSON = (jsonobject)->
+      jsonstring = JSON.stringify(jsonobject)
+      self.JSONContent = "data:text;charset=utf-8,"
+      self.JSONContent += jsonstring
+    self.downloadJSON = ->
+      encodedUri = encodeURI(self.JSONContent)
+      window.open(encodedUri)
+    0
+  ])
 .controller('bottomCtrl',
-  ['$scope', '$timeout', '$mdBottomSheet', 'generateCSVfileService','indexdataService', 'generateTXTfileService' ,
-    ($scope, $timeout, $mdBottomSheet, generateCSVfileService, indexdataService, generateTXTfileService) ->
+  ['$scope', '$timeout', '$mdBottomSheet', 'generateCSVfileService','indexdataService', 'generateTXTfileService', 'generateJSONfileService',
+    ($scope, $timeout, $mdBottomSheet, generateCSVfileService, indexdataService, generateTXTfileService, generateJSONfileService) ->
       $scope.showGridBottomSheet = ($event) ->
         $mdBottomSheet.show({
           templateUrl: '/static/html/bottom-sheet-grid-template.html',
@@ -50,12 +61,17 @@ module = angular.module('indexapp.bottomsheetexport', [])
             dataarray = indexdataService.indexdata.dataArray
             generateTXTfileService.generateTXT(dataarray)
             generateTXTfileService.downloadTXT()
+          if clickedItem.name == 'JSONstring'
+            jsonobject = indexdataService.indexdata.data
+            generateJSONfileService.generateJSON(jsonobject)
+            generateJSONfileService.downloadJSON()
         )
   ])
 .controller('GridBottomSheetCtrl', ['$scope', '$mdBottomSheet', ($scope, $mdBottomSheet) ->
     $scope.items = [
       {name: 'TXT', icon: 'txt'},
       {name: 'CSV', icon: 'csv'},
+      {name: 'JSONstring', icon: 'txt'},
     ]
     $scope.listItemClick = ($index) ->
       clickedItem = $scope.items[$index]

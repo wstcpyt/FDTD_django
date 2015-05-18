@@ -3,9 +3,10 @@
   describe('Unit Test indexapp.bottomsheetexport', function() {
     beforeEach(module('indexapp.bottomsheetexport'));
     beforeEach(module('indexdata.service'));
-    beforeEach(inject(function(generateCSVfileService, generateTXTfileService) {
+    beforeEach(inject(function(generateCSVfileService, generateTXTfileService, generateJSONfileService) {
       this.generateCSVfileService = generateCSVfileService;
-      return this.generateTXTfileService = generateTXTfileService;
+      this.generateTXTfileService = generateTXTfileService;
+      return this.generateJSONfileService = generateJSONfileService;
     }));
     it('generateCSVfileService', function() {
       var csvarray_n, csvarray_nk, dataarray_n, dataarray_nk;
@@ -18,7 +19,7 @@
       csvarray_n = this.generateCSVfileService.csvContent.split(",");
       return assert.equal(csvarray_n.length, 5);
     });
-    return it('generateCSVfileService', function() {
+    it('generateCSVfileService', function() {
       var dataarray_n, dataarray_nk, txtarray_n, txtarray_nk;
       dataarray_nk = [[1, 2, 3], [2, 3, 4]];
       this.generateTXTfileService.generateTXT(dataarray_nk);
@@ -28,6 +29,15 @@
       this.generateTXTfileService.generateTXT(dataarray_n);
       txtarray_n = this.generateTXTfileService.txtContent.split(",");
       return assert.equal(txtarray_n.length, 2);
+    });
+    return it('generateJSONfileService', function() {
+      var jsonobject, jsonstring;
+      jsonobject = {
+        "Ref": 'test'
+      };
+      this.generateJSONfileService.generateJSON(jsonobject);
+      jsonstring = this.generateJSONfileService.JSONContent;
+      return assert.equal(jsonstring, 'data:text;charset=utf-8,{"Ref":"test"}');
     });
   });
 
