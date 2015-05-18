@@ -2,12 +2,8 @@
 (function() {
   var module;
 
-  module = angular.module('indexapp.bottomsheetexport', []).config([
-    '$mdIconProvider', function($mdIconProvider) {
-      return $mdIconProvider.icon('txt', '/static/images/icons/txt.svg', 24).icon('csv', '/static/images/icons/csv.svg', 24);
-    }
-  ]).controller('bottomCtrl', [
-    '$scope', '$timeout', '$mdBottomSheet', function($scope, $timeout, $mdBottomSheet) {
+  module = angular.module('indexapp.bottomsheetexport', []).controller('bottomCtrl', [
+    '$scope', '$timeout', '$mdBottomSheet', 'indexdataService', function($scope, $timeout, $mdBottomSheet, indexdataService) {
       $scope.alert = '';
       return $scope.showGridBottomSheet = function($event) {
         $scope.alert = '';
@@ -16,8 +12,18 @@
           controller: 'GridBottomSheetCtrl',
           targetEvent: $event
         }).then(function(clickedItem) {
-          console.log(clickedItem.name);
-          return $scope.alert = clickedItem.name + ' clicked!';
+          var csvContent, encodedUri, test_array;
+          $scope.alert = clickedItem.name + ' clicked!';
+          test_array = [["name1", 2, 3], ["name2", 4, 5], ["name3", 6, 7], ["name4", 8, 9], ["name5", 10, 11]];
+          csvContent = "data:text/csv;charset=utf-8,";
+          test_array.forEach(function(infoArray) {
+            var dataString;
+            dataString = infoArray.join(",");
+            return csvContent += dataString + "\n";
+          });
+          encodedUri = encodeURI(csvContent);
+          window.open(encodedUri);
+          return console.log(indexdataService.indexdata.dataArray);
         });
       };
     }
@@ -37,16 +43,6 @@
         clickedItem = $scope.items[$index];
         return $mdBottomSheet.hide(clickedItem);
       };
-    }
-  ]).run([
-    '$http', '$templateCache', function($http, $templateCache) {
-      var urls;
-      urls = ['/static/images/icons/txt.svg', '/static/images/icons/csv.svg'];
-      return angular.forEach(urls, function(url) {
-        return $http.get(url, {
-          cache: $templateCache
-        });
-      });
     }
   ]);
 

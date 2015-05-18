@@ -5,55 +5,18 @@
   module = angular.module('indexapp.chart', []);
 
   module.controller('chartCtrl', [
-    '$scope', '$http', function($scope, $http) {
+    '$scope', '$http', 'indexdataService', function($scope, $http, indexdataService) {
       return $scope.drawIndexChart = function(item) {
-        var drawchart;
-        $scope.paperselected = item.title;
-        drawchart = new DrawChart(item, $http, $scope);
-        return drawchart.drawIndexChart();
+        var indexpromise;
+        indexdataService.seturl('/elementlistitemsdetail/' + item.id + "/");
+        indexpromise = indexdataService.getdata();
+        indexpromise.then(function(indexdata) {
+          return drawChart(indexdata.dataArray, indexdata.data);
+        });
+        return $scope.paperselected = item.title;
       };
     }
   ]);
-
-  this.DrawChart = (function() {
-    function DrawChart(item1, _$http, _$scope) {
-      this.item = item1;
-      this._$http = _$http;
-      this._$scope = _$scope;
-    }
-
-    DrawChart.prototype.drawIndexChart = function() {
-      var self;
-      self = this;
-      return self._$http.get('/elementlistitemsdetail/' + self.item.id + "/").success(function(data) {
-        var dataArray;
-        dataArray = self.gendataArrayfromRawData(data);
-        return self.drawGoogleChart(dataArray, data);
-      }).error(function() {
-        return console.log('cannot retrieve elementlist index data');
-      });
-    };
-
-    DrawChart.prototype.drawGoogleChart = function(dataArray, JSONDATA) {
-      return drawChart(dataArray, JSONDATA);
-    };
-
-    DrawChart.prototype.gendataArrayfromRawData = function(data) {
-      var dataArray, i, len, object, ref;
-      dataArray = [];
-      ref = data["DATA"]["0"]["data"].split('\n');
-      for (i = 0, len = ref.length; i < len; i++) {
-        object = ref[i];
-        if (object.split(' ').length > 1) {
-          dataArray.push(object.split(' ').map(Number));
-        }
-      }
-      return dataArray;
-    };
-
-    return DrawChart;
-
-  })();
 
 }).call(this);
 

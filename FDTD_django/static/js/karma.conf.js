@@ -28,10 +28,9 @@ module.exports = function(config) {
             './src/landing/head.ctrl.js',
             //test guide module
             './src/guideapp/guideapp.ctrl.js',
-            //test search module
-            './src/indexapp/search/search.module.js',
-            //test chart module
-            './src/indexapp/chart/chart.module.js'
+            //test indexpp module
+            './src/**/**/*.js',
+            './src/**/*.js'
         ],
 
 

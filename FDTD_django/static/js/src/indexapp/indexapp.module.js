@@ -2,7 +2,21 @@
 (function() {
   var module;
 
-  module = angular.module('FDTDapp', ['ngMaterial', 'FDTDapp.sidenav', 'indexapp.search', 'indexapp.chart', 'indexapp.bottomsheetexport']);
+  module = angular.module('FDTDapp', ['ngMaterial', 'FDTDapp.sidenav', 'indexapp.search', 'indexapp.chart', 'indexapp.bottomsheetexport', 'indexdata.service']).config([
+    '$mdIconProvider', function($mdIconProvider) {
+      return $mdIconProvider.icon('txt', '/static/images/icons/txt.svg', 24).icon('csv', '/static/images/icons/csv.svg', 24);
+    }
+  ]).run([
+    '$http', '$templateCache', function($http, $templateCache) {
+      var urls;
+      urls = ['/static/images/icons/txt.svg', '/static/images/icons/csv.svg'];
+      return angular.forEach(urls, function(url) {
+        return $http.get(url, {
+          cache: $templateCache
+        });
+      });
+    }
+  ]);
 
 }).call(this);
 
