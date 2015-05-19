@@ -13,6 +13,7 @@
   "dependencies": {
     "angular-material": "~0.9.4",
     "requirejs": "latest",
-    "requirejs-domready": "latest"
+    "requirejs-domready": "latest",
+    "angular-route": "latest"
   }
 }

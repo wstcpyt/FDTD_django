@@ -20,12 +20,11 @@ module.exports = function(config) {
             '../bower_components/angular-aria/angular-aria.js',
             '../bower_components/angular-animate/angular-animate.js',
             '../bower_components/angular-material/angular-material.js',
+            '../bower_components/requirejs/require.js',
             'jquery-2.1.3.min.js',
             './lib/sinon.js',
             // test source
             './test/*.js',
-            //test base
-            './src/landing/head.ctrl.js',
             //test guide module
             './src/guideapp/guideapp.ctrl.js',
             //test indexpp module
