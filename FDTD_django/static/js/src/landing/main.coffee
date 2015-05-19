@@ -1,12 +1,12 @@
 require.config({
   # alias libraries paths
+  baseUrl: '/static/js/src/landing/',
   paths: {
-    domReady: '/static/bower_components/requirejs-domready/domReady',
-    angular: '/static/bower_components/angular/angular.min',
-    ngAnimate: '/static/bower_components/angular-animate/angular-animate.min',
-    ngAria: '/static/bower_components/angular-aria/angular-aria.min',
-    ngMaterial: '/static/bower_components/angular-material/angular-material.min',
-    bootstrap: '/static/js/src/landing/bootstrap',
+    domReady: '../../lib/requirejs-domready/domReady',
+    angular: '../../lib/angular/angular.min',
+    ngAnimate: '../../lib/angular-animate/angular-animate.min',
+    ngAria: '../../lib/angular-aria/angular-aria.min',
+    ngMaterial: '../../lib/angular-material/angular-material.min',
   },
   #angular does not support AMD out of the box, puth it in a shim
   shim: {
