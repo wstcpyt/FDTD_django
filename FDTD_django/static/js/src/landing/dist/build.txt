@@ -1,15 +1,18 @@
 
 main.js
 ----------------
-angular.js
-ngAnimate.js
-ngAria.js
-ngMaterial.js
 controllers/module.js
 controllers/head.ctrl.js
 controllers/index.js
 app.js
-domReady.js
 domReady!
 bootstrap.js
 main.js
+
+infrastructure.js
+----------------
+domReady.js
+ngAnimate.js
+ngAria.js
+ngMaterial.js
+infrastructure.js

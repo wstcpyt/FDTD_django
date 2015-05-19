@@ -3,7 +3,7 @@ require.config({
   baseUrl: '/static/js/src/landing/',
   paths: {
     domReady: '../../lib/requirejs-domready/domReady',
-    angular: '../../lib/angular/angular.min',
+    angular: ["https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min", '../../lib/angular/angular.min'],
     ngAnimate: '../../lib/angular-animate/angular-animate.min',
     ngAria: '../../lib/angular-aria/angular-aria.min',
     ngMaterial: '../../lib/angular-material/angular-material.min'
