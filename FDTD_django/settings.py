@@ -23,9 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+=n1c$8u=vf93v38u!-kon69bm5%#24yz=xc*68%!d%ids)0*k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if 'RDS_DB_NAME' in os.environ:
+    DEBUG = False
 
-ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['www.infomagnetic.com']
+else:
+    DEBUG = True
+
+    ALLOWED_HOSTS = []
 
 
 # Application definition
