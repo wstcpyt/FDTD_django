@@ -6,6 +6,7 @@ require.config({
     ngAnimate: '/static/bower_components/angular-animate/angular-animate.min',
     ngAria: '/static/bower_components/angular-aria/angular-aria.min',
     ngMaterial: '/static/bower_components/angular-material/angular-material.min',
+    bootstrap: '/static/js/src/landing/bootstrap',
   },
   #angular does not support AMD out of the box, puth it in a shim
   shim: {
@@ -25,7 +26,5 @@ require.config({
       deps: ['angular', 'ngAnimate', 'ngAria']
     }
   },
-
-  #kick start application
-  deps: ['/static/js/src/landing/bootstrap.js']
 })
+require(['bootstrap'], ->)
