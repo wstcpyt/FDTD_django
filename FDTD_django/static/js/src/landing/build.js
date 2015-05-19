@@ -1,8 +1,12 @@
 ({
     baseUrl: '.',
     mainConfigFile : "main.js",
-    name: "main",
-    out: "dist/main.js",
     removeCombined: true,
-    findNestedDependencies: true
+    findNestedDependencies: true,
+    dir: "dist",
+    modules: [
+        {
+            name: 'main',
+        }
+    ]
 })
