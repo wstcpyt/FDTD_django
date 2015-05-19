@@ -3,7 +3,8 @@
   define(['require', 'angular', 'app'], function(require, ng) {
     'use strict';
     return require(['domReady!'], function(document) {
-      return ng.bootstrap(document, ['app']);
+      ng.bootstrap(document, ['app']);
+      return $('.navbar-fixed-top').show();
     });
   });
 
