@@ -2,7 +2,14 @@
 (function() {
   define(['angular'], function(ng) {
     'use strict';
-    return ng.module('app.controllers', []);
+    var module;
+    module = ng.module('app.controllers', []);
+    module.config([
+      '$controllerProvider', function($controllerProvider) {
+        return module.controller = $controllerProvider.register;
+      }
+    ]);
+    return module;
   });
 
 }).call(this);

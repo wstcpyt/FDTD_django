@@ -5,38 +5,25 @@ module.exports = function(config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: '../..',
 
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha', 'chai'],
+        frameworks: ['mocha', 'requirejs', 'chai'],
 
 
         // list of files / patterns to load in the browser
         files: [
-            'node_modules/angular/angular.js',
-            'node_modules/angular-mocks/angular-mocks.js',
-            '../bower_components/angular-aria/angular-aria.js',
-            '../bower_components/angular-animate/angular-animate.js',
-            '../bower_components/angular-material/angular-material.js',
-            '../bower_components/requirejs/require.js',
-            'jquery-2.1.3.min.js',
-            './lib/sinon.js',
-            // test source
-            './test/*.js',
-            //test guide module
-            './src/guideapp/guideapp.ctrl.js',
-            //test indexpp module
-            './src/**/**/*.js',
-            './src/**/*.js'
+            'src/landing/test-main.js',
+            {pattern: 'lib/**/*.js', included: false},
+            {pattern: 'src/landing/*.js', included: false},
+            {pattern: 'src/landing/**/*.js', included: false}
         ],
 
 
         // list of files to exclude
         exclude: [
-            './src/**/*main.js',
-            './src/**/**/*main.js'
         ],
 
 
@@ -62,7 +49,7 @@ module.exports = function(config) {
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_DEBUG,
 
 
         // enable / disable watching file and executing tests whenever any file changes

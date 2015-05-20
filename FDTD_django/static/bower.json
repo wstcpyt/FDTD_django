@@ -14,6 +14,8 @@
     "angular-material": "~0.9.4",
     "requirejs": "latest",
     "requirejs-domready": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-mocks": "latest"
+
   }
 }
