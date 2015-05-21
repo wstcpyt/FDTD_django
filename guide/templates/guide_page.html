@@ -53,10 +53,10 @@
 {% block mainpage %}
     <div class="container-fluid" style="margin-left:20px; margin-top:70px">
         <div class="row">
-            <div ng-include="pageurl"></div>
+            <div ng-view></div>
         </div>
     </div>
 {% endblock %}
 {% block javascript %}
-    <script src="/static/js/lib/requirejs/require.js" data-main="/static/js/src/guideapp/dist/main.js"></script>
+    <script src="/static/js/lib/requirejs/require.js" data-main="/static/js/src/guideapp/main.js"></script>
 {% endblock %}
