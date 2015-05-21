@@ -67,11 +67,14 @@ module.exports = (grunt)->
       }
     }
     karma:{
-      indexapp:{
+      landing:{
         configFile: 'src/landing/karma.conf.js',
       },
       guideapp:{
         configFile: 'src/guideapp/karma.conf.js'
+      }
+      indexapp:{
+        configFile: 'src/indexapp/karma.conf.js'
       }
     }
   })
