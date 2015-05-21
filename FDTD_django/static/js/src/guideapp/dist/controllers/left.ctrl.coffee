@@ -21,6 +21,7 @@ define(['./module'], (module) ->
       $scope.submenuselected = submenu
       $scope.menuselected = navmenu.menu
       $location.url('/'+navmenu.menu+'/'+submenu)
+      $rootScope.$emit('submenuclicked')
 
     $scope.selectmenu = (navmenu) ->
       $scope.collapsemenuselected = navmenu.menu

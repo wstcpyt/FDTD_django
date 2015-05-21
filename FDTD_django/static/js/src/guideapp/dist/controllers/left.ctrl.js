@@ -24,7 +24,8 @@
           $rootScope.maintoolbartitle = submenu;
           $scope.submenuselected = submenu;
           $scope.menuselected = navmenu.menu;
-          return $location.url('/' + navmenu.menu + '/' + submenu);
+          $location.url('/' + navmenu.menu + '/' + submenu);
+          return $rootScope.$emit('submenuclicked');
         };
         $scope.selectmenu = function(navmenu) {
           return $scope.collapsemenuselected = navmenu.menu;

@@ -2,7 +2,7 @@
 (function() {
   define(['./module'], function(module) {
     return module.controller('SidenavCtrl', [
-      '$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdMedia', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia) {
+      '$rootScope', '$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdMedia', function($rootScope, $scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia) {
         var buildToggler;
         buildToggler = function(navID) {
           var debounceFn;
@@ -13,6 +13,13 @@
           }, 300);
           return debounceFn;
         };
+        $rootScope.$on('submenuclicked', function() {
+          if ($scope.screenIsgtmd) {
+            return $log.debug('screen is gt-md');
+          } else {
+            return $mdSidenav('left').close();
+          }
+        });
         $scope.toggleLeft = buildToggler('left');
         $scope.screenIsgtmd = $mdMedia('gt-md');
         return $scope.$watch(function() {

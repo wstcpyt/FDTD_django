@@ -1,4 +1,4 @@
-define(['angular','angularMocks','controllers/head.ctrl', 'controllers/module'], ->
+define(['angular','angularMocks','controllers/index'], ->
   describe('headCtrl', ->
     beforeEach(module('app.controllers'))
     beforeEach(inject((_$controller_)->
