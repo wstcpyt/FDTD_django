@@ -28,4 +28,3 @@ require.config({
 });
 
 require(['bootstrap'], function() {});
-//# sourceMappingURL=main.js.map

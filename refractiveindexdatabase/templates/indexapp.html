@@ -54,7 +54,7 @@
     <div class="indexapp">
         <div class="container-fluid" style="padding-top: 100px;">
             {% verbatim %}
-            <div id="search" ng-controller="SearchCtrl" style="display: none">
+            <div id="search" ng-controller="SearchCtrl">
                 <div style="margin-top: 30px" class="panel panel-primary">
                     <div class="panel-heading">REFRACTIVE INDEX DATABASE IS IN DEVELOPER PREVIEW </div>
                     <div class="panel-body">REFRACTIVE INDEX DATABASE is a <span style="color: red">WORK IN PROGRESS</span>
@@ -78,7 +78,7 @@
                     </md-autocomplete>
                     <br/>
                 </form>
-                <div id="elementlist" layout layout-align="center center" style="display: none">
+                <div id="elementlist" layout layout-align="center center">
                     <md-list ng-controller="chartCtrl" ng-hide='hideelementlist'>
                         <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist" ng-class="{expand :paperselected==item.title}" style="padding: 0;">
                             <div class="container" style="width: 900px; background-color: #ffffff">
@@ -107,17 +107,5 @@
 
 {% endblock %}
 {% block javascript %}
-    <script src="/static/js/src/indexapp/indexdata.service.js"></script>
-    <script src="/static/js/src/indexapp/chart/bottomsheetexport.module.js"></script>
-    <script src="/static/js/src/indexapp/chart/chart.module.js"></script>
-    <script src="/static/js/src/indexapp/search/search.module.js"></script>
-    <script src="/static/js/src/indexapp/indexapp.module.js"></script>
-    <script>
-        {# FOUC PREVENTION#}
-        $( document ).ready(function() {
-            $('#elementlist').show();
-            $('#search').show();
-            $('#toolbar').show()
-        });
-    </script>
+    <script src="/static/js/lib/requirejs/require.js" data-main="/static/js/src/indexapp/dist/main.js"></script>
 {% endblock %}

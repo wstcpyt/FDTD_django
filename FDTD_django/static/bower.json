@@ -15,7 +15,8 @@
     "requirejs": "latest",
     "requirejs-domready": "latest",
     "angular-route": "latest",
-    "angular-mocks": "latest"
-
+    "angular-mocks": "latest",
+    "angular-highlightjs": "latest",
+    "highlightjs": "latest"
   }
 }

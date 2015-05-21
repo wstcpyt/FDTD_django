@@ -1,1 +1,0 @@
-module = angular.module('FDTDapp.sidenav', ['FDTDapp.sidenav.ctrl'])

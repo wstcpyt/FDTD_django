@@ -1,1 +1,18 @@
-({baseUrl:".",mainConfigFile:"main.js",removeCombined:!0,findNestedDependencies:!0,dir:"dist",modules:[{name:"main",exclude:["infrastructure"]},{name:"infrastructure"}],paths:{angular:"empty:"}});
+({
+    baseUrl: '.',
+    mainConfigFile: "main.js",
+    removeCombined: true,
+    findNestedDependencies: true,
+    dir: "dist",
+    modules: [
+        {
+            name: 'main',
+            exclude: ["infrastructure"]
+        }, {
+            name: "infrastructure"
+        }
+    ],
+    paths: {
+        angular: 'empty:'
+    }
+})

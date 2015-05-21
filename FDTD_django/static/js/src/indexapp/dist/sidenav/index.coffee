@@ -1,0 +1,3 @@
+define([
+  './sidenav.ctrl'
+], ->)

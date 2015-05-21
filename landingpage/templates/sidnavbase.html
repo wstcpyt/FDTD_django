@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link rel="icon"
           type="image/png"
@@ -20,7 +17,7 @@
     {% block head %}
     {% endblock %}
 </head>
-<body ng-app="FDTDapp">
+<body>
 <div ng-controller="SidenavCtrl" layout="column" style="height:100%;">
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
@@ -41,11 +38,6 @@
         </md-content>
     </section>
 </div>
-<script src="/static/bower_components/angular-aria/angular-aria.js"></script>
-<script src="/static/bower_components/angular-animate/angular-animate.js"></script>
-<script src="/static/bower_components/angular-material/angular-material.js"></script>
-<script src="/static/js/src/sidenav/sidenav.ctrl.js"></script>
-<script src="/static/js/src/sidenav/sidenav.module.js"></script>
 {% block javascript %}
 {% endblock %}
 </body>
