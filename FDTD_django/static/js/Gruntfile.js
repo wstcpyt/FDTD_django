@@ -68,8 +68,11 @@
         }
       },
       karma: {
-        unit: {
-          configFile: 'src/landing/karm.conf.require.js'
+        indexapp: {
+          configFile: 'src/landing/karma.conf.js'
+        },
+        guideapp: {
+          configFile: 'src/guideapp/karma.conf.js'
         }
       }
     });
