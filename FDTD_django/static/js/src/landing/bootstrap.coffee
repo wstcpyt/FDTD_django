@@ -6,6 +6,5 @@ define([
     'use strict'
     require(['domReady!'], (document)->
         ng.bootstrap(document, ['app'])
-        $('.navbar-fixed-top').show()
     )
 )

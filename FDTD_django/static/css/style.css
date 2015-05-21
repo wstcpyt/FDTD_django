@@ -154,4 +154,7 @@ html, body {
 .maincontent {
   background-color: #EEE; }
 
+.ng-cloak {
+  display: none !important; }
+
 /*# sourceMappingURL=style.css.map */

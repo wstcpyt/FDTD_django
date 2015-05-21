@@ -40,6 +40,6 @@ html, body {
 .maincontent{
   background-color: #EEE;
 }
-
-.container{
+.ng-cloak {
+  display: none !important;
 }

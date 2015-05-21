@@ -25,7 +25,7 @@
     </h1>
 {% endblock %}
 {% block leftctrl %}
-    <md-content ng-controller="LeftCtrl">
+    <md-content class="ng-cloak" ng-controller="LeftCtrl">
         {% verbatim %}
         <ul style="padding: 0; margin: 0">
             <li ng-repeat="navmenu in navmenus">
@@ -62,7 +62,7 @@
                         It is intended for early adopters who want to test
                         out the interface and provide feedback</div>
                 </div>
-                <form ng-submit="$event.preventDefault()">
+                <form ng-submit="$event.preventDefault()" class="ng-cloak">
                     <md-autocomplete
                             md-selected-item="selectedItem"
                             md-search-text-change="searchTextChange(searchText)"
@@ -79,7 +79,7 @@
                     <br/>
                 </form>
                 <div id="elementlist" layout layout-align="center center">
-                    <md-list ng-controller="chartCtrl" ng-hide='hideelementlist'>
+                    <md-list ng-controller="chartCtrl" ng-hide='hideelementlist' class="ng-cloak">
                         <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist" ng-class="{expand :paperselected==item.title}" style="padding: 0;">
                             <div class="container" style="width: 900px; background-color: #ffffff">
                                 <div class="md-list-item-text" style="padding-left: 10px" ng-class="{title :paperselected==item.title}">
