@@ -20,7 +20,7 @@
 <body>
 <div ng-controller="SidenavCtrl" layout="column" style="height:100%;">
     <section layout="row" flex>
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-cloak" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
             <md-toolbar class="md-theme-indigo">
                 {% block sidenavtoolbar %}
                 {% endblock %}
