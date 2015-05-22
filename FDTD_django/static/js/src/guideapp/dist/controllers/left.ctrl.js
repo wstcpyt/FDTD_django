@@ -2,8 +2,7 @@
 (function() {
   define(['./module'], function(module) {
     return module.controller('LeftCtrl', [
-      '$scope', '$location', '$rootScope', function($scope, $location, $rootScope) {
-        var urlvariable;
+      '$scope', '$location', '$rootScope', '$routeParams', function($scope, $location, $rootScope, $routeParams) {
         $scope.navmenus = [
           {
             'menu': 'REST API',
@@ -18,9 +17,6 @@
           }
         ];
         $scope.selectsubmenu = function(submenu, navmenu) {
-          var pageurl;
-          pageurl = '/static/guidepage/' + navmenu.menu.replace(' ', '') + submenu.replace(' ', '') + '.html';
-          $rootScope.pageurl = pageurl;
           $rootScope.maintoolbartitle = submenu;
           $scope.submenuselected = submenu;
           $scope.menuselected = navmenu.menu;
@@ -30,21 +26,19 @@
         $scope.selectmenu = function(navmenu) {
           return $scope.collapsemenuselected = navmenu.menu;
         };
-        urlvariable = $location.url().split(/\s*\/\s*/g);
-        if (urlvariable.length === 3) {
-          $rootScope.pageurl = '/static/guidepage/' + urlvariable[1].replace('%20', '') + urlvariable[2].replace('%20', '') + '.html';
-          $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ');
-          $scope.menuselected = $scope.collapsemenuselected;
-          $scope.submenuselected = urlvariable[2].replace('%20', ' ');
-          return $rootScope.maintoolbartitle = urlvariable[2].replace('%20', ' ');
-        } else {
-          urlvariable = '/REST%20API/Getting%20Started'.split(/\s*\/\s*/g);
-          $rootScope.pageurl = '/static/guidepage/' + urlvariable[1].replace('%20', '') + urlvariable[2].replace('%20', '') + '.html';
-          $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ');
-          $scope.menuselected = $scope.collapsemenuselected;
-          $scope.submenuselected = urlvariable[2].replace('%20', ' ');
-          return $rootScope.maintoolbartitle = urlvariable[2].replace('%20', ' ');
-        }
+        return $scope.$on('$routeChangeSuccess', function() {
+          if ($routeParams.menu && $routeParams.submenus) {
+            $scope.collapsemenuselected = $routeParams.menu.replace('%20', ' ');
+            $scope.menuselected = $scope.collapsemenuselected;
+            $scope.submenuselected = $routeParams.submenus.replace('%20', ' ');
+            return $rootScope.maintoolbartitle = $scope.submenuselected;
+          } else {
+            $scope.collapsemenuselected = 'REST API';
+            $scope.menuselected = $scope.collapsemenuselected;
+            $scope.submenuselected = 'Getting Started';
+            return $rootScope.maintoolbartitle = $scope.submenuselected;
+          }
+        });
       }
     ]);
   });

@@ -6,5 +6,6 @@ define(
         "ngAria",
         "ngMaterial",
         "highlightjs",
-        "angularHighlightjs"
+        "angularHighlightjs",
+        "angularRoute"
     ], function() {});

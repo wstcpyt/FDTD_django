@@ -1,4 +1,5 @@
 define([
   './left.ctrl',
-  './sidenav.ctrl'
+  './sidenav.ctrl',
+  './release.ctrl'
 ], ->)

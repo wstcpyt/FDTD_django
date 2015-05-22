@@ -8,7 +8,8 @@
         }).when('/:menu/:submenus', {
           templateUrl: function(params) {
             return '/static/guidepage/' + params.menu.replace(' ', '') + '/' + params.submenus.replace(' ', '') + '.html';
-          }
+          },
+          controller: 'releaseCtrl'
         }).otherwise({
           redirectTo: '/'
         });

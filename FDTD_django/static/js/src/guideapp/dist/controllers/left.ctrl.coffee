@@ -1,5 +1,5 @@
 define(['./module'], (module) ->
-  module.controller('LeftCtrl',['$scope', '$location', '$rootScope',($scope, $location, $rootScope)->
+  module.controller('LeftCtrl',['$scope', '$location', '$rootScope', '$routeParams', ($scope, $location, $rootScope, $routeParams)->
     $scope.navmenus = [
       {
         'menu': 'REST API'
@@ -15,8 +15,6 @@ define(['./module'], (module) ->
       }
     ]
     $scope.selectsubmenu = (submenu, navmenu)->
-      pageurl =  '/static/guidepage/' +navmenu.menu.replace(' ', '')+ submenu.replace(' ', '') + '.html'
-      $rootScope.pageurl = pageurl
       $rootScope.maintoolbartitle = submenu
       $scope.submenuselected = submenu
       $scope.menuselected = navmenu.menu
@@ -26,19 +24,18 @@ define(['./module'], (module) ->
     $scope.selectmenu = (navmenu) ->
       $scope.collapsemenuselected = navmenu.menu
 
-    urlvariable = $location.url().split(/\s*\/\s*/g)
-    if urlvariable.length == 3
-      $rootScope.pageurl = '/static/guidepage/' +urlvariable[1].replace('%20', '')+ urlvariable[2].replace('%20', '') + '.html'
-      $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ')
-      $scope.menuselected = $scope.collapsemenuselected
-      $scope.submenuselected = urlvariable[2].replace('%20', ' ')
-      $rootScope.maintoolbartitle = urlvariable[2].replace('%20', ' ')
-    else
-      urlvariable = '/REST%20API/Getting%20Started'.split(/\s*\/\s*/g)
-      $rootScope.pageurl = '/static/guidepage/' +urlvariable[1].replace('%20', '')+ urlvariable[2].replace('%20', '') + '.html'
-      $scope.collapsemenuselected = urlvariable[1].replace('%20', ' ')
-      $scope.menuselected = $scope.collapsemenuselected
-      $scope.submenuselected = urlvariable[2].replace('%20', ' ')
-      $rootScope.maintoolbartitle = urlvariable[2].replace('%20', ' ')
+    $scope.$on('$routeChangeSuccess', ->
+      if $routeParams.menu && $routeParams.submenus
+        $scope.collapsemenuselected = $routeParams.menu.replace('%20', ' ')
+        $scope.menuselected = $scope.collapsemenuselected
+        $scope.submenuselected = $routeParams.submenus.replace('%20', ' ')
+        $rootScope.maintoolbartitle = $scope.submenuselected
+      else
+        $scope.collapsemenuselected = 'REST API'
+        $scope.menuselected = $scope.collapsemenuselected
+        $scope.submenuselected = 'Getting Started'
+        $rootScope.maintoolbartitle = $scope.submenuselected
+
+    )
   ])
 )

@@ -3,10 +3,13 @@ define([
     'ngMaterial',
     'angularHighlightjs',
     './controllers/index',
+    'angularRoute'
   ], (ng) ->
-  return ng.module('app', [
+  module = ng.module('app', [
+    'ngRoute',
     'app.controllers',
     'ngMaterial',
     'hljs'
   ])
+  return module
 )

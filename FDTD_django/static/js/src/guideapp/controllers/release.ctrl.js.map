@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "release.ctrl.js",
+  "sourceRoot": "",
+  "sources": [
+    "release.ctrl.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,MAAA,CAAO,CAAC,UAAD,CAAP,EAAqB,SAAC,MAAD,GAAA;WAClB,MAAM,CAAC,UAAP,CAAkB,aAAlB,EAAgC;MAAC,QAAD,EAAW,SAAC,MAAD,GAAA;eACzC,MAAM,CAAC,WAAP,GAAqB,OADoB;MAAA,CAAX;KAAhC,EADkB;EAAA,CAArB,CAAA,CAAA;AAAA"
+}

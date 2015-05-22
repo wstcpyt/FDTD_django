@@ -4,6 +4,7 @@ main.js
 controllers/module.js
 controllers/left.ctrl.js
 controllers/sidenav.ctrl.js
+controllers/release.ctrl.js
 controllers/index.js
 app.js
 routes.js
@@ -17,4 +18,5 @@ domReady.js
 ngAnimate.js
 ngAria.js
 ngMaterial.js
+angularRoute.js
 infrastructure.js

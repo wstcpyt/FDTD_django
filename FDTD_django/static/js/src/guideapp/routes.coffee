@@ -1,14 +1,15 @@
 define(['./app'], (app)->
   app.config(['$routeProvider', ($routeProvider)->
     $routeProvider
-      .when('/', {
+    .when('/', {
         templateUrl: '/static/guidepage/RESTAPI/GettingStarted.html',
       })
-      .when('/:menu/:submenus',{
+    .when('/:menu/:submenus',{
         templateUrl: (params)->
           '/static/guidepage/'+ params.menu.replace(' ', '') + '/' + params.submenus.replace(' ', '') + '.html'
+        controller: 'releaseCtrl',
       })
-      .otherwise({
+    .otherwise({
         redirectTo: '/'
       })
   ])

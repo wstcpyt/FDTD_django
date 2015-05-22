@@ -31,6 +31,7 @@ require.config({
       deps: ['angular', 'highlightjs']
     },
     angularRoute:{
+      exports: 'angularRoute',
       deps: ['angular']
     }
   }

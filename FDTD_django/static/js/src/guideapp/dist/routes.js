@@ -3,8 +3,15 @@
   define(['./app'], function(app) {
     return app.config([
       '$routeProvider', function($routeProvider) {
-        return $routeProvider.when('/view1', {
-          templateUrl: '/static/guidepage/GettingStarted.html'
+        return $routeProvider.when('/', {
+          templateUrl: '/static/guidepage/RESTAPI/GettingStarted.html'
+        }).when('/:menu/:submenus', {
+          templateUrl: function(params) {
+            return '/static/guidepage/' + params.menu.replace(' ', '') + '/' + params.submenus.replace(' ', '') + '.html';
+          },
+          controller: 'releaseCtrl'
+        }).otherwise({
+          redirectTo: '/'
         });
       }
     ]);
