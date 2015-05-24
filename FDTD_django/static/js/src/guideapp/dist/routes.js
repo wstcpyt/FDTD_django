@@ -4,12 +4,15 @@
     return app.config([
       '$routeProvider', function($routeProvider) {
         return $routeProvider.when('/', {
-          templateUrl: '/static/guidepage/RESTAPI/GettingStarted.html'
+          templateUrl: '/static/html/guidepage/RESTAPI/GettingStarted.html'
         }).when('/:menu/:submenus', {
           templateUrl: function(params) {
-            return '/static/guidepage/' + params.menu.replace(' ', '') + '/' + params.submenus.replace(' ', '') + '.html';
-          },
-          controller: 'releaseCtrl'
+            if (params.menu === "RELEASE NOTE") {
+              return '/static/html/guidepage/RELEASENOTE/release.html';
+            } else {
+              return '/static/html/guidepage/' + params.menu.replace(' ', '') + '/' + params.submenus.replace(' ', '') + '.html';
+            }
+          }
         }).otherwise({
           redirectTo: '/'
         });

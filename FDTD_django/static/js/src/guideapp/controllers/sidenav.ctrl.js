@@ -2,7 +2,7 @@
 (function() {
   define(['./module'], function(module) {
     return module.controller('SidenavCtrl', [
-      '$rootScope', '$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdMedia', function($rootScope, $scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia) {
+      '$rootScope', '$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdMedia', 'releaseService', function($rootScope, $scope, $timeout, $mdSidenav, $mdUtil, $log, $mdMedia, releaseService) {
         var buildToggler;
         buildToggler = function(navID) {
           var debounceFn;

@@ -6,6 +6,5 @@ urlpatterns = [
     url(r'^$', 'landingpage.views.home_page', name='home'),
     url(r'^', include('refractiveindexdatabase.urls')),
     url(r'^', include('guide.urls')),
-    # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]

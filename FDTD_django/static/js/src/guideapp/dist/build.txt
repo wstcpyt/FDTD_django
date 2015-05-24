@@ -1,6 +1,9 @@
 
 main.js
 ----------------
+services/module.js
+services/release.service.js
+services/index.js
 controllers/module.js
 controllers/left.ctrl.js
 controllers/sidenav.ctrl.js

@@ -1,9 +1,10 @@
 define(['./module'], (module) ->
-  module.service("indexdataService", ['$http', '$q', ($http, $q)->
+  module.service("indexdataService", ['$http', '$q', '$rootScope', ($http, $q, $rootScope)->
       self = this
       this.seturl = (url)->
         this.url = url
       this.getdata = ->
+
         deferred = $q.defer()
         $http.get(this.url)
         .success((data) ->

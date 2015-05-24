@@ -2,20 +2,44 @@
 (function() {
   define(['./module'], function(module) {
     return module.controller('LeftCtrl', [
-      '$scope', '$location', '$rootScope', '$routeParams', function($scope, $location, $rootScope, $routeParams) {
+      '$scope', '$location', '$rootScope', '$routeParams', 'releaseService', function($scope, $location, $rootScope, $routeParams, releaseService) {
+        var releaseServicedata, self, versions;
+        self = this;
         $scope.navmenus = [
           {
             'menu': 'REST API',
             'href': '#RESTAPI',
             'formatname': 'RESTAPI',
             'submenus': ['Getting Started', 'Quick Reference', 'Response Format']
-          }, {
+          }
+        ];
+        if (releaseService.releaseversions) {
+          versions = self.generateversionarray(releaseService.releaseversions);
+          self.addsubmenuv(versions);
+        } else {
+          releaseServicedata = releaseService.getdata();
+          releaseServicedata.then(function(data) {
+            versions = self.generateversionarray(data);
+            return self.addsubmenuv(versions);
+          });
+        }
+        self.addsubmenuv = function(versions) {
+          return $scope.navmenus.push({
             'menu': 'RELEASE NOTE',
             'href': '#RELEASENOTE',
             'formatname': 'RELEASENOTE',
-            'submenus': ['0.1.0']
+            'submenus': versions
+          });
+        };
+        self.generateversionarray = function(data) {
+          var i, len, releaseversion, releaseversions;
+          releaseversions = [];
+          for (i = 0, len = data.length; i < len; i++) {
+            releaseversion = data[i];
+            releaseversions.push(releaseversion['version']);
           }
-        ];
+          return releaseversions;
+        };
         $scope.selectsubmenu = function(submenu, navmenu) {
           $rootScope.maintoolbartitle = submenu;
           $scope.submenuselected = submenu;
