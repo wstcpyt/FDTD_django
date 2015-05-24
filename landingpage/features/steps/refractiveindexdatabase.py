@@ -4,11 +4,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 use_step_matcher("re")
 
 
-def wait_for_element_with_id(self, element_id):
-    WebDriverWait(self.browser, timeout=30).until(
+def wait_for_element_with_id(context, element_id):
+    WebDriverWait(context.browser, timeout=30).until(
         lambda b: b.find_element_by_id(element_id),
         'Could not find element with id {}. Page text was:\n{}'.format(
-            element_id, self.browser.find_element_by_tag_name('body').text
+            element_id, context.browser.find_element_by_tag_name('body').text
         )
     )
 
@@ -40,6 +40,7 @@ def step_impl(context):
 
 @then("see the title is DatabaseDirectory")
 def step_impl(context):
+    print(context.browser.title)
     assert 'DatabaseDirectory' in context.browser.title
 
 
@@ -57,6 +58,9 @@ def step_impl(context):
 
 @when("Click goto FDTD INDEX")
 def step_impl(context):
+    wait_for_element_with_id(context, 'gotoFDTDINDEX')
+    import time
+    time.sleep(0.5)
     gotoFDTDINDEX = context.browser.find_element_by_id('gotoFDTDINDEX')
     gotoFDTDINDEX.click()
 
@@ -100,16 +104,28 @@ def step_impl(context):
 
 @when("Click goto RESTAPI guide page")
 def step_impl(context):
+    import time
+    time.sleep(0.5)
     gotoRESTAPIguide = context.browser.find_element_by_id('gotoGuide')
     gotoRESTAPIguide.click()
 
 
 @then("see the title is Guide")
 def step_impl(context):
+    print(context.browser.title)
     assert 'Guide' in context.browser.title
 
 
 @when("Click the gotoindexlandingpage button")
 def step_impl(context):
+    wait_for_element_with_id(context, 'gotoIndexlandingpage')
     gotoIndexlandingpage = context.browser.find_element_by_id('gotoIndexlandingpage')
     gotoIndexlandingpage.click()
+
+
+@then("see the exportdata button")
+def step_impl(context):
+    wait_for_element_with_id(context, 'exportdata')
+    exportdatabutton = context.browser.find_element_by_id('exportdata')
+    exportdatabutton.click()
+

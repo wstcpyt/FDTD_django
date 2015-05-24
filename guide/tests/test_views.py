@@ -25,7 +25,7 @@ class ReleaseVersionTest(TestCase):
         first_releaseversion = ReleaseVersion.objects.first()
         releasenote = ReleaseNote()
         releasenote.releaseVersion = first_releaseversion
-        releasenote.type = 'NW'
+        releasenote.type = 'NEW'
         releasenote.note = 'Test'
         releasenote.save()
 

@@ -6,8 +6,11 @@
                 <md-content>
                     <md-list>
                         <md-list-item class="md-3-line" ng-repeat="releasenote in releasenotes">
-                            <span ng-show="releasenote.type=='NEW'" style="color: #e74c3c; margin-top: 8px; margin-right: 20px"><md-icon style="color: #e74c3c" md-svg-src="/static/images/icons/grade.svg"></md-icon><b>{{ releasenote.type }}</b></span>
+                            <span ng-show="releasenote.type=='NEW'" style="color: #f39c12; margin-top: 8px; margin-right: 20px"><md-icon style="color: #f39c12" md-svg-src="/static/images/icons/grade.svg"></md-icon><b>{{ releasenote.type }}</b></span>
                             <span ng-show="releasenote.type=='CHANGED'" style="color: #16a085; margin-top: 8px; margin-right: 20px"><md-icon style="color: #16a085" md-svg-src="/static/images/icons/cached.svg"></md-icon><b>{{ releasenote.type }}</b></span>
+                            <span ng-show="releasenote.type=='DEV'" style="color: #95a5a6; margin-top: 8px; margin-right: 20px"><md-icon style="color: #95a5a6" md-svg-src="/static/images/icons/settings.svg"></md-icon><b>{{ releasenote.type }}</b></span>
+                            <span ng-show="releasenote.type=='ISSUES'" style="color: #e74c3c; margin-top: 8px; margin-right: 20px"><md-icon style="color: #e74c3c" md-svg-src="/static/images/icons/bugReport.svg"></md-icon><b>{{ releasenote.type }}</b></span>
+                            <span ng-show="releasenote.type=='FIXED'" style="color: #27ae60; margin-top: 8px; margin-right: 20px"><md-icon style="color: #27ae60" md-svg-src="/static/images/icons/build.svg"></md-icon><b>{{ releasenote.type }}</b></span>
                             <div class="md-list-item-text">
                                 <p>{{ releasenote.note }}</p>
                             </div>
