@@ -21,7 +21,8 @@
         self.downloadCSV = function() {
           var encodedUri;
           encodedUri = encodeURI(self.csvContent);
-          return window.open(encodedUri);
+          window.open(encodedUri);
+          return true;
         };
         return 0;
       }
@@ -46,7 +47,8 @@
         self.downloadTXT = function() {
           var encodedUri;
           encodedUri = encodeURI(self.txtContent);
-          return window.open(encodedUri);
+          window.open(encodedUri);
+          return true;
         };
         return 0;
       }
@@ -64,57 +66,31 @@
         self.downloadJSON = function() {
           var encodedUri;
           encodedUri = encodeURI(self.JSONContent);
-          return window.open(encodedUri);
+          window.open(encodedUri);
+          return true;
         };
         return 0;
       }
     ]);
-    module.controller('bottomCtrl', [
-      '$scope', '$timeout', '$mdBottomSheet', 'generateCSVfileService', 'indexdataService', 'generateTXTfileService', 'generateJSONfileService', function($scope, $timeout, $mdBottomSheet, generateCSVfileService, indexdataService, generateTXTfileService, generateJSONfileService) {
-        return $scope.showGridBottomSheet = function($event) {
-          return $mdBottomSheet.show({
-            templateUrl: '/static/html/bottom-sheet-grid-template.html',
-            controller: 'GridBottomSheetCtrl',
-            targetEvent: $event
-          }).then(function(clickedItem) {
-            var dataarray, jsonobject;
-            if (clickedItem.name === 'CSV') {
-              dataarray = indexdataService.indexdata.dataArray;
-              generateCSVfileService.generateCSV(dataarray);
-              generateCSVfileService.downloadCSV();
-            }
-            if (clickedItem.name === 'TXT') {
-              dataarray = indexdataService.indexdata.dataArray;
-              generateTXTfileService.generateTXT(dataarray);
-              generateTXTfileService.downloadTXT();
-            }
-            if (clickedItem.name === 'JSONstring') {
-              jsonobject = indexdataService.indexdata.data;
-              generateJSONfileService.generateJSON(jsonobject);
-              return generateJSONfileService.downloadJSON();
-            }
-          });
+    return module.controller('exportdataCtrl', [
+      '$scope', 'generateCSVfileService', 'indexdataService', 'generateTXTfileService', 'generateJSONfileService', function($scope, generateCSVfileService, indexdataService, generateTXTfileService, generateJSONfileService) {
+        $scope.exportcsv = function() {
+          var dataarray;
+          dataarray = indexdataService.indexdata.dataArray;
+          generateCSVfileService.generateCSV(dataarray);
+          return generateCSVfileService.downloadCSV();
         };
-      }
-    ]);
-    return module.controller('GridBottomSheetCtrl', [
-      '$scope', '$mdBottomSheet', function($scope, $mdBottomSheet) {
-        $scope.items = [
-          {
-            name: 'TXT',
-            icon: 'txt'
-          }, {
-            name: 'CSV',
-            icon: 'csv'
-          }, {
-            name: 'JSONstring',
-            icon: 'txt'
-          }
-        ];
-        return $scope.listItemClick = function($index) {
-          var clickedItem;
-          clickedItem = $scope.items[$index];
-          return $mdBottomSheet.hide(clickedItem);
+        $scope.exporttxt = function() {
+          var dataarray;
+          dataarray = indexdataService.indexdata.dataArray;
+          generateTXTfileService.generateTXT(dataarray);
+          return generateTXTfileService.downloadTXT();
+        };
+        return $scope.exportjson = function() {
+          var jsonobject;
+          jsonobject = indexdataService.indexdata.data;
+          generateJSONfileService.generateJSON(jsonobject);
+          return generateJSONfileService.downloadJSON();
         };
       }
     ]);
