@@ -1,6 +1,6 @@
-define(['angular', 'angularMocks', 'bottomsheetexport/index', 'common/index'],->
+define(['angular', 'angularMocks', 'exportdata/index', 'common/index'],->
   describe('bottomsheetexport', ->
-    beforeEach(module('app.bottomsheetexport'))
+    beforeEach(module('app.exportdata'))
     beforeEach(module('app.common'))
     beforeEach(inject((generateCSVfileService, generateTXTfileService, generateJSONfileService)->
       this.generateCSVfileService = generateCSVfileService

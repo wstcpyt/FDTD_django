@@ -10,9 +10,9 @@ search/index.js
 sidenav/module.js
 sidenav/sidenav.ctrl.js
 sidenav/index.js
-bottomsheetexport/module.js
-bottomsheetexport/bottomsheetexport.ctrl.js
-bottomsheetexport/index.js
+exportdata/module.js
+exportdata/exportdata.ctrl.js
+exportdata/index.js
 common/module.js
 common/indexdata.service.js
 common/index.js

@@ -62,7 +62,8 @@
               }
             ],
             paths: {
-              angular: 'empty:'
+              angular: 'empty:',
+              Bootstrap: 'empty:'
             }
           }
         }

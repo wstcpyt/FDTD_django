@@ -87,7 +87,15 @@
                                         <h3 id="elementlisttitle">{{item.title}}</h3>
                                         <span flex></span>
                                         <div ng-show="paperselected==item.title" ng-controller="bottomCtrl" style="margin-right: 10px;">
-                                            <md-icon id="exportdata" ng-click="showGridBottomSheet($event)" md-svg-src="/static/images/icons/getapp.svg"></md-icon>
+                                            <div class="dropdown">
+                                                <md-icon id="exportdata" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  md-svg-src="/static/images/icons/getapp.svg"></md-icon>
+                                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                                    <li role="presentation" class="dropdown-header">Export Data</li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSV - comma separated</a></li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">TXT - tab separated</a></li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Full JSON record</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

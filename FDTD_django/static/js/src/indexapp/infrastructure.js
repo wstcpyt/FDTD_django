@@ -5,4 +5,5 @@ define(
         "ngAnimate",
         "ngAria",
         "ngMaterial",
+        "Bootstrap"
     ], function() {});

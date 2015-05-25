@@ -17,7 +17,8 @@ require.config({
         ngMaterial: '../../lib/angular-material/angular-material.min',
         angularMocks: '../../lib/angular-mocks/angular-mocks',
         highlightjs: ["//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js", '../../lib/highlightjs/highlight.pack'],
-        angularHighlightjs: ["http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min", '../../lib/angular-highlightjs/angular-highlightjs.min']
+        angularHighlightjs: ["http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min", '../../lib/angular-highlightjs/angular-highlightjs.min'],
+        Bootstrap: ['../../lib/bootstrap/dist/js/bootstrap.min', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"]
     },
     shim: {
         angular: {

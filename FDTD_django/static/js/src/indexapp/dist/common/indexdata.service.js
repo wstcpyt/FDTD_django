@@ -2,7 +2,7 @@
 (function() {
   define(['./module'], function(module) {
     return module.service("indexdataService", [
-      '$http', '$q', function($http, $q) {
+      '$http', '$q', '$rootScope', function($http, $q, $rootScope) {
         var self;
         self = this;
         this.seturl = function(url) {
