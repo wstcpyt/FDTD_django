@@ -24,7 +24,7 @@ define(['./module'], (module)->
       )
       $scope.selectmenu = (navmenu) ->
         $rootScope.maintoolbartitle = navmenu.menu
-        $scope.menuselected = navmenu.menu
+        $scope.menuselected = $rootScope.maintoolbartitle
         $location.url('/' + navmenu.menu)
   ])
 )

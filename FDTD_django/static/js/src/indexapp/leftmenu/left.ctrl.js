@@ -27,7 +27,7 @@
         });
         return $scope.selectmenu = function(navmenu) {
           $rootScope.maintoolbartitle = navmenu.menu;
-          $scope.menuselected = navmenu.menu;
+          $scope.menuselected = $rootScope.maintoolbartitle;
           return $location.url('/' + navmenu.menu);
         };
       }
