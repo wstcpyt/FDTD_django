@@ -16,6 +16,9 @@ exportdata/index.js
 common/module.js
 common/indexdata.service.js
 common/index.js
+leftmenu/module.js
+leftmenu/left.ctrl.js
+leftmenu/index.js
 app.js
 domReady!
 bootstrap.js

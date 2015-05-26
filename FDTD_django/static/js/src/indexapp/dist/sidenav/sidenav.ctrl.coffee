@@ -8,7 +8,7 @@ define(['./module'], (module) ->
         .then(->
           $log.debug("toggle" + navID)
         )
-      , 300)
+      , 10)
       return debounceFn
 
     $scope.toggleLeft = buildToggler('left')

@@ -6,6 +6,7 @@ define([
     './sidenav/index',
     './exportdata/index',
     './common/index',
+    './leftmenu/index'
   ], (ng) ->
   module = ng.module('app', [
     'ngMaterial',
@@ -14,6 +15,7 @@ define([
     'app.sidenav',
     'app.exportdata',
     'app.common',
+    'app.leftmenu',
   ])
   return module
 )

@@ -10,7 +10,7 @@
             return $mdSidenav(navID).toggle().then(function() {
               return $log.debug("toggle" + navID);
             });
-          }, 300);
+          }, 10);
           return debounceFn;
         };
         $scope.toggleLeft = buildToggler('left');

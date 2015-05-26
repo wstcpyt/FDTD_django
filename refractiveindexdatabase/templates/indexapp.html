@@ -30,25 +30,14 @@
         <ul style="padding: 0; margin: 0">
             <li ng-repeat="navmenu in navmenus">
                 <md-button md-ripple-size="full" class="text-left topmenu" ng-click="selectmenu(navmenu)">
-                    <div layout="row">
-                        <div>{{ navmenu.menu }}</div>
-                        <span flex></span>
-                        <md-icon md-svg-icon="/static/images/icons/arrow_drop_down.svg"></md-icon>
+                    <div class="row">
+                        <div class="col-md-2 col-xs-2"><md-icon class="{{ navmenu.class }}" md-svg-icon="{{ navmenu.icon }}"></md-icon></div>
+                        <div class="col-md-3 col-xs-3">{{ navmenu.menu }}</div>
                     </div>
                 </md-button>
-                <div ng-class="{hidesubnav :navmenu.menu!=collapsemenuselected}">
-                    <ul style="padding: 0; margin: 0">
-                        <li ng-repeat="submenu in navmenu.submenus">
-                            <md-button style="text-transform: capitalize" md-ripple-size="full" class="text-left submenu" ng-click="selectsubmenu(submenu, navmenu)" ng-class="{sel: submenuselected == submenu && menuselected==navmenu.menu}">
-                                <div>{{ submenu }}</div>
-                            </md-button>
-                        </li>
-                    </ul>
-                </div>
             </li>
         </ul>
         {% endverbatim %}
-    </md-content>
 {% endblock %}
 {% block mainpage %}
     <div class="indexapp">
