@@ -2,15 +2,34 @@
 (function() {
   define(['./module'], function(module) {
     return module.controller('LeftCtrl', [
-      '$scope', function($scope) {
-        return $scope.navmenus = [
+      '$scope', '$rootScope', '$location', '$routeParams', function($scope, $rootScope, $location, $routeParams) {
+        $scope.navmenus = [
           {
             'menu': 'SEARCH',
             'icon': '/static/images/icons/search.svg',
             'formatname': 'SEARCH',
             'class': 'deepblue'
+          }, {
+            'menu': 'ALL MATERIALS',
+            'icon': '/static/images/icons/language.svg',
+            'formatname': 'ALLMATERIALS',
+            'class': 'lightgrey'
           }
         ];
+        $scope.$on('$routeChangeSuccess', function() {
+          if ($routeParams.menu) {
+            $scope.menuselected = $routeParams.menu.replace('%20', ' ');
+            return $rootScope.maintoolbartitle = $scope.menuselected;
+          } else {
+            $scope.menuselected = "SEARCH";
+            return $rootScope.maintoolbartitle = 'SEARCH';
+          }
+        });
+        return $scope.selectmenu = function(navmenu) {
+          $rootScope.maintoolbartitle = navmenu.menu;
+          $scope.menuselected = navmenu.menu;
+          return $location.url('/' + navmenu.menu);
+        };
       }
     ]);
   });

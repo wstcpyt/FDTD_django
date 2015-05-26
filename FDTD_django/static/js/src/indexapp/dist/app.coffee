@@ -6,9 +6,11 @@ define([
     './sidenav/index',
     './exportdata/index',
     './common/index',
-    './leftmenu/index'
+    './leftmenu/index',
+    'angularRoute'
   ], (ng) ->
   module = ng.module('app', [
+    'ngRoute',
     'ngMaterial',
     'app.chart',
     'app.search',

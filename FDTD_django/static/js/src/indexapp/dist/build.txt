@@ -20,6 +20,7 @@ leftmenu/module.js
 leftmenu/left.ctrl.js
 leftmenu/index.js
 app.js
+routes.js
 domReady!
 bootstrap.js
 main.js
@@ -30,4 +31,5 @@ domReady.js
 ngAnimate.js
 ngAria.js
 ngMaterial.js
+angularRoute.js
 infrastructure.js
