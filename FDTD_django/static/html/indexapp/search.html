@@ -1,0 +1,56 @@
+<div class="container-fluid" style="padding-top: 100px;">
+    <div id="search" ng-controller="SearchCtrl">
+        <div style="margin-top: 30px" class="panel panel-primary">
+            <div class="panel-heading">REFRACTIVE INDEX DATABASE IS IN DEVELOPER PREVIEW </div>
+            <div class="panel-body">REFRACTIVE INDEX DATABASE is a <span style="color: red">WORK IN PROGRESS</span>
+                and APIs are subject to change.
+                It is intended for early adopters who want to test
+                out the interface and provide feedback</div>
+        </div>
+        <form ng-submit="$event.preventDefault()" class="ng-cloak">
+            <md-autocomplete
+                    md-selected-item="selectedItem"
+                    md-search-text-change="searchTextChange(searchText)"
+                    md-search-text="searchText"
+                    md-selected-item-change="selectedItemChange(item)"
+                    md-items="item in querySearch(searchText)"
+                    md-item-text="item.display"
+                    md-min-length="0"
+                    placeholder="Search your element">
+                <md-item-template>
+                    <span class="searchspan" md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                </md-item-template>
+            </md-autocomplete>
+            <br/>
+        </form>
+        <div id="elementlist" layout layout-align="center center">
+            <md-list ng-controller="chartCtrl" ng-hide='hideelementlist' class="ng-cloak">
+                <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist" ng-class="{expand :paperselected==item.title}" style="padding: 0;">
+                    <div class="container" style="width: 900px; background-color: #ffffff">
+                        <div class="md-list-item-text" style="padding-left: 10px" ng-class="{title :paperselected==item.title}">
+                            <div layout="row">
+                                <h3 id="elementlisttitle">{{item.title}}</h3>
+                                <span flex></span>
+                                <div ng-show="paperselected==item.title" ng-controller="exportdataCtrl" style="margin-right: 10px;">
+                                    <div class="dropdown">
+                                        <md-icon id="exportdata" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  md-svg-src="/static/images/icons/getapp.svg"></md-icon>
+                                        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                            <li role="presentation" class="dropdown-header">Export Data</li>
+                                            <li ng-click="exportcsv()" role="presentation"><a role="menuitem" tabindex="-1" href="#">CSV - comma separated</a></li>
+                                            <li ng-click="exporttxt()" role="presentation"><a role="menuitem" tabindex="-1" href="#">TXT - tab separated</a></li>
+                                            <li ng-click="exportjson()" role="presentation"><a role="menuitem" tabindex="-1" href="#">Full JSON record</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-hide="paperselected!=item.title">
+                            <div id="{{item.title}}" style="height: 400px; margin-bottom: 20px"></div>
+                        </div>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </div>
+    </div>
+</div>

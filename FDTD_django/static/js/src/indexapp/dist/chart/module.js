@@ -2,7 +2,7 @@
 (function() {
   define(['angular'], function(ng) {
     var module;
-    module = ng.module('app.leftmenu', []);
+    module = ng.module('app.chart', []);
     return module;
   });
 

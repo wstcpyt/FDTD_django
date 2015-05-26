@@ -7,7 +7,8 @@ require.config({
     ngAnimate: '../../lib/angular-animate/angular-animate.min',
     ngAria: '../../lib/angular-aria/angular-aria.min',
     ngMaterial: '../../lib/angular-material/angular-material.min',
-    Bootstrap: ['../../lib/bootstrap/dist/js/bootstrap.min', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"]
+    Bootstrap: ['../../lib/bootstrap/dist/js/bootstrap.min', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"],
+    angularRoute: '../../lib/angular-route/angular-route.min'
   },
   shim: {
     angular: {
@@ -24,6 +25,10 @@ require.config({
     ngMaterial: {
       exports: 'ngMaterial',
       deps: ['angular', 'ngAnimate', 'ngAria']
+    },
+    angularRoute:{
+      exports: 'angularRoute',
+      deps: ['angular']
     }
   }
 });
