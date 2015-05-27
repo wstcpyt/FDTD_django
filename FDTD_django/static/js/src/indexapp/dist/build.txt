@@ -19,6 +19,10 @@ common/index.js
 leftmenu/module.js
 leftmenu/left.ctrl.js
 leftmenu/index.js
+allmaterial/module.js
+allmaterial/allmaterial.ctrl.js
+allmaterial/allmaterial.factory.js
+allmaterial/index.js
 app.js
 routes.js
 domReady!

@@ -7,6 +7,7 @@ define([
     './exportdata/index',
     './common/index',
     './leftmenu/index',
+    './allmaterial/index',
     'angularRoute',
     'ngInfiniteScroll',
   ], (ng) ->
@@ -19,6 +20,7 @@ define([
     'app.exportdata',
     'app.common',
     'app.leftmenu',
+    'app.allmaterial',
     'infinite-scroll',
   ])
   return module

@@ -9,11 +9,6 @@
             'icon': '/static/images/icons/search.svg',
             'formatname': 'SEARCH',
             'class': 'deepblue'
-          }, {
-            'menu': 'ALL MATERIALS',
-            'icon': '/static/images/icons/language.svg',
-            'formatname': 'ALLMATERIALS',
-            'class': 'lightgrey'
           }
         ];
         $scope.$on('$routeChangeSuccess', function() {
