@@ -26,7 +26,7 @@
         <div id="elementlist" layout layout-align="center center">
             <md-list ng-controller="chartCtrl" ng-hide='hideelementlist' class="ng-cloak">
                 <md-list-item ng-mousedown="drawIndexChart(item)" class="md-3-line" ng-repeat="item in elementlist" ng-class="{expand :paperselected==item.title}" style="padding: 0;">
-                    <div class="container" style="width: 900px; background-color: #ffffff">
+                    <div class="container shadow" style="width: 900px; background-color: #ffffff">
                         <div class="md-list-item-text" style="padding-left: 10px" ng-class="{title :paperselected==item.title}">
                             <div layout="row">
                                 <h3 id="elementlisttitle">{{item.title}}</h3>

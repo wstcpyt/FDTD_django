@@ -19,7 +19,9 @@ require.config({
         highlightjs: ["//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js", '../../lib/highlightjs/highlight.pack'],
         angularHighlightjs: ["http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min", '../../lib/angular-highlightjs/angular-highlightjs.min'],
         Bootstrap: ['../../lib/bootstrap/dist/js/bootstrap.min', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"],
-        angularRoute: '../../lib/angular-route/angular-route.min'
+        angularRoute: '../../lib/angular-route/angular-route.min',
+        jquery: ["//code.jquery.com/jquery-1.11.3.min", '../../lib/jquery/dist/jquery.min'],
+        ngInfiniteScroll: '../../lib/ngInfiniteScroll/build/ng-infinite-scroll.min'
     },
     shim: {
         angular: {
@@ -47,6 +49,9 @@ require.config({
         angularRoute:{
             exports: 'angularRoute',
             deps: ['angular']
+        },
+        ngInfiniteScroll:{
+            deps: ['jquery', 'angular']
         }
     }
 });

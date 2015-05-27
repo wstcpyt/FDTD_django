@@ -18,6 +18,8 @@
     "angular-mocks": "latest",
     "angular-highlightjs": "latest",
     "highlightjs": "latest",
-    "bootstrap": "latest"
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "ngInfiniteScroll": "latest"
   }
 }

@@ -63,7 +63,8 @@
             ],
             paths: {
               angular: 'empty:',
-              Bootstrap: 'empty:'
+              Bootstrap: 'empty:',
+              jquery: 'empty:'
             }
           }
         }

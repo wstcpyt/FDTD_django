@@ -32,4 +32,5 @@ ngAnimate.js
 ngAria.js
 ngMaterial.js
 angularRoute.js
+ngInfiniteScroll.js
 infrastructure.js

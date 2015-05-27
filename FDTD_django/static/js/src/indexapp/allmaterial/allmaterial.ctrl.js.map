@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "allmaterial.ctrl.js",
+  "sourceRoot": "",
+  "sources": [
+    "allmaterial.ctrl.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,MAAA,CAAO,CAAC,UAAD,CAAP,EAAqB,SAAC,MAAD,GAAA;WACnB,MAAM,CAAC,UAAP,CAAkB,iBAAlB,EAAqC,CAAC,QAAD,EAAW,SAAC,MAAD,GAAA,CAAX,CAArC,EADmB;EAAA,CAArB,CAAA,CAAA;AAAA"
+}

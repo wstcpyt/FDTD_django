@@ -2,7 +2,7 @@ __author__ = 'yutongpang'
 from django.test import TestCase
 from django.core.urlresolvers import resolve
 from refractiveindexdatabase.views import database_directory_page, Elementitems, ElementListItems, \
-    ElementListItemsDetail, identify_url_space, index_app_page
+    ElementListItemsDetail, identify_url_space, index_app_page, AllMaterial
 from refractiveindexdatabase.models import Category, Element, Elementlist
 
 
@@ -103,3 +103,30 @@ class ElementListItemsDetailTest(TestCase):
         response = self.client.get('/elementlistitemsdetail/' + str(pk) + '/')
         self.assertIn(b'ELEMENT', response.content)
         self.assertIn(b'PAPER', response.content)
+
+
+class AllMaterialTest(TestCase):
+    def setUp(self):
+        Category.objects.create(title='main')
+        category = Category.objects.filter(title='main').first()
+        Element.objects.create(category=category, title='Ag')
+        Element.objects.create(category=category, title='Au')
+        Element.objects.create(category=category, title='Cu')
+        Element.objects.create(category=category, title='Fe')
+
+    def test_url_resolve(self):
+        found = resolve('/allmaterial/0/10/')
+        self.assertEquals(found._func_path, 'refractiveindexdatabase.views.AllMaterial')
+
+    def test_get_material_inrange(self):
+        self.allMaterial = AllMaterial()
+        materials_inrange_1 = self.allMaterial._get_material_inrange(0, 2)
+        self.assertEquals(materials_inrange_1[0].title, 'Ag')
+        self.assertEquals(materials_inrange_1[1].title, 'Au')
+        materials_inrange_2 = self.allMaterial._get_material_inrange(1, 2)
+        self.assertEquals(materials_inrange_2[0].title, 'Au')
+        self.assertEquals(materials_inrange_2[1].title, 'Cu')
+
+    def test_return_json_response(self):
+        response = self.client.get('/allmaterial/0/2/')
+        self.assertIn(b'title', response.content)

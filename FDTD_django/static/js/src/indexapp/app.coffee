@@ -7,7 +7,8 @@ define([
     './exportdata/index',
     './common/index',
     './leftmenu/index',
-    'angularRoute'
+    'angularRoute',
+    'ngInfiniteScroll',
   ], (ng) ->
   module = ng.module('app', [
     'ngRoute',
@@ -18,6 +19,7 @@ define([
     'app.exportdata',
     'app.common',
     'app.leftmenu',
+    'infinite-scroll',
   ])
   return module
 )

@@ -7,4 +7,6 @@ define(
         "ngMaterial",
         "Bootstrap",
         "angularRoute",
+        "jquery",
+        "ngInfiniteScroll"
     ], function() {});

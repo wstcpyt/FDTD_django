@@ -9,6 +9,18 @@ def identify_url_space(url):
     return url.replace("%20", " ")
 
 
+class AllMaterial(APIView):
+    def get(self, request, offset, number, format=None):
+        offset = int(offset)
+        number = int(number)
+        material_inrange = self._get_material_inrange(offset, number)
+        serializer = ElementSerializer(material_inrange, many=True)
+        return Response(serializer.data)
+
+    def _get_material_inrange(self, offset, number):
+        offsetend = offset + number
+        return Element.objects.all()[offset:offsetend]
+
 class Elementitems(APIView):
     def get(self, request, categoryname, format=None):
         categoryname = identify_url_space(categoryname)

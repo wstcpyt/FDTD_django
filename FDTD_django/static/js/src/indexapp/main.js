@@ -8,7 +8,9 @@ require.config({
     ngAria: '../../lib/angular-aria/angular-aria.min',
     ngMaterial: '../../lib/angular-material/angular-material.min',
     Bootstrap: ['../../lib/bootstrap/dist/js/bootstrap.min', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"],
-    angularRoute: '../../lib/angular-route/angular-route.min'
+    angularRoute: '../../lib/angular-route/angular-route.min',
+    jquery: ["//code.jquery.com/jquery-1.11.3.min", '../../lib/jquery/dist/jquery.min'],
+    ngInfiniteScroll: '../../lib/ngInfiniteScroll/build/ng-infinite-scroll.min'
   },
   shim: {
     angular: {
@@ -29,6 +31,9 @@ require.config({
     angularRoute:{
       exports: 'angularRoute',
       deps: ['angular']
+    },
+    ngInfiniteScroll:{
+      deps: ['jquery', 'angular']
     }
   }
 });

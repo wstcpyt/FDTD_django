@@ -63,6 +63,7 @@ module.exports = (grunt)->
           paths: {
               angular: 'empty:'
               Bootstrap: 'empty:'
+              jquery: 'empty:'
           }
         }
       }
