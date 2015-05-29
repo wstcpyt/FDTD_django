@@ -3,8 +3,9 @@ define([
     'ngMaterial',
     './controllers/index'
   ], (ng) ->
-  return ng.module('app', [
+  module = ng.module('app', [
     'app.controllers',
     'ngMaterial'
   ])
+  return module
 )

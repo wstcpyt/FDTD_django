@@ -3,12 +3,12 @@ Feature: Refractive Index database
 
   Scenario: Customer Come to refractive index Database page from the landing page
     Given Customer come to Landing Page without login
-    When Click the tab_002 in the header
+    When Click the Indexnavbutton in the header
     Then see the title is DatabaseDirectory
 
   Scenario: Customer on refractive index database page can go back to home page
     Given Customer come to the refractive index landing page
-    When Click the tab_001 in the header
+    When Click the FDTDnavbutton in the header
     Then see the title is FDTD
 
   Scenario: Customer on index landing page go to index app page

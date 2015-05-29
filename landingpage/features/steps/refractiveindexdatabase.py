@@ -31,12 +31,10 @@ def wait_for_element_with_tag_name(context, element_tag):
     )
 
 
-@when("Click the tab_002 in the header")
+@when("Click the Indexnavbutton in the header")
 def step_impl(context):
-    tab_002 = context.browser.find_elements_by_xpath('//md-tab-item')[1]
-    print(tab_002)
-    tab_002.click()
-
+    Indexnavbutton = context.browser.find_element_by_id('Index')
+    Indexnavbutton.click()
 
 @then("see the title is DatabaseDirectory")
 def step_impl(context):
@@ -50,10 +48,10 @@ def step_impl(context):
     context.browser.get(refractive_index_database_url)
 
 
-@when("Click the tab_001 in the header")
+@when("Click the FDTDnavbutton in the header")
 def step_impl(context):
-    tab_001 = context.browser.find_elements_by_xpath('//md-tab-item')[0]
-    tab_001.click()
+    FDTDnavbutton = context.browser.find_element_by_id('FDTD')
+    FDTDnavbutton.click()
 
 
 @when("Click goto FDTD INDEX")
