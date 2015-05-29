@@ -17,22 +17,25 @@
           href="/static/images/FDTDicon.png">
 </head>
 <body>
-<input type="hidden" id="tabindex" name="variable" value="{{ tabindex }}">
-<div class="header navbar-fixed-top ng-cloak" ng-controller="headercontroller">
-    <md-whiteframe class="md-whiteframe-z1" layout="column">
-        <md-tabs md-selected="selectedIndex" md-no-pagination="true">
-            <md-tab md-on-select="tab1clicked()">
-                <md-tab-label>
-                    <span><img src="/static/images/FDTDsmall.png">FDTD</span>
-                </md-tab-label>
-            </md-tab>
-            <md-tab md-on-select="tab2clicked()">
-                <md-tab-label>
-                    <span><img src="/static/images/INDEXsmall.png">INDEX</span>
-                </md-tab-label>
-            </md-tab>
-        </md-tabs>
-    </md-whiteframe>
+<div class="main" ng-controller="headercontroller">
+    <header class="main-header">
+        <div class="menu-btn">
+        </div>
+        <a href="{% url 'home' %}" class="title-btn">
+            <img class="logo" src="/static/images/FDTDsmall.png">
+            <h1>FDTD
+                <span class="by-infomagnetic">by-pyt</span>
+            </h1>
+        </a>
+        <md-button class="learn-more-btn ng-cloak">Sign In</md-button>
+    </header>
+    <nav>
+        <ul>
+            {% verbatim %}
+            <li class="ng-cloak" ng-repeat="navitem in navitems"><a href="{{ navitem.url }}">{{ navitem.menu }}</a></li>
+            {% endverbatim %}
+        </ul>
+    </nav>
 </div>
 <div class="maincontent">
     {% block contents %}
