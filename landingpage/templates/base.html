@@ -32,7 +32,7 @@
     <nav>
         <ul>
             {% verbatim %}
-            <li class="ng-cloak" ng-repeat="navitem in navitems"><a href="{{ navitem.url }}">{{ navitem.menu }}</a></li>
+            <li class="ng-cloak" ng-repeat="navitem in navitems"><a id="{{ navitem.menu }}" href="{{ navitem.url }}">{{ navitem.menu }}</a></li>
             {% endverbatim %}
         </ul>
     </nav>
