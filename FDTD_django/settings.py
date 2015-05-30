@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from .config import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,12 +27,19 @@ if 'RDS_DB_NAME' in os.environ:
     DEBUG = False
 
     ALLOWED_HOSTS = ['www.infomagnetic.com']
+
+    SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
+    SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
+
 else:
     DEBUG = True
 
     ALLOWED_HOSTS = []
 
+    from .config import *
 
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/databasedirectory/'
+SOCIAL_AUTH_LOGIN_URL = '/'
 # Application definition
 
 INSTALLED_APPS = (
