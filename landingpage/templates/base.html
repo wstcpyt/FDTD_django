@@ -35,9 +35,9 @@
             </h1>
         </a>
         {% if user.username %}
-            <paper-button class="learn-more-btn" data-dialog="logout" ng-click="loginclick($event)">{{ user.username }}</paper-button>
+            <paper-button id="id_logout" class="learn-more-btn" data-dialog="logout" ng-click="loginclick($event)">{{ user.username }}</paper-button>
         {% else %}
-            <paper-button class="learn-more-btn ng-cloak" data-dialog="sigin" ng-click="loginclick($event)">Sign In</paper-button>
+            <a href="{% url 'login' %}"><paper-button id="signinbutton" class="learn-more-btn" ng-click="loginclick($event) ">Sign In</paper-button></a>
         {% endif %}
     </header>
     <nav>

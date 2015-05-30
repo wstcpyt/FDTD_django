@@ -49,7 +49,7 @@ INSTALLED_APPS = (
     'guide',
     'refractiveindexdatabase',
     'django_behave',
-    'socailauth'
+    'socialauth'
 )
 
 TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
@@ -82,6 +82,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.google.GoogleOAuth2',
     'social.backends.twitter.TwitterOAuth',

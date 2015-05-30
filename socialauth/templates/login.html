@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>SignIn</title>
+    <!-- Polymer -->
+    <script src="/static/js/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="/static/js/lib/paper-button/paper-button.html">
+</head>
+<style>
+    html, body {
+        font-family: "roboto","helvetica neue",helvetica,arial,sans-serif;
+    }
+    main div {
+        margin: 0 auto;
+    }
+</style>
+<body>
+<main style="text-align: center; margin-top: 40px">
+    <div style="width: 46px">
+        <img src="/static/images/FDTDsmall.png">
+    </div>
+    <p style="margin: 20px 0 0 0; font-size: 20px">Choose an account</p>
+    <div style="width: 256px">
+        <a href="/login/twitter">
+            <paper-button style="margin: 30px 0 0 0; padding: 0; background-color: #00aced; color: white" raised>
+                <img style="fill: white; vertical-align: middle;" src="/static/images/icons/twitter.svg">
+                Continue with twitter
+            </paper-button>
+        </a>
+    </div>
+</main>
+</body>
+</html>
