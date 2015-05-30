@@ -9,3 +9,5 @@ FDTD_django/secret_key.py
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+FDTD_django/config.py
