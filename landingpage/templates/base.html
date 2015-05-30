@@ -15,6 +15,11 @@
     <link rel="icon"
           type="image/png"
           href="/static/images/FDTDicon.png">
+    <!-- Polymer -->
+    <script src="/static/js/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="/static/js/lib/paper-styles/paper-styles.html">
+    <link rel="import" href="/static/js/lib/paper-dialog/paper-dialog.html">
+    <link rel="import" href="/static/js/lib/paper-button/paper-button.html">
 </head>
 <body>
 <div class="main" ng-controller="headercontroller">
@@ -27,7 +32,7 @@
                 <span class="by-infomagnetic">by-pyt</span>
             </h1>
         </a>
-        <md-button class="learn-more-btn ng-cloak">Sign In</md-button>
+        <md-button class="learn-more-btn ng-cloak" data-dialog="modal" ng-click="loginclick($event)">Sign In</md-button>
     </header>
     <nav>
         <ul>
@@ -38,6 +43,12 @@
     </nav>
 </div>
 <div class="maincontent">
+    <paper-dialog id="modal" modal>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="buttons">
+            <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+        </div>
+    </paper-dialog>
     {% block contents %}
     {% endblock %}
 </div>

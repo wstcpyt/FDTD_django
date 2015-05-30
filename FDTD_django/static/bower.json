@@ -20,6 +20,7 @@
     "highlightjs": "latest",
     "bootstrap": "latest",
     "jquery": "latest",
-    "ngInfiniteScroll": "latest"
+    "ngInfiniteScroll": "latest",
+    "paper-dialog": "PolymerElements/paper-dialog#^1.0.0"
   }
 }
