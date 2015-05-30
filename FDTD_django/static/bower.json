@@ -22,6 +22,6 @@
     "jquery": "latest",
     "ngInfiniteScroll": "latest",
     "paper-dialog": "PolymerElements/paper-dialog#^1.0.0",
-    "paper-button": "PolymerElements/paper-button#^1.0.0"
+    "paper-button": "PolymerElements/paper-button#^1.0.0",
   }
 }
