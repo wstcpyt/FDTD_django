@@ -7,3 +7,4 @@ django_behave==0.1.4
 PyYAML==3.11
 newrelic==2.50.0.39
 django-pgjson==0.2.3
+python-social-auth==0.2.9
