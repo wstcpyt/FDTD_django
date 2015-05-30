@@ -32,7 +32,7 @@
                 <span class="by-infomagnetic">by-pyt</span>
             </h1>
         </a>
-        <md-button class="learn-more-btn ng-cloak" data-dialog="modal" ng-click="loginclick($event)">Sign In</md-button>
+        <paper-button class="learn-more-btn ng-cloak" data-dialog="modal" ng-click="loginclick($event)">Sign In</paper-button>
     </header>
     <nav>
         <ul>
@@ -43,10 +43,16 @@
     </nav>
 </div>
 <div class="maincontent">
-    <paper-dialog id="modal" modal>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <paper-dialog id="modal" modal style="width: 600px; text-align: center  ">
+        <h2>Join FDTD and welcome to the future</h2>
+        <a href="/login/twitter">
+            <paper-button style="margin: 30px 0 0 0; padding: 0; background-color: #00aced; color: white" raised>
+                <img style="fill: white" src="/static/images/icons/twitter.svg">
+                <b>Continue with twitter</b>
+            </paper-button>
+        </a>
         <div class="buttons">
-            <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+            <paper-button dialog-confirm autofocus>Cancel</paper-button>
         </div>
     </paper-dialog>
     {% block contents %}
