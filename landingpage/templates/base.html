@@ -22,39 +22,68 @@
     <link rel="import" href="/static/js/lib/paper-button/paper-button.html">
     <link rel="import" href="/static/js/lib/paper-menu/paper-menu.html">
     <link rel="import" href="/static/js/lib/paper-item/paper-item.html">
+    <link rel="import" href="/static/js/lib/iron-icons/iron-icons.html">
+    <link rel="import" href="/static/js/lib/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="/static/js/lib/paper-drawer-panel/paper-drawer-panel.html">
+    <link rel="import" href="/static/js/lib/paper-item/paper-item.html">
 </head>
 <body>
-<div class="main" ng-controller="headercontroller">
-    <header class="main-header">
-        <div class="menu-btn">
+<paper-drawer-panel id="paperDrawerPanel" force-narrow="true">
+    <div drawer>
+        <div style="margin-top: 84px; text-decoration: none; border-bottom: 1px solid lightgrey;">
+            <paper-item><a href="{% url 'home' %}"><paper-button>FDTD</paper-button></a></paper-item>
+            <paper-item><a href="{% url 'databasedir' %}"><paper-button>Index</paper-button></a></paper-item>
+            <paper-item><a href="{% url 'guide' %}"><paper-button>Guide</paper-button></a></paper-item>
         </div>
-        <a href="{% url 'home' %}" class="title-btn">
-            <img class="logo" src="/static/images/FDTDsmall.png">
-            <h1>FDTD
-                <span class="by-infomagnetic">by-pyt</span>
-            </h1>
-        </a>
-        {% if user.username %}
-            <paper-button id="id_logout" class="learn-more-btn" data-dialog="logout" ng-click="loginclick($event)">{{ user.username }}</paper-button>
-        {% else %}
-            <a href="{% url 'login' %}"><paper-button id="signinbutton" class="learn-more-btn" ng-click="loginclick($event) ">Sign In</paper-button></a>
-        {% endif %}
-    </header>
-    <nav>
-        <ul>
-            {% verbatim %}
-            <li class="ng-cloak" ng-repeat="navitem in navitems"><a id="{{ navitem.menu }}" href="{{ navitem.url }}">{{ navitem.menu }}</a></li>
-            {% endverbatim %}
-        </ul>
-    </nav>
-</div>
-<div class="maincontent">
-    <paper-dialog id="logout" heading="Custom Size &amp; Position" class="user-position">
-        <a href="{% url 'logout' %}"><paper-button style="background-color: rgb(63,81,181); padding: 0; color: white; margin: 10px" raised>Sign Out</paper-button></a>
-    </paper-dialog>
-    {% block contents %}
-    {% endblock %}
-</div>
+        <div style="text-decoration: none; border-bottom: 1px solid lightgrey;">
+            {% if user.username %}
+                <paper-item>
+                    <a href="/logout/"><paper-button>Sign Out</paper-button></a>
+                </paper-item>
+            {% else %}
+                <paper-item>
+                    <a href="{% url 'login' %}"><paper-button class="learn-more-btn">Sign In</paper-button></a>
+                </paper-item>
+            {% endif %}
+        </div>
+    </div>
+    <div main style="overflow: scroll;">
+        <div class="main" ng-controller="headercontroller">
+            <header class="main-header">
+                <div class="menu-btn">
+                    <paper-icon-button paper-drawer-toggle icon="menu" title="menu"></paper-icon-button>
+                </div>
+                <a href="{% url 'home' %}" class="title-btn">
+                    <img class="logo" src="/static/images/FDTDsmall.png">
+                    <h1>FDTD
+                        <span class="by-infomagnetic">by-pyt</span>
+                    </h1>
+                </a>
+                <span class="userauthblock">
+                    {% if user.username %}
+                        <paper-button id="id_logout" class="learn-more-btn" data-dialog="logout" ng-click="loginclick($event)">{{ user.username }}</paper-button>
+                    {% else %}
+                        <a href="{% url 'login' %}"><paper-button id="signinbutton" class="learn-more-btn" ng-click="loginclick($event) ">Sign In</paper-button></a>
+                    {% endif %}
+                </span>
+            </header>
+            <nav>
+                <ul>
+                    {% verbatim %}
+                    <li class="ng-cloak" ng-repeat="navitem in navitems"><a id="{{ navitem.menu }}" href="{{ navitem.url }}">{{ navitem.menu }}</a></li>
+                    {% endverbatim %}
+                </ul>
+            </nav>
+        </div>
+        <div class="maincontent">
+            <paper-dialog id="logout" heading="Custom Size &amp; Position" class="user-position">
+                <a href="{% url 'logout' %}"><paper-button style="background-color: rgb(63,81,181); padding: 0; color: white; margin: 10px" raised>Sign Out</paper-button></a>
+            </paper-dialog>
+            {% block contents %}
+            {% endblock %}
+        </div>
+    </div>
+</paper-drawer-panel>
 <script src="/static/js/lib/requirejs/require.js" data-main="/static/js/src/landing/dist/main.js"></script>
 </body>
 </html>
