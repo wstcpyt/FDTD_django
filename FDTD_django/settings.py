@@ -30,6 +30,8 @@ if 'RDS_DB_NAME' in os.environ:
 
     SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
     SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
+    S3_ACCESS_KEY = os.environ['S3_ACCESS_KEY']
+    S3_SECRET_KEY = os.environ['S3_SECRET_KEY']
 
 else:
     DEBUG = True
