@@ -27,9 +27,9 @@
     <link rel="import" href="/static/js/lib/paper-drawer-panel/paper-drawer-panel.html">
     <link rel="import" href="/static/js/lib/paper-item/paper-item.html">
 </head>
-<body>
+<body unresolved>
 <paper-drawer-panel id="paperDrawerPanel" force-narrow="true">
-    <div drawer>
+    <div drawer class="drawer">
         <div style="margin-top: 84px; text-decoration: none; border-bottom: 1px solid lightgrey;">
             <paper-item><a href="{% url 'home' %}"><paper-button>FDTD</paper-button></a></paper-item>
             <paper-item><a href="{% url 'databasedir' %}"><paper-button>Index</paper-button></a></paper-item>

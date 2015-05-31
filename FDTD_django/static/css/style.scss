@@ -30,7 +30,11 @@ a{
     display: none;
   }
 }
-
+.drawer{
+  paper-button{
+    width: 200px;
+  }
+}
 $headerheight:80px;
 $headerheight-mob:64px;
 $navheight:46px;
