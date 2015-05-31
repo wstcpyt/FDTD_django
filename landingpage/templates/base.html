@@ -61,7 +61,7 @@
                 </a>
                 <span class="userauthblock">
                     {% if user.username %}
-                        <paper-button id="id_logout" class="learn-more-btn" data-dialog="logout" ng-click="loginclick($event)">{{ user.username }}</paper-button>
+                        <paper-button id="id_logout" class="learn-more-btn" data-dialog="logout" ng-click="loginclick($event)"><img src="{{ user.customer.avatar }}"></paper-button>
                     {% else %}
                         <a href="{% url 'login' %}"><paper-button id="signinbutton" class="learn-more-btn" ng-click="loginclick($event) ">Sign In</paper-button></a>
                     {% endif %}

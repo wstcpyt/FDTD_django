@@ -102,7 +102,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
     'social.pipeline.user.create_user',
-    'socialauth.pipeline.save_profile',# <--- set the path to the function
+    'socialauth.pipeline.create_customer_profile',# <--- set the path to the function
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
