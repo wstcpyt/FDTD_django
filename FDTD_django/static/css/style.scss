@@ -63,6 +63,7 @@ $navheight:46px;
     }
     @media (max-height: 749px), (max-width: 1023px) {
       top: $headerheight-mob;
+      display: none;
     }
     background: #fff;
     border-top: 1px solid #f5f5f5;

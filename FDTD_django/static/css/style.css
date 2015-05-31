@@ -188,7 +188,8 @@ html, body {
         top: 80px; } }
     @media (max-height: 749px), (max-width: 1023px) {
       .main nav {
-        top: 64px; } }
+        top: 64px;
+        display: none; } }
     .main nav li {
       display: inline-block;
       margin-left: 25.6px;
