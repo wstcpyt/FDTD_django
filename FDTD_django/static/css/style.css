@@ -1,5 +1,5 @@
 .homepage {
-  padding-top: 70px; }
+  padding-top: 90px; }
   .homepage section {
     padding: 50px; }
     .homepage section img {
@@ -149,10 +149,7 @@ html, body {
   top: 64px;
   right: 0px; }
 
-a {
-  color: black; }
-
-@media (max-height: 749px), (max-width: 1023px) {
+@media (max-height: 500px), (max-width: 600px) {
   .userauthblock {
     display: none; } }
 
@@ -197,10 +194,10 @@ a {
     position: fixed;
     width: 100%;
     z-index: 3; }
-    @media (min-height: 750px) and (min-width: 1024px) {
+    @media (min-height: 500px) and (min-width: 600px) {
       .main nav {
         top: 80px; } }
-    @media (max-height: 749px), (max-width: 1023px) {
+    @media (max-height: 500px), (max-width: 600px) {
       .main nav {
         top: 64px;
         display: none; } }
@@ -219,11 +216,11 @@ a {
     top: 0;
     width: 100%;
     z-index: 2; }
-    @media (min-height: 750px) and (min-width: 1024px) {
+    @media (min-height: 500px) and (min-width: 600px) {
       .main .main-header {
         font-size: 1.7em;
         height: 80px; } }
-    @media (max-height: 749px), (max-width: 1023px) {
+    @media (max-height: 500px), (max-width: 600px) {
       .main .main-header {
         font-size: 1.35em;
         height: 64px; } }
@@ -241,12 +238,12 @@ a {
       height: 100%;
       margin-left: .5em;
       position: relative; }
-      @media (min-height: 750px) and (min-width: 1024px) {
+      @media (min-height: 500px) and (min-width: 600px) {
         .main .main-header .menu-btn {
           padding-left: 0; }
           .main .main-header .menu-btn paper-icon-button {
             display: none; } }
-      @media (max-height: 749px), (max-width: 1023px) {
+      @media (max-height: 500px), (max-width: 600px) {
         .main .main-header .menu-btn paper-icon-button {
           position: relative;
           top: 10px; } }

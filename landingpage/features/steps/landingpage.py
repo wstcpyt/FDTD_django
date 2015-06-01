@@ -10,9 +10,6 @@ EXAMPLEUSERNAME = 'EXAMPLEUSERNAME'
 
 def wait_to_be_logged_in(context):
     wait_for_element_with_id(context, 'id_logout')
-    username = context.browser.find_element_by_id('id_logout').text
-    return username
-
 
 def wait_to_be_logged_out(context):
     wait_for_element_with_id(context, 'signinbutton')
@@ -60,7 +57,6 @@ def step_impl(context):
 @then("See the login button")
 def step_impl(context):
     signintext = wait_to_be_logged_out(context)
-    assert 'SIGN IN' in signintext
 
 
 @when("Customer login")
@@ -70,12 +66,17 @@ def step_impl(context):
     context.browser.get(context.server_url)
 
 
-@then("See the username in toolbar")
+@then("User already login")
 def step_impl(context):
-    toolbar_username = wait_to_be_logged_in(context)
-    assert toolbar_username in EXAMPLEUSERNAME
+    wait_to_be_logged_in(context)
 
 
 @then("Customer logout")
 def step_impl(context):
     context.browser.get(context.server_url + '/logout/')
+
+
+@when("Click goto Guide Page")
+def step_impl(context):
+    gotoguidebutton = context.browser.find_element_by_id('id_guide')
+    gotoguidebutton.click()

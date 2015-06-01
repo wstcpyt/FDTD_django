@@ -26,12 +26,10 @@ html, body {
   top: 64px;
   right: 0px;
 }
-a{
-  color: black;
-}
-
+$mobileheight: 500px;
+$mobilewidth: 600px;
 .userauthblock{
-  @media (max-height: 749px), (max-width: 1023px) {
+  @media (max-height: $mobileheight), (max-width: $mobilewidth) {
     display: none;
   }
 }
@@ -76,10 +74,10 @@ $navheight:46px;
     vertical-align: baseline;
   }
   nav{
-    @media (min-height: 750px) and (min-width: 1024px) {
+    @media (min-height: $mobileheight) and (min-width: $mobilewidth) {
       top: $headerheight;
     }
-    @media (max-height: 749px), (max-width: 1023px) {
+    @media (max-height: $mobileheight), (max-width: $mobilewidth) {
       top: $headerheight-mob;
       display: none;
     }
@@ -104,11 +102,11 @@ $navheight:46px;
     }
   }
   .main-header{
-    @media (min-height: 750px) and (min-width: 1024px) {
+    @media (min-height: $mobileheight) and (min-width: $mobilewidth) {
       font-size: 1.7em;
       height: $headerheight;
     }
-    @media (max-height: 749px), (max-width: 1023px) {
+    @media (max-height: $mobileheight), (max-width: $mobilewidth) {
       font-size: 1.35em;
       height: $headerheight-mob;
     }
@@ -128,13 +126,13 @@ $navheight:46px;
       padding: .8em 1em;
     }
     .menu-btn{
-      @media (min-height: 750px) and (min-width: 1024px) {
+      @media (min-height: $mobileheight) and (min-width: $mobilewidth) {
         padding-left: 0;
         paper-icon-button{
           display: none;
         }
       }
-      @media (max-height: 749px), (max-width: 1023px) {
+      @media (max-height: $mobileheight), (max-width: $mobilewidth) {
         paper-icon-button{
           position: relative;
           top: 10px;

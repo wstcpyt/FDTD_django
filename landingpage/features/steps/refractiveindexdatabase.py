@@ -36,17 +36,6 @@ def step_impl(context):
     Indexnavbutton = context.browser.find_element_by_id('Index')
     Indexnavbutton.click()
 
-@then("see the title is DatabaseDirectory")
-def step_impl(context):
-    print(context.browser.title)
-    assert 'DatabaseDirectory' in context.browser.title
-
-
-@given("Customer come to the refractive index landing page")
-def step_impl(context):
-    refractive_index_database_url = context.server_url + '/databasedirectory/'
-    context.browser.get(refractive_index_database_url)
-
 
 @when("Click the FDTDnavbutton in the header")
 def step_impl(context):
@@ -114,10 +103,10 @@ def step_impl(context):
     assert 'Guide' in context.browser.title
 
 
-@when("Click the gotoindexlandingpage button")
+@when("Click the gotohomepage button")
 def step_impl(context):
-    wait_for_element_with_id(context, 'gotoIndexlandingpage')
-    gotoIndexlandingpage = context.browser.find_element_by_id('gotoIndexlandingpage')
+    wait_for_element_with_id(context, 'id_gotohomepage')
+    gotoIndexlandingpage = context.browser.find_element_by_id('id_gotohomepage')
     gotoIndexlandingpage.click()
 
 

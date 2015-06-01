@@ -2,6 +2,11 @@
 Feature: Landing Page
   # Enter feature description here
 
+  Scenario: Customer from Landing Page to Guide Page
+    Given Customer come to Landing Page without login
+    When Click goto Guide Page
+    Then see the title is Guide
+
   Scenario: Customer Not login
     Given Customer come to Landing Page without login
     Then See the login button
@@ -17,6 +22,6 @@ Feature: Landing Page
      Given Customer come to Landing Page without login
      Then See the login button
      When  Customer login
-     Then See the username in toolbar
+     Then User already login
      Then  Customer logout
      Then See the login button

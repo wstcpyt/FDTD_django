@@ -40,7 +40,7 @@ else:
 
     from .config import *
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/databasedirectory/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_URL = '/'
 # Application definition
 

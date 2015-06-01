@@ -2,7 +2,6 @@ from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from refractiveindexdatabase import views
 urlpatterns = [
-    url(r'^databasedirectory/$', views.database_directory_page, name='databasedir'),
     url(r'^indexapp/$', views.index_app_page, name='indexapp'),
     url(r'^allmaterial/(?P<offset>[0-9]+)/(?P<number>[0-9]+)/$', views.AllMaterial.as_view(), name='allmaterial'),
     url(r'^elementitems/(?P<categoryname>[\w|\W]+)/$', views.Elementitems.as_view(), name='elementlist'),

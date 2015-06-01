@@ -31,18 +31,17 @@
 <paper-drawer-panel id="paperDrawerPanel" force-narrow="true">
     <div drawer class="drawer">
         <div style="margin-top: 84px; text-decoration: none; border-bottom: 1px solid lightgrey;">
-            <paper-item><a href="{% url 'home' %}"><paper-button>FDTD</paper-button></a></paper-item>
-            <paper-item><a href="{% url 'databasedir' %}"><paper-button>Index</paper-button></a></paper-item>
-            <paper-item><a href="{% url 'guide' %}"><paper-button>Guide</paper-button></a></paper-item>
+            <paper-item><a href="{% url 'home' %}"><paper-button style="text-align: left">Get Started</paper-button></a></paper-item>
+            <paper-item><a href="{% url 'guide' %}"><paper-button style="text-align: left">Guide & Resources</paper-button></a></paper-item>
         </div>
         <div style="text-decoration: none; border-bottom: 1px solid lightgrey;">
             {% if user.username %}
                 <paper-item>
-                    <a href="/logout/"><paper-button>Sign Out</paper-button></a>
+                    <a href="/logout/"><paper-button style="text-align: left">Sign Out</paper-button></a>
                 </paper-item>
             {% else %}
                 <paper-item>
-                    <a href="{% url 'login' %}"><paper-button class="learn-more-btn">Sign In</paper-button></a>
+                    <a href="{% url 'login' %}"><paper-button style="text-align: left" class="learn-more-btn">Sign In</paper-button></a>
                 </paper-item>
             {% endif %}
         </div>
@@ -70,16 +69,18 @@
             <nav>
                 <ul>
                     {% verbatim %}
-                    <li class="ng-cloak" ng-repeat="navitem in navitems"><a id="{{ navitem.menu }}" href="{{ navitem.url }}">{{ navitem.menu }}</a></li>
+                    <li class="ng-cloak" ng-repeat="navitem in navitems"><a id="{{ navitem.id }}" href="{{ navitem.url }}">{{ navitem.menu }}</a></li>
                     {% endverbatim %}
                 </ul>
             </nav>
         </div>
         <div class="maincontent">
-            <paper-dialog id="logout" heading="Custom Size &amp; Position" class="user-position">
-                <div><img style="vertical-align: top" src="{{ user.customer.avatar }}"><span style="margin: 0 10px">{{ user.username }}</span></div>
-                <a href="{% url 'logout' %}"><paper-button style="background-color: rgb(63,81,181); padding: 0; color: white; margin: 10px" raised>Sign Out</paper-button></a>
-            </paper-dialog>
+            <scale-up-animation>
+                <paper-dialog id="logout" heading="Custom Size &amp; Position" class="user-position">
+                    <div><img style="vertical-align: top" src="{{ user.customer.avatar }}"><span style="margin: 0 10px">{{ user.username }}</span></div>
+                    <a href="{% url 'logout' %}"><paper-button style="background-color: rgb(63,81,181); padding: 0; color: white; margin: 10px" raised>Sign Out</paper-button></a>
+                </paper-dialog>
+            </scale-up-animation>
             {% block contents %}
             {% endblock %}
         </div>

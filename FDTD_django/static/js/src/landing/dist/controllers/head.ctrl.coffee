@@ -2,15 +2,13 @@ define(['./module'], (module) ->
   module.controller('headercontroller',['$rootScope', '$scope',($rootScope, $scope)->
     $rootScope.navitems = [
       {
-        'menu': 'FDTD'
+        'menu': 'Get Started'
+        'id': 'id_get_started'
         'url': '/'
       },
       {
-        'menu': 'Index'
-        'url': '/databasedirectory/'
-      },
-      {
-        'menu': 'Guide'
+        'menu': 'Guide & Resources'
+        'id': 'id_guide'
         'url': '/guide/'
       }
     ]
