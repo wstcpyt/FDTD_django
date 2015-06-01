@@ -153,6 +153,8 @@ html, body {
   .userauthblock {
     display: none; } }
 
+.drawer a {
+  color: black; }
 .drawer paper-button {
   width: 200px; }
 
