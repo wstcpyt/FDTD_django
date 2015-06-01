@@ -9,6 +9,11 @@ html, body {
   font-family: "roboto","helvetica neue",helvetica,arial,sans-serif;
 }
 
+.roundimage{
+  border-radius:50%;
+  overflow:hidden;
+}
+
 .maincontent{
   background-color: #EEE;
 }
