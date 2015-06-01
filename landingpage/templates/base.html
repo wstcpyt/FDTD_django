@@ -76,7 +76,7 @@
         <div class="maincontent">
             <scale-up-animation>
                 <paper-dialog id="logout" heading="Custom Size &amp; Position" class="user-position">
-                    <div><img style="vertical-align: top" src="{{ user.customer.avatar }}"><span style="margin: 0 10px">{{ user.username }}</span></div>
+                    <div><img style="vertical-align: top" src="{{ user.customer.avatar }}"><span style="margin: 0 10px">{{ user.first_name }} {{ user.last_name }}</span></div>
                     <a href="{% url 'logout' %}"><paper-button style="background-color: rgb(63,81,181); padding: 0; color: white; margin: 10px" raised>Sign Out</paper-button></a>
                 </paper-dialog>
             </scale-up-animation>

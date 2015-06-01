@@ -1,4 +1,4 @@
-from social.backends.twitter import TwitterOAuth
+from social.backends.google import GoogleOAuth2
 from socialauth.models import Customer
 from urllib.request import urlopen
 from django.conf import settings
@@ -34,11 +34,11 @@ def createnewcustomer(user, datalink):
 
 
 def create_customer_profile(backend, user, response, *args, **kwargs):
-    print(backend)
-    if isinstance(backend, TwitterOAuth):
+    if isinstance(backend, GoogleOAuth2):
         customerexsit = checkcustomerexsit(user)
         if not customerexsit:
-            imageurl = response.get('profile_image_url')
+            imageurl = response.get('image')['url']
             datalink = updatefiletos3(imageurl, user)
             createnewcustomer(user, datalink)
+
 
