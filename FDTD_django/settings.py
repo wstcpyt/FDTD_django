@@ -61,7 +61,8 @@ INSTALLED_APPS = (
     'guide',
     'refractiveindexdatabase',
     'django_behave',
-    'socialauth'
+    'socialauth',
+    'fdtdonthecloud'
 )
 
 TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'

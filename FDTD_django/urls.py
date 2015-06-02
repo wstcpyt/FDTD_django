@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^', include('guide.urls')),
     url(r'^', include('fdtdonthecloud.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('socialauth.urls4')),
+    url(r'^', include('socialauth.urls')),
 ]

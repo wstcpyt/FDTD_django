@@ -7,7 +7,7 @@
           {
             'menu': 'Get Started',
             'id': 'id_get_started',
-            'url': '/'
+            'url': '/fdtdapp/'
           }, {
             'menu': 'Guide & Resources',
             'id': 'id_guide',
