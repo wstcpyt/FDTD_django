@@ -80,3 +80,15 @@ def step_impl(context):
 def step_impl(context):
     gotoguidebutton = context.browser.find_element_by_id('id_guide')
     gotoguidebutton.click()
+
+
+@when("Click get started button")
+def step_impl(context):
+    getstartedbutton = context.browser.find_element_by_id('id_get_started')
+    getstartedbutton.click()
+
+
+@then("see the title FDTD App")
+def step_impl(context):
+    title = context.browser.title
+    assert 'FDTD App' in title
