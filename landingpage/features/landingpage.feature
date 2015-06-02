@@ -10,7 +10,7 @@ Feature: Landing Page
   Scenario: Customer from landing Page to FDTD App Page
     Given Customer come to Landing Page without login
     When Click get started button
-    Then see the title FDTD App
+    Then see the title is SignIn
 
   Scenario: Customer Not login
     Given Customer come to Landing Page without login
