@@ -3,6 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>SignIn</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/lib/bootstrap-social/bootstrap-social.css">
     <!-- Polymer -->
     <script src="/static/js/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link rel="import" href="/static/js/lib/paper-button/paper-button.html">
@@ -21,12 +24,10 @@
         <img src="/static/images/FDTDsmall.png">
     </div>
     <p style="margin: 20px 0 0 0; font-size: 20px">Choose an account</p>
-    <div style="width: 256px">
-        <a href="{% url 'social:begin' 'google-oauth2' %}">
-            <paper-button style="margin: 30px 0 0 0; padding: 0; background-color: #00aced; color: white" raised>
-                <img style="fill: white; vertical-align: middle;" src="/static/images/icons/twitter.svg">
-                Continue with google
-            </paper-button>
+    <div style="width: 200px">
+        <a style="margin: 20px 0;" class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}">
+            <i class="fa fa-google"></i>
+            Sign in with Google
         </a>
     </div>
 </main>
