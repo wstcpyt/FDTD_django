@@ -58,76 +58,74 @@ of a menu item will also focus it.
 
 <dom-module id="paper-menu">
 
-  <style>
+    <style>
 
-    :host {
-      display: block;
-      padding: 8px 0;
+        :host {
+            display: block;
+            padding: 8px 0;
 
-      background: var(--paper-menu-background-color, --primary-background-color);
-      color: var(--paper-menu-color, --primary-text-color);
+            background: var(--paper-menu-background-color, --primary-background-color);
+            color: var(--paper-menu-color, --primary-text-color);
 
-      @apply(--paper-menu);
-    }
+        @apply(--paper-menu);
+        }
 
-    /* need a wrapper element to make this higher specificity than the :host rule in paper-item */
-    .content > ::content > .iron-selected {
-      font-weight: bold;
+        /* need a wrapper element to make this higher specificity than the :host rule in paper-item */
+        .content > ::content > .iron-selected {
+            font-weight: bold;
 
-      @apply(--paper-menu-selected-item);
-    }
+        @apply(--paper-menu-selected-item);
+        }
 
-    .content > ::content > [disabled] {
-      color: var(--paper-menu-disabled-color, --disabled-text-color);
-    }
+        .content > ::content > [disabled] {
+            color: var(--paper-menu-disabled-color, --disabled-text-color);
+        }
 
-    .content > ::content > *:focus {
-      position: relative;
-      outline: 0;
+        .content > ::content > *:focus {
+            position: relative;
+            outline: 0;
 
-      @apply(--paper-menu-colored-focused-item);
-    }
+        @apply(--paper-menu-colored-focused-item);
+        }
 
-    .content > ::content > *:focus:after {
-      @apply(--layout-fit);
-      background: currentColor;
-      /* FIXME move to paper-styles for next widget */
-      opacity: 0.12;
-      content: '';
+        .content > ::content > *:focus:after {
+        @apply(--layout-fit);
+            background: currentColor;
+            /* FIXME move to paper-styles for next widget */
+            opacity: 0.12;
+            content: '';
 
-      @apply(--paper-menu-colored-focused-item-after);
-    }
+        @apply(--paper-menu-colored-focused-item-after);
+        }
 
-    .content > ::content > *[colored]:focus:after {
-      opacity: 0.26;
-    }
+        .content > ::content > *[colored]:focus:after {
+            opacity: 0.26;
+        }
 
-  </style>
+    </style>
 
-  <template>
+    <template>
 
-    <div class="content">
-      <content></content>
-    </div>
+        <div class="content">
+            <content></content>
+        </div>
 
-  </template>
+    </template>
 
 </dom-module>
 
 <script>
 
-(function() {
+    (function() {
 
-  Polymer({
+        Polymer({
 
-    is: 'paper-menu',
+            is: 'paper-menu',
+            behaviors: [
+                Polymer.IronMenuBehavior
+            ]
+        });
 
-    behaviors: [
-      Polymer.IronMenuBehavior
-    ]
-
-  });
-
-})();
+    })();
 
 </script>

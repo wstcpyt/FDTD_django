@@ -40,7 +40,7 @@ else:
 
     from .config import *
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/fdtdapp/'
 SOCIAL_AUTH_LOGIN_URL = '/'
 SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {
     'access_type': 'offline',  # Enables the refreshing grant

@@ -7,10 +7,19 @@ Feature: Landing Page
     When Click goto Guide Page
     Then see the title is Guide
 
-  Scenario: Customer from landing Page to FDTD App Page
+  Scenario: Customer from landing Page to FDTD App Page without login
     Given Customer come to Landing Page without login
     When Click get started button
     Then see the title is SignIn
+
+  Scenario: Customer from landing Page to FDTD App Page with login
+    Given Customer come to Landing Page without login
+    Then See the login button
+    When  Customer login
+    Then User already login
+    When Click get started button
+    Then see the title FDTD App
+    Then Customer logout
 
   Scenario: Customer Not login
     Given Customer come to Landing Page without login

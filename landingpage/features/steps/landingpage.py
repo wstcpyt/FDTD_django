@@ -18,7 +18,10 @@ def wait_to_be_logged_out(context):
 
 
 def create_pre_authenticated_session(context, username):
-    user = User.objects.create(email='edith@example.com', username=username, password='TESTPASSWORD')
+    try:
+        user = User.objects.get(username=username)
+    except:
+        user = User.objects.create(email='edith@example.com', username=username, password='TESTPASSWORD')
     session = SessionStore()
     session[SESSION_KEY] = user.pk
     session[BACKEND_SESSION_KEY] = settings.AUTHENTICATION_BACKENDS[0]
