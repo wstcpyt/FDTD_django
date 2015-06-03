@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-menu/paper-menu.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+
+
+<dom-module id="pyt-menu">
+    <style>
+        :host{
+            --paper-menu: {
+                 background-color: #eee;
+                 border-top: solid lightgrey 1px;
+                 margin-top: 10px;
+             };
+            --paper-menu-selected-item: {
+                background-color: lightgrey;
+             };
+            @apply(--pyt-menu);
+        }
+    </style>
+
+    <template>
+        <paper-menu id="papermenu">
+            <content></content>
+        </paper-menu>
+    </template>
+
+</dom-module>
+
+<script>
+    (function() {
+        Polymer({
+            is: 'pyt-menu',
+            properties: {
+              selectedindex:{
+                  type: Number,
+                  notify: true,
+                  observer: 'selectedindexChanged'
+              }
+            },
+            ready: function(){
+                this.$.papermenu.selected = this.selectedindex
+            },
+            selectedindexChanged: function(){
+                this.$.papermenu.selected = this.selectedindex
+            }
+        });
+    })();
+</script>

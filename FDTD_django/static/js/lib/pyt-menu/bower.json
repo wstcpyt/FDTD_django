@@ -1,0 +1,29 @@
+{
+  "name": "pyt-menu",
+  "version": "0.0.1",
+  "authors": [
+    "Anonymous <wstcpyt@gmail.com>"
+  ],
+  "description": "An pyt-menu polymer components.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "pyt-menu"
+  ],
+  "main": "pyt-menu.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/wstcpyt/pyt-menu/",
+  "ignore": [
+    "/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "paper-menu": "PolymerElements/paper-menu#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0"
+  }
+}
