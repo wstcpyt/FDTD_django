@@ -4,48 +4,11 @@
     <meta charset="UTF-8">
     <title>FDTD App</title>
     <script src="/static/js/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="/static/js/lib/paper-styles/paper-styles.html">
-    <link rel="import" href="/static/js/lib/paper-header-panel/paper-header-panel.html">
-    <link rel="import" href="/static/js/lib/paper-toolbar/paper-toolbar.html">
-    <link rel="import" href="/static/js/lib/paper-drawer-panel/paper-drawer-panel.html">
-    <link rel="import" href="/static/js/lib/iron-icons/iron-icons.html">
-    <link rel="import" href="/static/js/lib/paper-icon-button/paper-icon-button.html">
-    <link rel="import" href="/static/js/lib/paper-button/paper-button.html">
-    <link rel="import" href="/static/js/lib/paper-menu/paper-menu.html">
-    <link rel="import" href="/static/js/lib/paper-item/paper-item.html">
-    <link rel="import" href="/static/js/lib/paper-item/paper-icon-item.html">
-    <link rel="import" href="/static/js/lib/pyt-menu/pyt-menu.html">
-    <link rel="import" href="/static/js/lib/iron-icons/iron-icons.html">
-    <link rel="import" href="/static/js/lib/iron-icon/iron-icon.html">
+    <link rel="import" href="/static/js/src/fdtdonthecloud/fdtd-app/fdtd-app.html">
     <link rel="stylesheet" type="text/css" href="/static/css/fdtdapp/style.css">
 </head>
 <body unresolved class="fullbleed layout vertical">
-<paper-drawer-panel>
-    <div ng-controller="LeftCtrl" drawer style="background-color: #EEE">
-        <div class="logo-container">
-            <img style="vertical-align: middle" src="/static/images/FDTDsmall.png">
-            <span style="font-size: 25px; color: dimgray; margin-left: 10px; position: relative; top: 3px">FDTD Cloud</span>
-        </div>
-        <pyt-menu selectedindex="//index//">
-            <paper-icon-item style="cursor: pointer;">
-                <iron-icon icon="drafts" item-icon></iron-icon> Drafts
-            </paper-icon-item>
-            <paper-icon-item style="cursor: pointer;">
-                <iron-icon icon="done" item-icon></iron-icon> Done
-            </paper-icon-item>
-        </pyt-menu>
-    </div>
-    <div main>
-        <paper-header-panel class="flex">
-            <paper-toolbar>
-                <paper-icon-button paper-drawer-toggle class="menubutton" icon="menu" on-tap="menuAction"></paper-icon-button>
-                <span class="flex"></span>
-                <paper-button style="position: relative; right: -20px" class="rightbutton"><img class="roundimage" src="{{ user.customer.avatar }}"></paper-button>
-            </paper-toolbar>
-            <div class="content"></div>
-        </paper-header-panel>
-    </div>
-</paper-drawer-panel>
-<script src="/static/js/lib/requirejs/require.js" data-main="/static/js/src/fdtdonthecloud/main.js"></script>
+<fdtd-app user-avatar="{{ user.customer.avatar }}">
+</fdtd-app>
 </body>
 </html>

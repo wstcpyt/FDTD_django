@@ -1,0 +1,37 @@
+<link rel="import" href="/static/js/lib/polymer/polymer.html">
+<link rel="import" href="/static/js/lib/paper-styles/paper-styles.html">
+<link rel="import" href="/static/js/lib/iron-icons/iron-icons.html">
+<link rel="import" href="/static/js/lib/iron-icon/iron-icon.html">
+<link rel="import" href="/static/js/lib/paper-menu/paper-menu.html">
+<link rel="import" href="/static/js/lib/paper-item/paper-icon-item.html">
+
+
+<dom-module id="fdtd-leftctrl">
+    <style>
+        :host{
+            --paper-menu: {
+                 background-color: #eee;
+                 border-top: solid lightgrey 1px;
+                 margin-top: 10px;
+             };
+            --paper-menu-selected-item: {
+                background-color: lightgrey;
+             };
+        }
+    </style>
+    <template>
+        <div class="logo-container">
+            <img style="vertical-align: middle" src="/static/images/FDTDsmall.png">
+            <span style="font-size: 25px; color: dimgray; margin-left: 10px; position: relative; top: 3px">FDTD Cloud</span>
+        </div>
+        <paper-menu id="leftmenu" selected="0">
+            <template id="menulist" is="dom-repeat" items="{{menuItems}}">
+                <paper-icon-item style="cursor: pointer;" on-click="toggleSelection">
+                    <iron-icon icon="{{item.icon}}" item-icon></iron-icon> <span>{{item.menu}}</span>
+                </paper-icon-item>
+            </template>
+        </paper-menu>
+    </template>
+
+</dom-module>
+<script src="src/fdtdleftctrl.js"></script>

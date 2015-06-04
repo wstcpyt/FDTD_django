@@ -45,26 +45,6 @@ module.exports = (grunt)->
           }
         }
       }
-      fdtdonthecloud:{
-        options:{
-          baseUrl: 'src/fdtdonthecloud/',
-          mainConfigFile: "src/fdtdonthecloud/main.js",
-          removeCombined: true,
-          findNestedDependencies: true,
-          dir: "src/fdtdonthecloud/dist",
-          modules: [
-            {
-              name: 'main',
-              exclude: ["infrastructure"]
-            }, {
-              name: "infrastructure"
-            }
-          ],
-          paths: {
-            angular: 'empty:',
-          }
-        }
-      }
       indexapp:{
         options:{
           baseUrl: 'src/indexapp/',

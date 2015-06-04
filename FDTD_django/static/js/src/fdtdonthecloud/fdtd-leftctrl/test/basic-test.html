@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="/static/js/lib/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="/static/js/lib/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="/static/js/lib/web-component-tester/browser.js"></script>
+    <script src="/static/js/lib/test-fixture/test-fixture-mocha.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <link rel="import" href="/static/js/lib/test-fixture/test-fixture.html">
+    <link rel="import" href="../fdtd-leftctrl.html">
+</head>
+<body>
+
+<!-- You can use the document as a place to set up your fixtures. -->
+<test-fixture id="leftctrl">
+    <template>
+        <fdtd-leftctrl>
+            <div id="test"></div>
+            <template id="menulist" is="dom-repeat" items="{{menuItems}}">
+                <paper-icon-item id="{{item.menu}}" style="cursor: pointer;" on-click="toggleSelection">
+                    <iron-icon icon="{{item.icon}}" item-icon></iron-icon> <span>{{item.menu}}</span>
+                </paper-icon-item>
+            </template>
+        </fdtd-leftctrl>
+    </template>
+</test-fixture>
+
+<script>
+    suite('leftctrl tests', function() {
+        var pytmenu;
+        setup(function(){
+            pytmenu = fixture('leftctrl');
+        });
+        test('menuItems', function() {
+            assert.equal(pytmenu.menuItems[0].menu, 'Drafts')
+        });
+        test('toggleSelection',  function(){
+            console.log(pytmenu.$.Draftss)
+        })
+    });
+</script>
+
+</body>
+</html>
