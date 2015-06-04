@@ -11,7 +11,6 @@ polymer = {
     menuselected: {
       type: Object,
       notify: true,
-      value:{menu: 'Drafts', icon:'drafts'}
     }
   }
 }

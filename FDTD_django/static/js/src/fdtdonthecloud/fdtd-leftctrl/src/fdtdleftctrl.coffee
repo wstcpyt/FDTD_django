@@ -13,6 +13,7 @@ polymer = {
   ready: ->
     self = this
     self.menuItems = [
+      {menu: 'New', icon: 'create'}
       {menu: 'Drafts', icon:'drafts'},
       {menu: 'Done', icon: 'done'}
     ]

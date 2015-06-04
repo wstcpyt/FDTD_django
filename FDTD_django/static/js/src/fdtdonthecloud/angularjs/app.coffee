@@ -4,7 +4,7 @@ fdtdcloudapp.config(['$routeProvider', '$interpolateProvider',($routeProvider, $
   $interpolateProvider.endSymbol('//')
   $routeProvider
   .when('/', {
-      templateUrl: '/static/js/src/fdtdonthecloud/main/drafts.html'
+      templateUrl: '/static/js/src/fdtdonthecloud/main/new.html'
     })
   .when('/:menu/:index',{
       templateUrl: (params)->

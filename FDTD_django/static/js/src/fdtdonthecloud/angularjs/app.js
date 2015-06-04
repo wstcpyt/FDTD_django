@@ -9,7 +9,7 @@
       $interpolateProvider.startSymbol('//');
       $interpolateProvider.endSymbol('//');
       return $routeProvider.when('/', {
-        templateUrl: '/static/js/src/fdtdonthecloud/main/drafts.html'
+        templateUrl: '/static/js/src/fdtdonthecloud/main/new.html'
       }).when('/:menu/:index', {
         templateUrl: function(params) {
           return '/static/js/src/fdtdonthecloud/main/' + params.menu.replace(' ', '') + '.html';
