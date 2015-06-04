@@ -6,7 +6,6 @@
 <link rel="import" href="/static/js/lib/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="/static/js/lib/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../fdtd-leftctrl/fdtd-leftctrl.html">
-<link rel="import" href="../fdtd-main/fdtd-main.html">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
@@ -17,7 +16,7 @@
     <template>
         <paper-drawer-panel>
             <div drawer style="background-color: #EEE">
-                <fdtd-leftctrl menuselected="{{menuselected}}"></fdtd-leftctrl>
+                <fdtd-leftctrl selectedindex="{{selectedindex}}" menuselected="{{menuselected}}"></fdtd-leftctrl>
             </div>
             <div main>
                 <paper-header-panel>
@@ -29,8 +28,7 @@
                             <img class="roundimage" src="{{ userAvatar }}">
                         </paper-button>
                     </paper-toolbar>
-                    <fdtd-main>
-                    </fdtd-main>
+                    <content select=".maincontent"></content>
                 </paper-header-panel>
             </div>
         </paper-drawer-panel>

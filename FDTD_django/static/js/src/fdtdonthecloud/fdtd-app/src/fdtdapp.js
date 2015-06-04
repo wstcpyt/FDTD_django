@@ -8,6 +8,10 @@
       userAvatar: {
         type: String
       },
+      selectedindex: {
+        type: String,
+        notify: true
+      },
       menuselected: {
         type: Object,
         notify: true,

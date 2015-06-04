@@ -10,18 +10,18 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
     <link rel="import" href="/static/js/lib/test-fixture/test-fixture.html">
-    <link rel="import" href="../fdtd-leftctrl.html">
+    <link rel="import" href="../fdtd-app.html">
 </head>
 <body>
 
 <!-- You can use the document as a place to set up your fixtures. -->
-<test-fixture id="leftctrl">
+<test-fixture id="fdtdapp">
     <template>
-        <fdtd-leftctrl selectedindex="1">
-        </fdtd-leftctrl>
+        <fdtd-app selectedindex="0" user-avatar='testavatar'>
+        </fdtd-app>
     </template>
 </test-fixture>
 
-<script src="fdtd-leftctrl-test.js"></script>
+<script src="basic.js"></script>
 </body>
 </html>

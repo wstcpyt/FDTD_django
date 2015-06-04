@@ -7,6 +7,9 @@
     test('menuItems', function() {
       return assert.equal(this.pytmenu.menuItems[0].menu, 'Drafts');
     });
+    test('selectedindex_properties', function() {
+      return assert.equal(this.pytmenu.selectedindex, '1');
+    });
     return test('paper-menu selected changed', function() {
       var self;
       self = this;

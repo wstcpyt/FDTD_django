@@ -1,0 +1,38 @@
+<link rel="import" href="/static/js/lib/polymer/polymer.html">
+<link rel="import" href="/static/js/lib/paper-styles/paper-styles.html">
+<link rel="import" href="/static/js/lib/paper-fab/paper-fab.html">
+
+
+<dom-module id="fdtd-drafts">
+    <style>
+        :host{
+
+        }
+        paper-fab {
+            display: block;
+            margin-bottom:24px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        paper-fab.red {
+            --paper-fab-background: var(--paper-red-500);
+        }
+    </style>
+
+    <template>
+        <div style="background-color: dodgerblue; color: white">
+            <h1>Nothing in Drafts</h1>
+            <h3>Create a Draft and it will show up here</h3>
+        </div>
+        <paper-fab icon="create" title="create" tabindex="0" class="red"></paper-fab>
+    </template>
+
+</dom-module>
+
+<script>
+    (function() {
+        Polymer({
+            is: 'fdtd-drafts'
+        });
+    })();
+</script>

@@ -5,6 +5,10 @@ polymer = {
       type: Object
       notify: true
     }
+    selectedindex: {
+      type: String
+      notify: true
+    }
   }
   ready: ->
     self = this
@@ -14,6 +18,7 @@ polymer = {
     ]
     self.$.leftmenu.addEventListener('selected-changed', ->
       self.menuselected = self.menuItems[self.$.leftmenu.selected]
+      window.location = '#/' + self.menuItems[self.$.leftmenu.selected].menu + '/' + self.$.leftmenu.selected
     )
 }
 

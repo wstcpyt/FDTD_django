@@ -8,6 +8,10 @@
       menuselected: {
         type: Object,
         notify: true
+      },
+      selectedindex: {
+        type: String,
+        notify: true
       }
     },
     ready: function() {
@@ -23,7 +27,8 @@
         }
       ];
       return self.$.leftmenu.addEventListener('selected-changed', function() {
-        return self.menuselected = self.menuItems[self.$.leftmenu.selected];
+        self.menuselected = self.menuItems[self.$.leftmenu.selected];
+        return window.location = '#/' + self.menuItems[self.$.leftmenu.selected].menu + '/' + self.$.leftmenu.selected;
       });
     }
   };

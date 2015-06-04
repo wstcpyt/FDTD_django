@@ -5,6 +5,9 @@ suite('leftctrl tests',->
   test('menuItems', ->
     assert.equal(this.pytmenu.menuItems[0].menu, 'Drafts')
   )
+  test('selectedindex_properties', ->
+    assert.equal(this.pytmenu.selectedindex, '1')
+  )
   test('paper-menu selected changed', ->
     self = this
     self.pytmenu.$.leftmenu.addEventListener('selected-changed', ->
