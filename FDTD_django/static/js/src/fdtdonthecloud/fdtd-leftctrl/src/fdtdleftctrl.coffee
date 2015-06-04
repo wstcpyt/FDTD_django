@@ -7,13 +7,14 @@ polymer = {
     }
   }
   ready: ->
-    this.menuItems = [
+    self = this
+    self.menuItems = [
       {menu: 'Drafts', icon:'drafts'},
       {menu: 'Done', icon: 'done'}
     ]
-  toggleSelection: (e)->
-    item = this.$.menulist.itemForElement(e.target)
-    this.menuselected = item
+    self.$.leftmenu.addEventListener('selected-changed', ->
+      self.menuselected = self.menuItems[self.$.leftmenu.selected]
+    )
 }
 
 Polymer(polymer)

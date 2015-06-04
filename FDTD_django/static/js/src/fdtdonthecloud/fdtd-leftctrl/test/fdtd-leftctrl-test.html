@@ -18,30 +18,10 @@
 <test-fixture id="leftctrl">
     <template>
         <fdtd-leftctrl>
-            <div id="test"></div>
-            <template id="menulist" is="dom-repeat" items="{{menuItems}}">
-                <paper-icon-item id="{{item.menu}}" style="cursor: pointer;" on-click="toggleSelection">
-                    <iron-icon icon="{{item.icon}}" item-icon></iron-icon> <span>{{item.menu}}</span>
-                </paper-icon-item>
-            </template>
         </fdtd-leftctrl>
     </template>
 </test-fixture>
 
-<script>
-    suite('leftctrl tests', function() {
-        var pytmenu;
-        setup(function(){
-            pytmenu = fixture('leftctrl');
-        });
-        test('menuItems', function() {
-            assert.equal(pytmenu.menuItems[0].menu, 'Drafts')
-        });
-        test('toggleSelection',  function(){
-            console.log(pytmenu.$.Draftss)
-        })
-    });
-</script>
-
+<script src="fdtd-leftctrl-test.js"></script>
 </body>
 </html>

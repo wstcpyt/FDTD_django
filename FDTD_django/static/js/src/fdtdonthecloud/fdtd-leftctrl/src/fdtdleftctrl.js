@@ -11,7 +11,9 @@
       }
     },
     ready: function() {
-      return this.menuItems = [
+      var self;
+      self = this;
+      self.menuItems = [
         {
           menu: 'Drafts',
           icon: 'drafts'
@@ -20,11 +22,9 @@
           icon: 'done'
         }
       ];
-    },
-    toggleSelection: function(e) {
-      var item;
-      item = this.$.menulist.itemForElement(e.target);
-      return this.menuselected = item;
+      return self.$.leftmenu.addEventListener('selected-changed', function() {
+        return self.menuselected = self.menuItems[self.$.leftmenu.selected];
+      });
     }
   };
 
