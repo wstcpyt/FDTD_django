@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <title>FDTD App</title>
     <script src="/static/js/lib/webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="/static/js/src/fdtdonthecloud/fdtd-app/fdtd-app.html">
-    <link rel="stylesheet" type="text/css" href="/static/css/fdtdapp/style.css">
     <script src="/static/js/lib/angular/angular.js"></script>
     <script src="/static/js/lib/angular-route/angular-route.js"></script>
     <script src="/static/js/src/fdtdonthecloud/angularjs/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+    <script>
+        window.Polymer = window.Polymer || {};
+        window.Polymer.dom = 'shadow';
+    </script>
+    <link rel="import" href="/static/js/src/fdtdonthecloud/fdtd-app/fdtd-app.html">
+    <link rel="stylesheet" type="text/css" href="/static/css/fdtdapp/style.css">
 </head>
 <body unresolved class="fullbleed layout vertical" ng-controller="RouteCtrl" ng-app="fdtdcloudapp">
+<div id="svgtests"></div>
 <fdtd-app selectedindex="//selectedindex//" user-avatar="{{ user.customer.avatar }}">
     <div class="maincontent" ng-view>
     </div>

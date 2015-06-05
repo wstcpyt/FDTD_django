@@ -17,7 +17,7 @@
     ready: function() {
       var self;
       self = this;
-      self.menuItems = [
+      return self.menuItems = [
         {
           menu: 'New',
           icon: 'create'
@@ -29,6 +29,10 @@
           icon: 'done'
         }
       ];
+    },
+    attached: function() {
+      var self;
+      self = this;
       return self.$.leftmenu.addEventListener('selected-changed', function() {
         self.menuselected = self.menuItems[self.$.leftmenu.selected];
         return window.location = '#/' + self.menuItems[self.$.leftmenu.selected].menu + '/' + self.$.leftmenu.selected;

@@ -17,6 +17,8 @@ polymer = {
       {menu: 'Drafts', icon:'drafts'},
       {menu: 'Done', icon: 'done'}
     ]
+  attached: ->
+    self = this
     self.$.leftmenu.addEventListener('selected-changed', ->
       self.menuselected = self.menuItems[self.$.leftmenu.selected]
       window.location = '#/' + self.menuItems[self.$.leftmenu.selected].menu + '/' + self.$.leftmenu.selected

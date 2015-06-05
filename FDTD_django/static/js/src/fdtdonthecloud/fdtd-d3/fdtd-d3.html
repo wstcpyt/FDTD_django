@@ -1,0 +1,50 @@
+<link rel="import" href="/static/js/lib/polymer/polymer.html">
+<link rel="import" href="/static/js/lib/paper-styles/paper-styles.html">
+
+
+<dom-module id="fdtd-d3">
+    <style>
+        :host{
+        }
+    </style>
+    <template>
+        <svg id="svgtest" width="960" height="500">
+            <rect style="fill:red;" width="100%" height="100%"></rect>
+        </svg>
+    </template>
+</dom-module>
+
+<script>
+    (function() {
+        Polymer({
+            is: 'fdtd-d3',
+            attached: function(){
+                var activeLine;
+
+                var renderPath = d3.svg.line()
+                        .x(function(d) { return d[0]; })
+                        .y(function(d) { return d[1]; })
+                        .interpolate("basis");
+
+                var svg = d3.select(this.$.svgtest)
+                        .call(d3.behavior.drag()
+                                .on("dragstart", dragstarted)
+                                .on("drag", dragged)
+                                .on("dragend", dragended));
+
+                function dragstarted() {
+                    activeLine = svg.append("path").datum([]).attr("class", "line");
+                }
+
+                function dragged() {
+                    activeLine.datum().push(d3.mouse(this));
+                    activeLine.attr("d", renderPath);
+                }
+
+                function dragended() {
+                    activeLine = null;
+                }
+            }
+        });
+    })();
+</script>
