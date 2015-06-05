@@ -11,6 +11,14 @@
 
 <dom-module id="fdtd-app">
     <style>
+        :host{
+
+        }
+        #id_avatar{
+            border-radius: 50%;
+            overflow: hidden;
+            width: 40px;
+        }
     </style>
 
     <template>
@@ -25,7 +33,7 @@
                         <span>{{menuselected.menu}}</span>
                         <span class="flex"></span>
                         <paper-button style="position: relative; right: -20px" class="rightbutton">
-                            <img class="roundimage" src="{{ userAvatar }}">
+                            <img id="id_avatar" class="roundimage" src="{{ userAvatar }}">
                         </paper-button>
                     </paper-toolbar>
                     <content select=".maincontent"></content>

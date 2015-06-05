@@ -6,14 +6,16 @@
     <style>
         :host{
         }
+        svg{
+            float: left;
+            border-bottom: solid 1px #ccc;
+            border-right: solid 1px #ccc;
+            margin-right: -1px;
+            margin-bottom: -1px;
+        }
     </style>
     <template>
-        <div id="id_div">
-            <svg id="id_svg" width="720" height="120">
-                <circle id="id_circle" cx="40" cy="60" r="10"></circle>
-                <circle cx="80" cy="60" r="10"></circle>
-                <circle cx="120" cy="60" r="10"></circle>
-            </svg>
+        <div id="id_svg_div">
         </div>
     </template>
 </dom-module>

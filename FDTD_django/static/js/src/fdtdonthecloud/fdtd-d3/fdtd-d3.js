@@ -5,22 +5,28 @@
   polymer = {
     is: 'fdtd-d3',
     attached: function() {
-      var circle, circlenode, dataarray, i, j, lendef, ref;
-      dataarray = [32, 57, 112, 293];
-      circlenode = this.$$('#id_div').getElementsByTagName('circle');
-      lendef = dataarray.length - circlenode.length;
-      for (i = j = 0, ref = lendef - 1; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
-        d3.select(this.$$('#id_svg')).append('circle');
+      var circle, dragmove, height, i, j, radius, svg, width;
+      width = 240;
+      height = 125;
+      radius = 20;
+      for (i = j = 0; j <= 15; i = ++j) {
+        d3.select(this.$$("#id_svg_div")).append("svg");
       }
-      circle = d3.selectAll(circlenode).data(dataarray);
-      circle.style("fill", "steelblue");
-      circle.attr("cy", 60);
-      circle.attr("cx", function(d, i) {
-        return i * 100 + 30;
-      });
-      return circle.attr("r", function(d) {
-        return Math.sqrt(d);
-      });
+      svg = d3.selectAll(this.$$("#id_svg_div").getElementsByTagName("svg")).data(d3.range(16).map(function() {
+        return {
+          x: width / 2,
+          y: height / 2
+        };
+      })).attr("width", width).attr("height", height);
+      svg.append("circle").attr("r", radius).attr('cx', function(d) {
+        return d.x;
+      }).attr("cy", function(d) {
+        return d.y;
+      }).on("click", dragmove);
+      circle = d3.selectAll(this.$$("#id_svg_div").getElementsByTagName("circle")).on("click", dragmove);
+      return dragmove = function() {
+        return console.log("clicked");
+      };
     }
   };
 

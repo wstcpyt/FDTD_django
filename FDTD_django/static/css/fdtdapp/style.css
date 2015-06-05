@@ -2,17 +2,4 @@ html, body {
   line-height: 1;
   font-family: "roboto","helvetica neue",helvetica,arial,sans-serif; }
 
-.logo-container {
-  padding-left: 20px;
-  padding-top: 10px; }
-
-@media (min-width: 640px) {
-  .menubutton {
-    display: none; } }
-
-.roundimage {
-  width: 40px;
-  border-radius: 50%;
-  overflow: hidden; }
-
 /*# sourceMappingURL=style.css.map */

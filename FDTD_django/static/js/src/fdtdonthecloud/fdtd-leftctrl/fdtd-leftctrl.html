@@ -9,19 +9,23 @@
 <dom-module id="fdtd-leftctrl">
     <style>
         :host{
-        --paper-menu: {
-             background-color: #eee;
-             border-top: solid lightgrey 1px;
-             margin-top: 10px;
-         };
-        --paper-menu-selected-item: {
-             background-color: lightgrey;
-         };
+            --paper-menu: {
+                 background-color: #eee;
+                 border-top: solid lightgrey 1px;
+                 margin-top: 10px;
+             };
+            --paper-menu-selected-item: {
+                 background-color: lightgrey;
+             };
+        }
+        .logo-container{
+            padding-left: 10px;
+            padding-top: 10px;
         }
     </style>
     <template>
         <div class="logo-container">
-            <img style="vertical-align: middle" src="/static/images/FDTDsmall.png">
+            <img style="vertical-align: middle;" src="/static/images/FDTDsmall.png">
             <span style="font-size: 25px; color: dimgray; margin-left: 10px; position: relative; top: 3px">FDTD Cloud</span>
         </div>
         <paper-menu id="leftmenu" selected="{{selectedindex}}">
