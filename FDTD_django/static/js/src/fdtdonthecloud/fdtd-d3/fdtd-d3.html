@@ -8,43 +8,18 @@
         }
     </style>
     <template>
-        <svg id="svgtest" width="960" height="500">
-            <rect style="fill:red;" width="100%" height="100%"></rect>
-        </svg>
+        <div id="id_div">
+            <svg id="id_svg" width="720" height="120">
+                <circle id="id_circle" cx="40" cy="60" r="10"></circle>
+                <circle cx="80" cy="60" r="10"></circle>
+                <circle cx="120" cy="60" r="10"></circle>
+            </svg>
+        </div>
     </template>
 </dom-module>
-
+<script src="fdtd-d3.js">
+</script>
 <script>
     (function() {
-        Polymer({
-            is: 'fdtd-d3',
-            attached: function(){
-                var activeLine;
-
-                var renderPath = d3.svg.line()
-                        .x(function(d) { return d[0]; })
-                        .y(function(d) { return d[1]; })
-                        .interpolate("basis");
-
-                var svg = d3.select(this.$.svgtest)
-                        .call(d3.behavior.drag()
-                                .on("dragstart", dragstarted)
-                                .on("drag", dragged)
-                                .on("dragend", dragended));
-
-                function dragstarted() {
-                    activeLine = svg.append("path").datum([]).attr("class", "line");
-                }
-
-                function dragged() {
-                    activeLine.datum().push(d3.mouse(this));
-                    activeLine.attr("d", renderPath);
-                }
-
-                function dragended() {
-                    activeLine = null;
-                }
-            }
-        });
     })();
 </script>
