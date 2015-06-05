@@ -5,28 +5,31 @@
   polymer = {
     is: 'fdtd-d3',
     attached: function() {
-      var circle, dragmove, height, i, j, radius, svg, width;
+      var circle, drag, height, i, j, radius, self, svg, width;
+      self = this;
       width = 240;
       height = 125;
       radius = 20;
       for (i = j = 0; j <= 15; i = ++j) {
-        d3.select(this.$$("#id_svg_div")).append("svg");
+        d3.select(this.$$("#id_svg_div")).append("svg").style("border-bottom", "solid 1px #ccc").style("border-right", "solid 1px #ccc").style("margin-right", "-1px").style("margin-bottom", "-1px");
       }
+      drag = d3.behavior.drag().origin(function(d) {
+        return d;
+      }).on("drag", function(d) {
+        return d3.select(this).attr("cx", d.x = Math.max(radius, Math.min(width - radius, d3.event.x))).attr("cy", d.y = Math.max(radius, Math.min(height - radius, d3.event.y)));
+      });
       svg = d3.selectAll(this.$$("#id_svg_div").getElementsByTagName("svg")).data(d3.range(16).map(function() {
         return {
           x: width / 2,
           y: height / 2
         };
       })).attr("width", width).attr("height", height);
-      svg.append("circle").attr("r", radius).attr('cx', function(d) {
+      svg.append("circle");
+      return circle = d3.selectAll(this.$$("#id_svg_div").getElementsByTagName("circle")).attr("r", radius).attr('cx', function(d) {
         return d.x;
       }).attr("cy", function(d) {
         return d.y;
-      }).on("click", dragmove);
-      circle = d3.selectAll(this.$$("#id_svg_div").getElementsByTagName("circle")).on("click", dragmove);
-      return dragmove = function() {
-        return console.log("clicked");
-      };
+      }).call(drag);
     }
   };
 
