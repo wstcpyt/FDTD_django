@@ -1,0 +1,39 @@
+<link rel="import" href="/static/js/lib/polymer/polymer.html">
+<link rel="import" href="/static/js/lib/paper-styles/paper-styles.html">
+<link rel="import" href="/static/js/lib/paper-input/paper-input.html">
+<link rel="import" href="/static/js/lib/paper-material/paper-material.html">
+<link rel="import" href="/static/js/lib/iron-ajax/iron-ajax.html">
+
+
+
+<dom-module id="fdtd-layer-editor">
+    <style>
+        :host {
+
+        }
+        paper-input{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+    <template>
+        <iron-ajax auto url="http://localhost:8000/elementlistitems/Ag/"
+                   params=''
+                   handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+        <section class="flex layout horizontal wrap">
+            <template is="dom-repeat" items="[[ajaxResponse]]">
+                <div>
+                    <span>{{item.title}}</span>
+                </div>
+            </template>
+        </section>
+        <paper-material elevation="1">
+            <div class="vertical center-justified layout">
+                <div>Layer <span>{{layernumber}}</span></div>
+                <paper-input id="id_title" label="Title" style="width: 200px; display: inline-block"></paper-input>
+                <paper-input label="Thickness (um)" style="width: 200px; display: inline-block"></paper-input>
+            </div>
+        </paper-material>
+    </template>
+</dom-module>
+<script src="fdtd-layer-editor.js"></script>

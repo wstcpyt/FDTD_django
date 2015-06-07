@@ -22,7 +22,10 @@
     '$scope', '$routeParams', function($scope, $routeParams) {
       return $scope.$on('$routeChangeSuccess', function() {
         if ($routeParams.menu && $routeParams.index) {
-          return $scope.selectedindex = $routeParams.index;
+          $scope.selectedindex = $routeParams.index;
+          return $scope.menuselected = {
+            'menu': $routeParams.menu
+          };
         } else {
           return $scope.selectedindex = 0;
         }

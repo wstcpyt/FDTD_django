@@ -5,17 +5,18 @@
   polymer = {
     is: 'fdtd-d3',
     attached: function() {
-      var circledom, divdom, dragcircle, svgdom;
+      var circledom, divdom, dragrect, svgdom;
       divdom = this.$$("#id_svg_div");
       svgdom = this.$$("#id_svg_div").getElementsByTagName("svg");
       circledom = this.$$("#id_svg_div").getElementsByTagName("circle");
-      dragcircle = new Dragcircle(this, divdom, svgdom, circledom);
-      return dragcircle.rendersvg();
+      dragrect = new Dragrect(this);
+      return dragrect.rendersvg();
     }
   };
 
   Dragrect = (function() {
-    function Dragrect() {
+    function Dragrect(polymerscope) {
+      this.polymerscope = polymerscope;
       this.w = 750;
       this.h = 450;
       this.r = 120;
@@ -24,7 +25,35 @@
       this.dragnarw = 20;
     }
 
-    Dragrect.prototype.rendersvg = function() {};
+    Dragrect.prototype.rendersvg = function() {
+      var drag, dragbottom, dragleft, dragright, dragtop, newg, self, svg;
+      self = this;
+      drag = d3.behavior.drag().origin(Object).on("drag", function(d) {
+        return self.dragmove(d);
+      });
+      dragright = d3.behavior.drag().origin(Object).on("drag", function(d) {});
+      dragleft = d3.behavior.drag().origin(Object).on("drag", function(d) {});
+      dragtop = d3.behavior.drag().origin(Object).on("drag", function(d) {});
+      dragbottom = d3.behavior.drag().origin(Object).on("drag", function(d) {});
+      svg = d3.select(self.polymerscope.$$("#id_svg_div")).append("svg").attr("width", self.w).attr("height", self.h);
+      newg = svg.append("g").data([
+        {
+          x: self.width / 2,
+          y: self.height / 2
+        }
+      ]);
+      return self.dragrect = newg.append("rect").attr("id", "active").attr("x", function(d) {
+        return d.x;
+      }).attr("y", function(d) {
+        return d.y;
+      }).attr("height", self.height).attr("width", self.width).attr("fill-opacity", .5).attr("cursor", "move").call(drag);
+    };
+
+    Dragrect.prototype.dragmove = function(d) {
+      var self;
+      self = this;
+      return self.dragrect.attr("y", d.y = Math.max(0, Math.min(self.h - self.height, d3.event.y)));
+    };
 
     return Dragrect;
 

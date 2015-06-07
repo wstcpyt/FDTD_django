@@ -16,6 +16,7 @@ fdtdcloudapp.controller('RouteCtrl',['$scope', '$routeParams', ($scope, $routePa
   $scope.$on('$routeChangeSuccess', ->
     if $routeParams.menu && $routeParams.index
       $scope.selectedindex = $routeParams.index
+      $scope.menuselected = {'menu': $routeParams.menu}
     else
       $scope.selectedindex = 0
   )

@@ -28,7 +28,11 @@
     "paper-header-panel": "PolymerElements/paper-header-panel#^1.0.0",
     "paper-toolbar": "PolymerElements/paper-toolbar#^1.0.0",
     "polymer": "Polymer/polymer#^1.0.2",
-    "paper-fab": "PolymerElements/paper-fab#^1.0.0"
+    "paper-fab": "PolymerElements/paper-fab#^1.0.0",
+    "paper-input": "PolymerElements/paper-input#^1.0.0",
+    "iron-pages": "PolymerElements/iron-pages#^1.0.0",
+    "paper-material": "PolymerElements/paper-material#^1.0.0",
+    "iron-ajax": "PolymerElements/iron-ajax#^1.0.0"
   },
   "devDependencies": {
     "web-component-tester": "*",

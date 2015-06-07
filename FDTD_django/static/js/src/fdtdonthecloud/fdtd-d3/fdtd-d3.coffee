@@ -4,14 +4,14 @@ polymer ={
     divdom = this.$$("#id_svg_div")
     svgdom = this.$$("#id_svg_div").getElementsByTagName("svg")
     circledom = this.$$("#id_svg_div").getElementsByTagName("circle")
-    dragcircle = new Dragcircle(this, divdom, svgdom, circledom)
-    dragcircle.rendersvg()
+    dragrect = new Dragrect(this)
+    dragrect.rendersvg()
 
 }
 
 
 class Dragrect
-  constructor: ()->
+  constructor: (@polymerscope)->
     this.w = 750
     this.h = 450
     this.r = 120
@@ -20,7 +20,54 @@ class Dragrect
     this.dragnarw = 20
 
   rendersvg: ->
+    self = this
+    drag = d3.behavior.drag()
+    .origin(Object)
+    .on("drag", (d)->
+      self.dragmove(d)
+    )
 
+    dragright = d3.behavior.drag()
+    .origin(Object)
+    .on("drag", (d)->)
+
+    dragleft = d3.behavior.drag()
+    .origin(Object)
+    .on("drag", (d)->)
+
+    dragtop = d3.behavior.drag()
+    .origin(Object)
+    .on("drag", (d)->)
+
+    dragbottom = d3.behavior.drag()
+    .origin(Object)
+    .on("drag", (d)->)
+
+    svg = d3.select(self.polymerscope.$$("#id_svg_div")).append("svg")
+    .attr("width", self.w)
+    .attr("height", self.h)
+
+    newg = svg.append("g")
+    .data([{x: self.width / 2, y: self.height / 2}])
+
+    self.dragrect = newg.append("rect")
+    .attr("id", "active")
+    .attr("x", (d)->
+      d.x
+    )
+    .attr("y", (d)->
+      d.y
+    )
+    .attr("height", self.height)
+    .attr("width", self.width)
+    .attr("fill-opacity", .5)
+    .attr("cursor", "move")
+    .call(drag)
+
+  dragmove: (d)->
+    self = this
+    self.dragrect
+          .attr("y", d.y = Math.max(0, Math.min(self.h - self.height, d3.event.y)));
 
 
 class Dragcircle
