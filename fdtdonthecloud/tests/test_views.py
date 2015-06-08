@@ -2,6 +2,9 @@ from django.test import TestCase
 from fdtdonthecloud.views import fdtdapp
 from django.core.urlresolvers import resolve
 from django.contrib.auth.models import User
+from fdtdonthecloud.views import FDTDProjectView
+from django.http import QueryDict
+from django.contrib.auth.models import User
 
 
 class FDTDAppTEST(TestCase):
@@ -16,3 +19,37 @@ class FDTDAppTEST(TestCase):
         self.client.login(username='test', password='testpassword')
         response = self.client.get('/fdtdapp/')
         self.assertTemplateUsed(response, 'fdtdapp.html')
+
+
+def createuser():
+    user = User.objects.create(username='user', password='testpassword')
+    return user
+
+class Requesttestclass():
+    def __init__(self):
+        self.data = {"title": "testtitle"}
+        self.user = createuser()
+
+class RequesttestQueryDictclass():
+    def __init__(self):
+        self.data = QueryDict('title=testtitle')
+
+
+class FDTDProjectViewTEST(TestCase):
+    def setUp(self):
+        self.fdtdProjectView = FDTDProjectView()
+
+    def test_getQuerydata_simplejson(self):
+        request = Requesttestclass()
+        querydata = self.fdtdProjectView._getQuerydata(request)
+        self.assertEqual(querydata['title'], 'testtitle')
+
+    def test_getQuerydata_QueryDict(self):
+        request = RequesttestQueryDictclass()
+        querydata = self.fdtdProjectView._getQuerydata(request)
+        self.assertEqual(querydata['title'], 'testtitle')
+
+    def test_post(self):
+        request = Requesttestclass()
+        response = self.fdtdProjectView.post(request)
+        self.assertEqual(response.status_code, 201)

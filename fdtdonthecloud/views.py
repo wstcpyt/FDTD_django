@@ -21,7 +21,8 @@ class FDTDProjectView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def _getQuerydata(self, request):
+    @staticmethod
+    def _getQuerydata(request):
         if isinstance(request.data, QueryDict):
             querydata = request.data.dict()
         else:
