@@ -3,5 +3,5 @@ from django.contrib.auth.models import User
 
 
 class FDTDProject(models.Model):
-    category = models.ForeignKey(User, default=None)
-    title = models.TextField(unique=True)
+    user = models.ForeignKey(User, default=None)
+    title = models.CharField(max_length=200)
