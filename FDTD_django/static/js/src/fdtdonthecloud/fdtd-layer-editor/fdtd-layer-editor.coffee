@@ -7,7 +7,7 @@ polymer = {
     }
   }
   attached: ->
-    this.$$("#id_title").label = ''
-    this.$$("#id_title").$$("paper-input-container").querySelector('#input').value = 'TESTVALUE'
+    #this.$$("#id_title").label = ''
+    #this.$$("#id_title").$$("paper-input-container").querySelector('#input').value = 'TESTVALUE'
 }
 Polymer(polymer)

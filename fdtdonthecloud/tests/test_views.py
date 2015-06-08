@@ -1,10 +1,10 @@
 from django.test import TestCase
 from fdtdonthecloud.views import fdtdapp
 from django.core.urlresolvers import resolve
-from django.contrib.auth.models import User
 from fdtdonthecloud.views import FDTDProjectView
 from django.http import QueryDict
 from django.contrib.auth.models import User
+from fdtdonthecloud.models import FDTDProject
 
 
 class FDTDAppTEST(TestCase):
@@ -49,7 +49,10 @@ class FDTDProjectViewTEST(TestCase):
         querydata = self.fdtdProjectView._getQuerydata(request)
         self.assertEqual(querydata['title'], 'testtitle')
 
-    def test_post(self):
+    def test_post_create_database_instance(self):
         request = Requesttestclass()
         response = self.fdtdProjectView.post(request)
         self.assertEqual(response.status_code, 201)
+        first_item = FDTDProject.objects.first()
+        self.assertEquals(first_item.title, 'testtitle')
+

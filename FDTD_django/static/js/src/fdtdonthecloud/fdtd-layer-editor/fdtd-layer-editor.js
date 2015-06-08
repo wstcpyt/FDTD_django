@@ -10,10 +10,7 @@
         notify: true
       }
     },
-    attached: function() {
-      this.$$("#id_title").label = '';
-      return this.$$("#id_title").$$("paper-input-container").querySelector('#input').value = 'TESTVALUE';
-    }
+    attached: function() {}
   };
 
   Polymer(polymer);

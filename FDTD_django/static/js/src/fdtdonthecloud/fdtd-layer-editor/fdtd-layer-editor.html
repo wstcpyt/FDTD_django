@@ -22,9 +22,6 @@
                    handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
         <section class="flex layout horizontal wrap">
             <template is="dom-repeat" items="[[ajaxResponse]]">
-                <div>
-                    <span>{{item.title}}</span>
-                </div>
             </template>
         </section>
         <paper-material elevation="1">
