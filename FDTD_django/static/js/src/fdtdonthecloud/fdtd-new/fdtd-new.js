@@ -4,25 +4,42 @@
 
   polymer = {
     is: 'fdtd-new',
-    getnumberoflayer: function() {
-      var jsonstringfy, numbervalidateresult, object, titlevalidateresult;
-      titlevalidateresult = this.$$("#id_title").validate();
-      numbervalidateresult = this.$$("#id_numberoflayer").validate();
-      if (titlevalidateresult && numbervalidateresult) {
-        console.log($.cookie('csrftoken'));
-        this.numberoflayer = this.$$("#id_numberoflayer").value;
+    properties: {
+      numberoflayer: {
+        type: Number,
+        notify: true
+      }
+    },
+    createnewproject: function() {
+      var inputvalidate, jsonstring;
+      inputvalidate = this.checkinputvalidate();
+      if (inputvalidate) {
+        this.assignnumberoflayer();
         this.$$("#id_pages").selectNext();
         this.$$("#id_iron_ajax").headers = {
           "X-CSRFToken": $.cookie('csrftoken'),
           "Content-Type": "application/json"
         };
-        object = {
-          "title": "test1"
-        };
-        jsonstringfy = JSON.stringify(object);
-        this.$$("#id_iron_ajax").body = jsonstringfy;
+        jsonstring = this.generatejsonstring();
+        this.$$("#id_iron_ajax").body = jsonstring;
         return this.$$("#id_iron_ajax").generateRequest();
       }
+    },
+    assignnumberoflayer: function() {
+      return this.numberoflayer = this.$$("#id_numberoflayer").value;
+    },
+    generatejsonstring: function() {
+      var object;
+      object = {
+        "title": this.$$("#id_title").value
+      };
+      return JSON.stringify(object);
+    },
+    checkinputvalidate: function() {
+      var numbervalidateresult, titlevalidateresult;
+      titlevalidateresult = this.$$("#id_title").validate();
+      numbervalidateresult = this.$$("#id_numberoflayer").validate();
+      return titlevalidateresult && numbervalidateresult;
     }
   };
 

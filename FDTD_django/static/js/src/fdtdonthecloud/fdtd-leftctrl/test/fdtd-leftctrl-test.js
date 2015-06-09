@@ -5,7 +5,7 @@
       return this.pytmenu = fixture('leftctrl');
     });
     test('menuItems', function() {
-      return assert.equal(this.pytmenu.menuItems[0].menu, 'Drafts');
+      return assert.equal(this.pytmenu.menuItems[0].menu, 'New');
     });
     test('selectedindex_properties', function() {
       return assert.equal(this.pytmenu.selectedindex, '1');
@@ -14,7 +14,7 @@
       var self;
       self = this;
       self.pytmenu.$.leftmenu.addEventListener('selected-changed', function() {
-        return assert.equal(self.pytmenu.menuselected.menu, 'Done');
+        return assert.equal(self.pytmenu.menuselected.menu, 'Drafts');
       });
       return self.pytmenu.$.leftmenu.selected = 1;
     });
