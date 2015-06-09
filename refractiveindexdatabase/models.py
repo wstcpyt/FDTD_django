@@ -18,5 +18,4 @@ class Elementlist(models.Model):
     comments = models.TextField(default='')
     type = models.TextField()
     datalink = models.TextField()
-    data = JsonField(default='{}')
-
+    data = JsonField(default={})
