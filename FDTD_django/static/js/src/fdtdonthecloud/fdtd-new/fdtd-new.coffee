@@ -5,6 +5,11 @@ polymer = {
       type: Number
       notify: true
     }
+    newprojectresponse: {
+      type: Object
+      notify: true
+      observer: 'projectresponsechanged'
+    }
   }
   createnewproject: ->
     inputvalidate = this.checkinputvalidate()
@@ -27,6 +32,10 @@ polymer = {
     titlevalidateresult = this.$$("#id_title").validate()
     numbervalidateresult = this.$$("#id_numberoflayer").validate()
     return titlevalidateresult && numbervalidateresult
+
+  projectresponsechanged: ->
+    this.projectid =  this.newprojectresponse.id
+    console.log(this.projectid)
 }
 
 Polymer(polymer)

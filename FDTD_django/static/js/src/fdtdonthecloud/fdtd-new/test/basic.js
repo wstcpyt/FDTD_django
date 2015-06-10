@@ -22,9 +22,16 @@
       result = this.fdtdapp.generatejsonstring();
       return assert.equal(result, '{"title":"testtitle"}');
     });
-    return test("setnumberoflayer", function() {
+    test("setnumberoflayer", function() {
       this.fdtdapp.$$("#id_numberoflayer").value = 12;
       return this.fdtdapp.assignnumberoflayer();
+    });
+    return test("projectresponsechanged", function() {
+      this.fdtdapp.newprojectresponse = {
+        'title': 'test',
+        'id': 1
+      };
+      return assert.equal(this.fdtdapp.projectid, 1);
     });
   });
 

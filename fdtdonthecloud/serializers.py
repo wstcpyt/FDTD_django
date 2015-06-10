@@ -6,7 +6,7 @@ from fdtdonthecloud.models import FDTDProject
 class FDTDProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = FDTDProject
-        fields = ('title',)
+        fields = ('id','title',)
 
     def create(self, validated_data):
         return FDTDProject.objects.create(**validated_data)

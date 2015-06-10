@@ -19,12 +19,13 @@ class FDTDProjectView(APIView):
         serializer = FDTDProjectSerializer(data=querydata)
         if serializer.is_valid():
             serializer.save(user=request.user)
+            print(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, format=None):
         querydata = self._getQuerydata(request)
-        fdtdproject = FDTDProject.objects.get(id=14)
+        fdtdproject = FDTDProject.objects.get(id=32)
         serializer = FDTDProjectSerializer(fdtdproject, data=querydata, partial=True)
         if serializer.is_valid():
             serializer.save()

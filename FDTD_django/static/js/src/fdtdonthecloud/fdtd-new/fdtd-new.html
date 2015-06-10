@@ -22,8 +22,9 @@
     <template>
         <iron-ajax
                 id="id_iron_ajax"
-                method="put"
+                method="post"
                 url='http://localhost:8000/fdtdproject/'
+                last-response="{{newprojectresponse}}"
                 >
         </iron-ajax>
         <iron-pages selected="0" id="id_pages">

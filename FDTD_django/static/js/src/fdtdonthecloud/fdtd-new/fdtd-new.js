@@ -8,6 +8,11 @@
       numberoflayer: {
         type: Number,
         notify: true
+      },
+      newprojectresponse: {
+        type: Object,
+        notify: true,
+        observer: 'projectresponsechanged'
       }
     },
     createnewproject: function() {
@@ -40,6 +45,10 @@
       titlevalidateresult = this.$$("#id_title").validate();
       numbervalidateresult = this.$$("#id_numberoflayer").validate();
       return titlevalidateresult && numbervalidateresult;
+    },
+    projectresponsechanged: function() {
+      this.projectid = this.newprojectresponse.id;
+      return console.log(this.projectid);
     }
   };
 

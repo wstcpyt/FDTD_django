@@ -21,4 +21,8 @@ suite('fdtdnew tests',->
     this.fdtdapp.$$("#id_numberoflayer").value = 12
     this.fdtdapp.assignnumberoflayer()
   )
+  test("projectresponsechanged", ->
+    this.fdtdapp.newprojectresponse = {'title': 'test', 'id':1}
+    assert.equal(this.fdtdapp.projectid, 1)
+  )
 )
