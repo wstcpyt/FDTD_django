@@ -10,7 +10,7 @@ def updatefiletos3(imageurl, user):
     conn = S3Connection(settings.S3_ACCESS_KEY, settings.S3_SECRET_KEY)
     bucket = conn.get_bucket('fdtddjangoavatar')
     key = Key(bucket)
-    image_name = 'tw_avatar_%s.jpg' % user.username
+    image_name = 'google_avatar_%s.jpg' % user.username
     key.key = image_name
     image_stream = urlopen(imageurl)
     key.set_contents_from_string(image_stream.read())
