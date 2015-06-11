@@ -8,7 +8,7 @@ from boto.s3.key import Key
 
 def updatefiletos3(imageurl, user):
     conn = S3Connection(settings.S3_ACCESS_KEY, settings.S3_SECRET_KEY)
-    bucket = conn.get_bucket('fdtddjangoavatar')
+    bucket = conn.get_bucket('fdtddjangoavatar', validate=False)
     key = Key(bucket)
     image_name = 'google_avatar_%s.jpg' % user.username
     key.key = image_name
