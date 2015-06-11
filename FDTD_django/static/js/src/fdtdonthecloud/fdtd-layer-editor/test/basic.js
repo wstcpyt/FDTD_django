@@ -17,13 +17,43 @@
       result = this.fdtdlayereditor.checkinputvalidate();
       return assert.equal(result, true);
     });
-    return test('checkinputvalidate-true_float', function() {
+    test('checkinputvalidate-true_float', function() {
       var result;
       this.fdtdlayereditor.$$("#id_title").value = 'title';
       this.fdtdlayereditor.$$("#id_thickness").value = 12.2;
       this.fdtdlayereditor.$$("#id_rf").value = 12.2;
       result = this.fdtdlayereditor.checkinputvalidate();
       return assert.equal(result, true);
+    });
+    test('generatelLayerinfoJsonstring', function() {
+      var result;
+      this.fdtdlayereditor.$$("#id_title").value = 'title';
+      this.fdtdlayereditor.$$("#id_thickness").value = 12.2;
+      this.fdtdlayereditor.$$("#id_rf").value = 12.2;
+      result = this.fdtdlayereditor.generatelLayerinfoJsonstring();
+      return assert.equal(result, '{"layerdetail":{"title":"title","thickness":12.2,"rf":12.2}}');
+    });
+    test("changelayernumber_layernumber_less_than_total_number", function() {
+      this.fdtdlayereditor.layernumber = 0;
+      this.fdtdlayereditor.totallayernumber = 2;
+      this.fdtdlayereditor.changelayernumber();
+      return assert.equal(this.fdtdlayereditor.layernumber, 1);
+    });
+    test("changelayernumber_layernumber_equal_total_number", function() {
+      this.fdtdlayereditor.layernumber = 1;
+      this.fdtdlayereditor.totallayernumber = 2;
+      this.fdtdlayereditor.changelayernumber();
+      return assert.equal(this.fdtdlayereditor.layernumber, 0);
+    });
+    return test("ajaxGetdatalayerinfoResponseChanged", function() {
+      this.fdtdlayereditor.ajaxGetdatalayerinfoResponse = {
+        "title": "testtitle",
+        "thickness": 1,
+        "rf": 1
+      };
+      assert.equal(this.fdtdlayereditor.$$("#id_title").$$("paper-input-container").querySelector('#input').value, 'testtitle');
+      assert.equal(this.fdtdlayereditor.$$("#id_thickness").$$("paper-input-container").querySelector('#input').value, 1);
+      return assert.equal(this.fdtdlayereditor.$$("#id_rf").$$("paper-input-container").querySelector('#input').value, 1);
     });
   });
 

@@ -26,12 +26,17 @@ polymer = {
   ajaxGetdatalayerinfoResponseChanged: ->
     if this.ajaxGetdatalayerinfoResponse.hasOwnProperty("title")
       this.$$("#id_title").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['title']
-      this.$$("#id_thickness").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['thickness']
-      this.$$("#id_rf").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['rf']
     else
       this.$$("#id_title").$$("paper-input-container").querySelector('#input').value = ""
+    if this.ajaxGetdatalayerinfoResponse.hasOwnProperty("thickness")
+      this.$$("#id_thickness").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['thickness']
+    else
       this.$$("#id_thickness").$$("paper-input-container").querySelector('#input').value = ""
+    if this.ajaxGetdatalayerinfoResponse.hasOwnProperty("rf")
+      this.$$("#id_rf").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['rf']
+    else
       this.$$("#id_rf").$$("paper-input-container").querySelector('#input').value = ""
+
   layernumberChanged: ->
     this.$$("#id_ajax_getdatalayerinfo").params = {"projectid":this.projectid, "layerid": this.layernumber}
     this.$$("#id_ajax_getdatalayerinfo").generateRequest()
@@ -42,10 +47,14 @@ polymer = {
       jsonstring = this.generatelLayerinfoJsonstring()
       this.$$("#id_ajax_updatelayerinfo").body = jsonstring
       this.$$("#id_ajax_updatelayerinfo").generateRequest()
+      this.changelayernumber()
+
+  changelayernumber: ->
       if this.layernumber < this.totallayernumber-1
         this.layernumber = this.layernumber + 1
       else
         this.layernumber = 0
+
   checkinputvalidate: ->
     titlevalidateresult = this.$$("#id_title").validate()
     thicknessvalidateresult = this.$$("#id_thickness").validate()

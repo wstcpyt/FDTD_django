@@ -2,15 +2,20 @@
 <link rel="import" href="/static/js/lib/paper-styles/paper-styles.html">
 <link rel="import" href="/static/js/lib/paper-input/paper-input.html">
 <link rel="import" href="../fdtd-layer-editor/fdtd-layer-editor.html">
+<link rel="import" href="/static/js/lib/paper-fab/paper-fab.html">
 
 
 <dom-module id="fdtd-model">
     <style>
+        paper-fab.green {
+            --paper-fab-background: var(--paper-green-500);
+        }
     </style>
 
     <template>
         <svg id="id_device_svg" width="400" height="600" style="vertical-align: top"></svg>
-        <fdtd-layer-editor totallayernumber = "{{numberoflayer}}" projectid = "[[projectid]]" id="id_fdtd_layer_editor" style="display: none"></fdtd-layer-editor>
+        <fdtd-layer-editor totallayernumber = "{{numberoflayer}}" projectid = "[[projectid]]" id="id_fdtd_layer_editor" style="display: none; margin-top: 50px"></fdtd-layer-editor>
+        <paper-fab style="margin-top: 50px; float: right" icon="arrow-forward" title="arrow-forward" tabindex="0" class="green" on-click="createnewproject"></paper-fab>
     </template>
 
 </dom-module>

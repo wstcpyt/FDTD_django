@@ -28,11 +28,17 @@
     ajaxGetdatalayerinfoResponseChanged: function() {
       if (this.ajaxGetdatalayerinfoResponse.hasOwnProperty("title")) {
         this.$$("#id_title").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['title'];
-        this.$$("#id_thickness").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['thickness'];
-        return this.$$("#id_rf").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['rf'];
       } else {
         this.$$("#id_title").$$("paper-input-container").querySelector('#input').value = "";
+      }
+      if (this.ajaxGetdatalayerinfoResponse.hasOwnProperty("thickness")) {
+        this.$$("#id_thickness").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['thickness'];
+      } else {
         this.$$("#id_thickness").$$("paper-input-container").querySelector('#input').value = "";
+      }
+      if (this.ajaxGetdatalayerinfoResponse.hasOwnProperty("rf")) {
+        return this.$$("#id_rf").$$("paper-input-container").querySelector('#input').value = this.ajaxGetdatalayerinfoResponse['rf'];
+      } else {
         return this.$$("#id_rf").$$("paper-input-container").querySelector('#input').value = "";
       }
     },
@@ -54,11 +60,14 @@
         jsonstring = this.generatelLayerinfoJsonstring();
         this.$$("#id_ajax_updatelayerinfo").body = jsonstring;
         this.$$("#id_ajax_updatelayerinfo").generateRequest();
-        if (this.layernumber < this.totallayernumber - 1) {
-          return this.layernumber = this.layernumber + 1;
-        } else {
-          return this.layernumber = 0;
-        }
+        return this.changelayernumber();
+      }
+    },
+    changelayernumber: function() {
+      if (this.layernumber < this.totallayernumber - 1) {
+        return this.layernumber = this.layernumber + 1;
+      } else {
+        return this.layernumber = 0;
       }
     },
     checkinputvalidate: function() {
