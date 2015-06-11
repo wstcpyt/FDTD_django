@@ -29,14 +29,14 @@
         </iron-ajax>
         <iron-pages selected="0" id="id_pages">
             <div>
-                <div>
+                <div style="width: 300px; margin-left: auto; margin-right: auto; margin-top: 100px">
                     <paper-input required id="id_title" style="width: 300px" label="Project Title" error-message="required input!"></paper-input>
                     <paper-input required id="id_numberoflayer" style="width: 300px" label="Number of Device Layers" pattern="[0-9]+" error-message="Positive Integer only, required input!"></paper-input>
-                    <paper-fab icon="arrow-forward" title="arrow-forward" tabindex="0" class="green" on-click="createnewproject"></paper-fab>
+                    <paper-fab style="margin-top: 50px; float: right" icon="arrow-forward" title="arrow-forward" tabindex="0" class="green" on-click="createnewproject"></paper-fab>
                 </div>
             </div>
             <div>
-                <fdtd-model numberoflayer="{{numberoflayer}}"></fdtd-model>
+                <fdtd-model projectid="[[projectid]]" numberoflayer="{{numberoflayer}}"></fdtd-model>
             </div>
             <div>Page Three</div>
         </iron-pages>

@@ -14,21 +14,30 @@ def fdtdapp(request):
 
 
 class FDTDProjectView(APIView):
+    def get(self, request, format=None):
+        layerid = request.GET.get('layerid', '')
+        projectid = request.GET.get('projectid', '')
+        fdtdproject = FDTDProject.objects.get(id=projectid)
+        try:
+            layerdetail = fdtdproject.layerdetail[str(layerid)]
+        except KeyError:
+            layerdetail = {}
+        return Response(layerdetail)
+
     def post(self, request, format=None):
         querydata = self._getQuerydata(request)
         serializer = FDTDProjectSerializer(data=querydata)
         if serializer.is_valid():
             serializer.save(user=request.user)
-            print(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, format=None):
         querydata = self._getQuerydata(request)
-        fdtdproject = FDTDProject.objects.get(id=32)
+        fdtdproject = FDTDProject.objects.get(id=querydata['id'])
         serializer = FDTDProjectSerializer(fdtdproject, data=querydata, partial=True)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(layernumber=querydata['layernumber'])
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

@@ -3,7 +3,7 @@
 <link rel="import" href="/static/js/lib/paper-input/paper-input.html">
 <link rel="import" href="/static/js/lib/paper-material/paper-material.html">
 <link rel="import" href="/static/js/lib/iron-ajax/iron-ajax.html">
-
+<link rel="import" href="/static/js/lib/paper-fab/paper-fab.html">
 
 
 <dom-module id="fdtd-layer-editor">
@@ -15,21 +15,30 @@
             margin-left: 10px;
             margin-right: 10px;
         }
+        paper-fab.green {
+            --paper-fab-background: var(--paper-green-500);
+        }
     </style>
     <template>
-        <iron-ajax auto url="http://localhost:8000/elementlistitems/Ag/"
-                   params=''
-                   handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
-        <section class="flex layout horizontal wrap">
-            <template is="dom-repeat" items="[[ajaxResponse]]">
-            </template>
+        <iron-ajax
+                id="id_ajax_updatelayerinfo"
+                method="put"
+                url='http://localhost:8000/fdtdproject/'
+                >
+        </iron-ajax>
+        <iron-ajax id="id_ajax_getdatalayerinfo" url="http://localhost:8000/fdtdproject/"
+                   method="get"
+                   handle-as="json" last-response="{{ajaxGetdatalayerinfoResponse}}"></iron-ajax>
+        <section>
+            <span>{{ajaxResponse.thickness}}</span>
         </section>
         <paper-material elevation="1">
             <div class="vertical center-justified layout">
                 <div>Layer <span>{{layernumber}}</span></div>
-                <paper-input id="id_title" label="Title" style="width: 200px; display: inline-block"></paper-input>
-                <paper-input label="Thickness (um)" style="width: 200px; display: inline-block"></paper-input>
-                <paper-input label="Refractive Index" style="width: 200px; display: inline-block"></paper-input>
+                <paper-input required id="id_title" label="Title" style="width: 200px; display: inline-block" error-message="required input!"></paper-input>
+                <paper-input required id="id_thickness" label="Thickness (um)" pattern = "[-+]?(\d*[.])?\d+" style="width: 200px; display: inline-block" error-message="required input! Float Number"></paper-input>
+                <paper-input required id="id_rf" label="Refractive Index" pattern = "[-+]?(\d*[.])?\d+" style="width: 200px; display: inline-block" error-message="required input! Float Number"></paper-input>
+                <paper-fab mini icon="done" title="done" tabindex="0" class="green" on-click="savelayerinfo"></paper-fab>
             </div>
         </paper-material>
     </template>

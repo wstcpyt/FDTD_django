@@ -13,6 +13,10 @@
         type: Object,
         notify: true,
         observer: 'projectresponsechanged'
+      },
+      projectid: {
+        type: Number,
+        notify: true
       }
     },
     createnewproject: function() {
@@ -47,8 +51,7 @@
       return titlevalidateresult && numbervalidateresult;
     },
     projectresponsechanged: function() {
-      this.projectid = this.newprojectresponse.id;
-      return console.log(this.projectid);
+      return this.projectid = this.newprojectresponse.id;
     }
   };
 

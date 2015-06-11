@@ -10,6 +10,10 @@ polymer = {
       notify: true
       observer: 'projectresponsechanged'
     }
+    projectid:{
+      type: Number
+      notify:true
+    }
   }
   createnewproject: ->
     inputvalidate = this.checkinputvalidate()
@@ -35,7 +39,6 @@ polymer = {
 
   projectresponsechanged: ->
     this.projectid =  this.newprojectresponse.id
-    console.log(this.projectid)
 }
 
 Polymer(polymer)

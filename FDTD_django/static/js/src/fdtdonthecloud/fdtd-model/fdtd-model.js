@@ -9,6 +9,10 @@
         type: Number,
         notify: true,
         observer: "layernumberChanged"
+      },
+      projectid: {
+        type: Number,
+        notify: true
       }
     },
     attached: function() {},
