@@ -6,11 +6,6 @@ define(['./module'], (module) ->
         'id': 'id_get_started'
         'url': '/fdtdapp/'
       },
-      {
-        'menu': 'Guide & Resources'
-        'id': 'id_guide'
-        'url': '/guide/'
-      }
     ]
     $rootScope.navselected = "FDTD"
     $scope.loginclick = (e)->

@@ -1,12 +1,6 @@
 # Created by yutongpang at 4/16/15
 Feature: Landing Page
   # Enter feature description here
-
-  Scenario: Customer from Landing Page to Guide Page
-    Given Customer come to Landing Page without login
-    When Click goto Guide Page
-    Then see the title is Guide
-
   Scenario: Customer from landing Page to FDTD App Page without login
     Given Customer come to Landing Page without login
     When Click get started button

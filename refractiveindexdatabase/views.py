@@ -73,6 +73,5 @@ class ElementListItemsDetail(APIView):
     def _get_elementlistitemsdetail(pk):
         return Elementlist.objects.filter(id=pk).first()
 
-
 def index_app_page(request):
     return render(request, 'indexapp.html')

@@ -58,7 +58,6 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'landingpage',
     'rest_framework',
-    'guide',
     'refractiveindexdatabase',
     'django_behave',
     'socialauth',
